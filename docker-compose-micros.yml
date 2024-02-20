@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  pjgl-micro-users:
+    build:
+      context: ./pjgl-micro-users
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
