@@ -7,3 +7,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8085:8085"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
