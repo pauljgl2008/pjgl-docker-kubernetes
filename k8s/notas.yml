@@ -1,0 +1,11 @@
+https://github.com/Klerith/k8s-teslo
+https://github.com/benc-uk/kubeview/pkgs/container/kubeview
+https://minikube.sigs.k8s.io/docs/start/
+
+Install kubecctl en linux:
+git clone https://github.com/benc-uk/kubeview
+cd kubeview/charts/
+helm install kubeview kubeview
+
+Start kubectl en linux:
+kubectl port-forward svc/kubeview -n default 8000:80

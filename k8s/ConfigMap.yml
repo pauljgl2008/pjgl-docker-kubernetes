@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: pauljgl-config
-data:
-  DB_NAME: mongodb
-  DB_HOST: postgres-service
-  DB_PORT: 27017
