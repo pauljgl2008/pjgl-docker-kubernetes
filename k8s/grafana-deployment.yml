@@ -1,7 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: grafana-deployment
+  labels:
+    app: grafana
+  name: grafana
 spec:
   selector:
     matchLabels:

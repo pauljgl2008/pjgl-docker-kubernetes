@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pjgl-config-server
+spec:
+  replicas: 1 # Adjust as needed
+  selector:
+    matchLabels:
+      app: pjgl-config-server
+  template:
+    metadata:
+      labels:
+        app: pjgl-config-server
+    spec:
+      containers:
+      - name: pjgl-config-server
+        image: pguevarl/demo-pjgl-docker-hub-repository:configserver # Replace with your actual image
+        ports:
+        - containerPort: 8085
+          name: http
+        resources:
+          # Define resource requests and limits as needed
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 200m
+            memory: 512Mi
+      # Consider adding health probes for readiness and liveness
+      ## Example health probes:
+      # readinessProbe:
+      #   httpGet:
+      #     path: /health
+      #     port: 8085
+      #   initialDelaySeconds: 15
+      #   periodSeconds: 20
+      #   successThreshold: 1
+      #   failureThreshold: 3
+      # livenessProbe:
+      #   tcpSocket:
+      #     port: 8085
+      #   initialDelaySeconds: 15
+      #   periodSeconds: 20
+      #   successThreshold: 1
+      #   failureThreshold: 3
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: pjgl-config-server
+spec:
+  selector:
+    app: pjgl-config-server
+  type: LoadBalancer # Or NodePort if preferred
+  ports:
+  - port: 8085 # External port
+    targetPort: 8085 # Container port
+    name: http
+  # Consider adding externalIPs for static IP allocation
+
+  # Optional for NodePort type:
+  # nodePort: 30000 # Replace with a desired NodePort
+
+# Additional resources may be needed based on your specific environment and requirements.
+
