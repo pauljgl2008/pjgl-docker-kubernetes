@@ -34,5 +34,5 @@ data:
       - 192.168.49.240-192.168.49.250  # Rango de direcciones IP disponibles en tu red
 
 3. Guarda este archivo YAML en tu sistema local y luego aplícalo con el comando:
-kubectl apply -f <nombre_del_archivo.yaml>.
+kubectl apply -f configmap-metallb.yml
 

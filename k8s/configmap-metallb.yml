@@ -9,4 +9,4 @@ data:
     - name: default
       protocol: layer2
       addresses:
-      - 192.168.49.240-192.168.49.250  # Rango de direcciones IP disponibles en tu red
+      - 10.244.0.1 - 10.244.0.254  # Rango de direcciones IP disponibles en tu red
