@@ -36,3 +36,8 @@ data:
 3. Guarda este archivo YAML en tu sistema local y luego aplícalo con el comando:
 kubectl apply -f configmap-metallb.yml
 
+https://www.site24x7.com/es/tools/ipv4-subredes-calculadora.html
+https://kubernetes.io/docs/tutorials/stateless-application/expose-external-ip-address/
+
+expose service to http:
+minikube service pjgl-config-server

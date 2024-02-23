@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: pjgl-config-server
 spec:
-  replicas: 1 # Adjust as needed
+  replicas: 2 # Adjust as needed
   selector:
     matchLabels:
       app: pjgl-config-server
@@ -58,6 +58,8 @@ spec:
   - port: 8085 # External port
     targetPort: 8085 # Container port
     name: http
+  #externalIPs:
+  #  - 198.51.100.32
   # Consider adding externalIPs for static IP allocation
 
   # Optional for NodePort type:
