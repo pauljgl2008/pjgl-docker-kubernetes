@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: pjgl-config-server
 spec:
-  replicas: 2 # Adjust as needed
+  replicas: 1 # Adjust as needed
   selector:
     matchLabels:
       app: pjgl-config-server
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: pjgl-config-server
-        image: pguevarl/demo-pjgl-docker-hub-repository:configserver # Replace with your actual image
+        image: pguevarl/demo-pjgl-docker-hub-repository:pjgl-config-server # Replace with your actual image
         ports:
         - containerPort: 8085
           name: http
