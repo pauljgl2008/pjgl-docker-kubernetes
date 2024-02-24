@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+    meMysql:
+        image: mariadb
+        environment:
+            - MYSQL_DATABASE=infocasas
+            - MYSQL_ROOT_PASSWORD=123456
+            - MYSQL_USER=admin
+            - MYSQL_PASSWORD=admin
+        volumes:
+            - ~/volumes/mysql:/var/lib/mysql
+        expose:
+            - 3306
+        ports:
+            - 3306:3306
+    php:
+        build: .
+        volumes:
+            - ./:/var/www/html
+        expose:
+            - 80
+        ports:
+            - 80:80
+        links:
+            - meMysql
+    phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        ports:
+            - 8080:80
+        environment:
+            - UPLOAD_LIMIT=600M
+            - PMA_ARBITRARY=1
+            - PMA_HOST=meMysql
+            - MYSQL_ROOT_PASSWORD=123456
+        depends_on:
+            - meMysql

@@ -3,8 +3,10 @@ version: '3'
 services:
   pjgl-config-server:
     build:
-      context: ./demo-pjgl-config-server
+      context: ../demo-pjgl-config-server
       dockerfile: Dockerfile
+    expose:
+    - 8085
     ports:
       - "8085:8085"
     extra_hosts:
