@@ -1,3 +1,6 @@
+Git Semantic Version:
+https://github.com/marketplace/actions/git-semantic-version
+
 Comandos Docker:
 Listar todos los contenedores con sus direcciones IP:
 docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
