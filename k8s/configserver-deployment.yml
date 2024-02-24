@@ -14,38 +14,18 @@ spec:
     spec:
       containers:
       - name: pjgl-config-server
-        image: pguevarl/demo-pjgl-docker-hub-repository:pjgl-config-server # Replace with your actual image
+        image: pguevarl/config-server:latest # Replace with your actual image
         ports:
         - containerPort: 8085
           name: http
         resources:
-          # Define resource requests and limits as needed
           requests:
             cpu: 100m
             memory: 256Mi
           limits:
             cpu: 200m
             memory: 512Mi
-      # Consider adding health probes for readiness and liveness
-      ## Example health probes:
-      # readinessProbe:
-      #   httpGet:
-      #     path: /health
-      #     port: 8085
-      #   initialDelaySeconds: 15
-      #   periodSeconds: 20
-      #   successThreshold: 1
-      #   failureThreshold: 3
-      # livenessProbe:
-      #   tcpSocket:
-      #     port: 8085
-      #   initialDelaySeconds: 15
-      #   periodSeconds: 20
-      #   successThreshold: 1
-      #   failureThreshold: 3
-
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -58,12 +38,3 @@ spec:
   - port: 8085 # External port
     targetPort: 8085 # Container port
     name: http
-  #externalIPs:
-  #  - 198.51.100.32
-  # Consider adding externalIPs for static IP allocation
-
-  # Optional for NodePort type:
-  # nodePort: 30000 # Replace with a desired NodePort
-
-# Additional resources may be needed based on your specific environment and requirements.
-

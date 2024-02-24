@@ -1,3 +1,7 @@
+Installing kubectl...
+Installing Helm...
+Installing Minikube...
+
 Git Semantic Version:
 https://github.com/marketplace/actions/git-semantic-version
 
@@ -23,3 +27,9 @@ docker-compose up --build
 ---
 Kubernetes en linux:
 https://cursosdedesarrollo.com/2020/07/instalacion-de-kubernetes-minikube-en-ubuntu-20-04/
+---
+Explorar que tiene mi imagen docker:
+$ docker container run -d pguevarl/config-server:
+bd50b418618ba2fa816d82c9fb437ae6446d0878fde165e7b884bd31bfe1db93
+$ docker exec -it bd5 /bin/sh:
+$ ls:
