@@ -1,0 +1,43 @@
+https://github.com/Klerith/k8s-teslo
+https://github.com/benc-uk/kubeview/pkgs/container/kubeview
+https://minikube.sigs.k8s.io/docs/start/
+
+Install kubecctl en linux:
+git clone https://github.com/benc-uk/kubeview
+cd kubeview/charts/
+helm install kubeview kubeview
+
+Start kubectl en linux:
+kubectl port-forward svc/kubeview -n default 8000:80
+
+minikube addons list
+
+external_ip services - enable addons metallb - config metallb:
+1. Instalar MetalLB: Si aún no has instalado MetalLB, puedes hacerlo ejecutando el siguiente comando:
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.10.2/manifests/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.10.2/manifests/metallb.yaml
+
+2. Configurar MetalLB:
+Después de instalar MetalLB, necesitarás configurarlo para que pueda asignar direcciones IP externas. Puedes crear y aplicar una configuración de ConfigMap que especifique el rango de direcciones IP que MetalLB puede asignar.
+Por ejemplo
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: metallb-system
+  name: config
+data:
+  config: |
+    address-pools:
+    - name: default
+      protocol: layer2
+      addresses:
+      - 192.168.49.240-192.168.49.250  # Rango de direcciones IP disponibles en tu red
+
+3. Guarda este archivo YAML en tu sistema local y luego aplícalo con el comando:
+kubectl apply -f configmap-metallb.yml
+
+https://www.site24x7.com/es/tools/ipv4-subredes-calculadora.html
+https://kubernetes.io/docs/tutorials/stateless-application/expose-external-ip-address/
+
+expose service to http:
+minikube service pjgl-config-server

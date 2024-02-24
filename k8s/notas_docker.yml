@@ -1,0 +1,22 @@
+Comandos Docker:
+Listar todos los contenedores con sus direcciones IP:
+docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
+
+Detener todos los contenedores en ejecución:
+docker stop $(docker ps -aq)
+
+Eliminar todos los contenedores:
+docker rm $(docker ps -aq)
+
+Eliminar todas las imagenes docker:
+docker rmi $(docker images -aq)
+
+Versión de minikube:
+minikube version
+
+El flag --build asegura que Docker Compose reconstruya las imágenes de los servicios antes de iniciar los contenedores.:
+docker-compose up --build
+
+---
+Kubernetes en linux:
+https://cursosdedesarrollo.com/2020/07/instalacion-de-kubernetes-minikube-en-ubuntu-20-04/
