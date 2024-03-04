@@ -1,0 +1,36 @@
+Mostrar información de las ips de mi route53 mediante AWS CloudShell:
+sudo yum install -y bind-utils
+nslookup
+
+Ver detalle de un registro:
+dig test.midominio.com
+
+
+Listar usuarios iam:
+aws iam list-users
+
+Setear la región de awscli:
+aws configure set region <REGION_NAME>
+ ws configure set region us-east-1
+
+Dry Run en la CLI de AWS, verificar que tenemos permisos asignados, pero no ejecutar el comando:
+aws ec2 run-instances --dry-run --image-id ami-00c3f7145c08778 --instance.type t2.micro
+
+Descifrar STS de la CLI de AWS, el usuario debe tener permisos STS:
+aws sts decode-authorization-message --encoded-message <error-encoded-message>
+echo <json con \>
+
+Recuperar metadatos de la instancia EC2, lo ejecutamos desde el CLI de la instancia EC2:
+curl http://169.254.169.254/latest/meta-data
+curl http://169.254.169.254/latest/meta-data/ami-id
+curl http://169.254.169.254/latest/meta-data/security-groups
+curl http://169.254.169.254/latest/meta-data/local-ipv4
+
+Perfiles de AWSCLI:
+aws configure --profile aws-account-2
+
+Listar elementos s3 (de la cuenta por default):
+aws s3 ls
+
+Listar elementos s3 de otra cuenta (perfil):
+aws s3 ls --profile aws-account-2
