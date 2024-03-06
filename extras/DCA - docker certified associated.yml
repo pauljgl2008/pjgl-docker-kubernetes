@@ -1,0 +1,77 @@
+Título del examen: Docker Certified Associate (DCA)
+Idioma: Inglés
+Duración: 90 minutos
+Número de preguntas: 13 MC + 42 DOMC
+Tipo de preguntas: Respuesta múltiple y DOMC
+Disponibilidad: Online Proctored
+
+TOPICS:
+Módulo 1 - Introducción:
+Fundamentos del curso
+Sobre la arquitectura de la formación
+Características y herramientas del curso
+
+Módulo 2 - Instalación y configuración de Docker Community Edition:
+Introducción a Docker Community Edition
+Instalar Docker en CentOS
+Instalar Docker en Ubuntu
+Seleccionar un controlador de almacenamiento
+Ejecutando un contenedor
+Actualización del motor Docker
+Configuración de controladores de registro (Splunk, Journald, etc.)
+Introducción a Docker Swarm
+Configurar un Swarm Manager
+Configurar nodos Swarm
+Docker Swarm Backup y Restore
+Espacios de nombres y grupos C
+
+Módulo 3 - Creación, gestión y registro de imágenes:
+Introducción a las imágenes de Docker
+Los componentes de un Dockerfile
+Más directivas de Dockerfile
+Construyendo imágenes eficientes
+Administrar imágenes
+Acoplar una imagen de Docker en una sola capa
+Introducción a los registros de Docker
+Uso de registros de Docker
+
+Módulo 4 - Orquestación:
+Bloqueo y desbloqueo de un cluster Swarm
+Alta disponibilidad en un cluster Swarm
+Introducción a los servicios de Docker
+Usando docker inspect
+Docker Compose
+Introducción a Docker Stacks
+Etiquetas de nodo
+
+Módulo 5 - Almacenamiento y Volúmenes:
+Docker Storage en profundidad
+Configurar DeviceMapper
+Docker Volumes
+Limpieza de imagen
+Almacenamiento en un clúster
+
+Módulo 6 - Redes:
+Redes en Docker
+Controladores de red incorporados
+Crear una red de Docker Bridge
+Implementar un servicio en una red de Docker Overlay
+Exponer contenedores externamente
+Solución de problemas de red
+Configuración de Docker para usar DNS externo
+
+Módulo 7 - Seguridad:
+Firmar imágenes y habilitar Docker Content Trust
+Seguridad predeterminada de Docker Engine
+Docker MTLS
+Asegurando el Docker Daemon HTTP Socket
+
+Módulo 8 - Usando Docker Enterprise Edition (EE):
+Instalar Docker EE
+Configuración del Universal Control Plane (UCP)
+Seguridad en UCP
+Configuración de Docker Trusted Registry (DTR)
+Requisitos de tamaño para Docker, UCP y DTR
+Configuración de copias de seguridad para UCP y DTR
+Funciones de seguridad DTR
+Gestión de certificados con UCP y DTR
