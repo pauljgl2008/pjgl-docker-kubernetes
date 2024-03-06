@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: https://ogp.me/ns#">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Search Engine Optimization by Rank Math - https://rankmath.com/ -->
+<link media="all" href="https://www.linuxbuzz.com/wp-content/cache/autoptimize/css/autoptimize_9fbec773da6cf49058114d249a73f5af.css" rel="stylesheet"><link media="screen" href="https://www.linuxbuzz.com/wp-content/cache/autoptimize/css/autoptimize_00df71b5809d374b00ce03791ac8fac1.css" rel="stylesheet"><title>How to Install Minikube on Ubuntu 22.04 Step-by-Step</title>
+<meta name="description" content="In this blog post, we will explain how to install minikube on Ubuntu 22.04. It is an open-source tool that facilitates local deployment of Kubernetes."/>
+<meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+<link rel="canonical" href="https://www.linuxbuzz.com/install-minikube-on-ubuntu/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="How to Install Minikube on Ubuntu 22.04 Step-by-Step" />
+<meta property="og:description" content="In this blog post, we will explain how to install minikube on Ubuntu 22.04. It is an open-source tool that facilitates local deployment of Kubernetes." />
+<meta property="og:url" content="https://www.linuxbuzz.com/install-minikube-on-ubuntu/" />
+<meta property="og:site_name" content="LinuxBuzz" />
+<meta property="article:publisher" content="https://www.facebook.com/profile.php?id=100054376006204" />
+<meta property="article:tag" content="minikube install ubuntu 22.04" />
+<meta property="article:section" content="How To&#039;s" />
+<meta property="og:updated_time" content="2023-11-13T07:57:33+05:30" />
+<meta property="og:image" content="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Minikube-Install-Ubuntu-22-04.png" />
+<meta property="og:image:secure_url" content="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Minikube-Install-Ubuntu-22-04.png" />
+<meta property="og:image:width" content="846" />
+<meta property="og:image:height" content="481" />
+<meta property="og:image:alt" content="Minikube-Install-Ubuntu-22-04" />
+<meta property="og:image:type" content="image/png" />
+<meta property="article:published_time" content="2023-11-13T07:49:52+05:30" />
+<meta property="article:modified_time" content="2023-11-13T07:57:33+05:30" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="How to Install Minikube on Ubuntu 22.04 Step-by-Step" />
+<meta name="twitter:description" content="In this blog post, we will explain how to install minikube on Ubuntu 22.04. It is an open-source tool that facilitates local deployment of Kubernetes." />
+<meta name="twitter:image" content="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Minikube-Install-Ubuntu-22-04.png" />
+<meta name="twitter:label1" content="Written by" />
+<meta name="twitter:data1" content="Pradeep Antil" />
+<meta name="twitter:label2" content="Time to read" />
+<meta name="twitter:data2" content="3 minutes" />
+<script type="application/ld+json" class="rank-math-schema">{"@context":"https://schema.org","@graph":[{"@type":["Person","Organization"],"@id":"https://www.linuxbuzz.com/#person","name":"www.linuxbuzz.com","sameAs":["https://www.facebook.com/profile.php?id=100054376006204"],"logo":{"@type":"ImageObject","@id":"https://www.linuxbuzz.com/#logo","url":"https://www.linuxbuzz.com/wp-content/uploads/2020/11/cropped-LinuxBuzz-Logo-2.png","contentUrl":"https://www.linuxbuzz.com/wp-content/uploads/2020/11/cropped-LinuxBuzz-Logo-2.png","caption":"LinuxBuzz","inLanguage":"en-US","width":"300","height":"57"},"image":{"@type":"ImageObject","@id":"https://www.linuxbuzz.com/#logo","url":"https://www.linuxbuzz.com/wp-content/uploads/2020/11/cropped-LinuxBuzz-Logo-2.png","contentUrl":"https://www.linuxbuzz.com/wp-content/uploads/2020/11/cropped-LinuxBuzz-Logo-2.png","caption":"LinuxBuzz","inLanguage":"en-US","width":"300","height":"57"}},{"@type":"WebSite","@id":"https://www.linuxbuzz.com/#website","url":"https://www.linuxbuzz.com","name":"LinuxBuzz","publisher":{"@id":"https://www.linuxbuzz.com/#person"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://www.linuxbuzz.com/wp-content/uploads/2023/11/Minikube-Install-Ubuntu-22-04.png","url":"https://www.linuxbuzz.com/wp-content/uploads/2023/11/Minikube-Install-Ubuntu-22-04.png","width":"846","height":"481","caption":"Minikube-Install-Ubuntu-22-04","inLanguage":"en-US"},{"@type":"BreadcrumbList","@id":"https://www.linuxbuzz.com/install-minikube-on-ubuntu/#breadcrumb","itemListElement":[{"@type":"ListItem","position":"1","item":{"@id":"https://www.linuxbuzz.com","name":"Home"}},{"@type":"ListItem","position":"2","item":{"@id":"https://www.linuxbuzz.com/how-tos/","name":"How To's"}},{"@type":"ListItem","position":"3","item":{"@id":"https://www.linuxbuzz.com/install-minikube-on-ubuntu/","name":"How to Install Minikube on Ubuntu 22.04 Step-by-Step"}}]},{"@type":"WebPage","@id":"https://www.linuxbuzz.com/install-minikube-on-ubuntu/#webpage","url":"https://www.linuxbuzz.com/install-minikube-on-ubuntu/","name":"How to Install Minikube on Ubuntu 22.04 Step-by-Step","datePublished":"2023-11-13T07:49:52+05:30","dateModified":"2023-11-13T07:57:33+05:30","isPartOf":{"@id":"https://www.linuxbuzz.com/#website"},"primaryImageOfPage":{"@id":"https://www.linuxbuzz.com/wp-content/uploads/2023/11/Minikube-Install-Ubuntu-22-04.png"},"inLanguage":"en-US","breadcrumb":{"@id":"https://www.linuxbuzz.com/install-minikube-on-ubuntu/#breadcrumb"}},{"@type":"Person","@id":"https://www.linuxbuzz.com/author/pradeep/","name":"Pradeep Antil","url":"https://www.linuxbuzz.com/author/pradeep/","image":{"@type":"ImageObject","@id":"https://secure.gravatar.com/avatar/aee3114362d9999a6c9612d041d34f49?s=96&amp;d=mm&amp;r=g","url":"https://secure.gravatar.com/avatar/aee3114362d9999a6c9612d041d34f49?s=96&amp;d=mm&amp;r=g","caption":"Pradeep Antil","inLanguage":"en-US"}},{"@type":"BlogPosting","headline":"How to Install Minikube on Ubuntu 22.04 Step-by-Step","keywords":"install minikube on Ubuntu 22.04,download minikube binary,minikube dashboard,start minikube with docker,minikube ubuntu 22.04","datePublished":"2023-11-13T07:49:52+05:30","dateModified":"2023-11-13T07:57:33+05:30","articleSection":"How To's","author":{"@id":"https://www.linuxbuzz.com/author/pradeep/","name":"Pradeep Antil"},"publisher":{"@id":"https://www.linuxbuzz.com/#person"},"description":"In this blog post, we will explain how to install minikube on Ubuntu 22.04. It is an open-source tool that facilitates local deployment of Kubernetes.","name":"How to Install Minikube on Ubuntu 22.04 Step-by-Step","@id":"https://www.linuxbuzz.com/install-minikube-on-ubuntu/#richSnippet","isPartOf":{"@id":"https://www.linuxbuzz.com/install-minikube-on-ubuntu/#webpage"},"image":{"@id":"https://www.linuxbuzz.com/wp-content/uploads/2023/11/Minikube-Install-Ubuntu-22-04.png"},"inLanguage":"en-US","mainEntityOfPage":{"@id":"https://www.linuxbuzz.com/install-minikube-on-ubuntu/#webpage"}}]}</script>
+<!-- /Rank Math WordPress SEO plugin -->
+
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//pagead2.googlesyndication.com' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link href='https://fonts.googleapis.com' crossorigin rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="LinuxBuzz &raquo; Feed" href="https://www.linuxbuzz.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="LinuxBuzz &raquo; Comments Feed" href="https://www.linuxbuzz.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="LinuxBuzz &raquo; How to Install Minikube on Ubuntu 22.04 Step-by-Step Comments Feed" href="https://www.linuxbuzz.com/install-minikube-on-ubuntu/feed/" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel='stylesheet' id='generate-google-fonts-css' href='https://fonts.googleapis.com/css?family=Poppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2Cregular%2Citalic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=auto&#038;ver=3.3.1' media='all' />
+
+
+
+
+<script src="https://www.linuxbuzz.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+
+
+
+<!-- Google Analytics snippet added by Site Kit -->
+<script src="https://www.googletagmanager.com/gtag/js?id=G-XT86V26BSD" id="google_gtagjs-js" async></script>
+<script id="google_gtagjs-js-after">
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('set', 'linker', {"domains":["www.linuxbuzz.com"]} );
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "G-XT86V26BSD");
+</script>
+
+<!-- End Google Analytics snippet added by Site Kit -->
+<link rel="https://api.w.org/" href="https://www.linuxbuzz.com/wp-json/" /><link rel="alternate" type="application/json" href="https://www.linuxbuzz.com/wp-json/wp/v2/posts/2340" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.linuxbuzz.com/xmlrpc.php?rsd" />
+
+<link rel='shortlink' href='https://www.linuxbuzz.com/?p=2340' />
+<link rel="alternate" type="application/json+oembed" href="https://www.linuxbuzz.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.linuxbuzz.com%2Finstall-minikube-on-ubuntu%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.linuxbuzz.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.linuxbuzz.com%2Finstall-minikube-on-ubuntu%2F&#038;format=xml" />
+<meta name="generator" content="Site Kit by Google 1.121.0" />
+<!-- Google AdSense meta tags added by Site Kit -->
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">
+<!-- End Google AdSense meta tags added by Site Kit -->
+
+<!-- Google AdSense snippet added by Site Kit -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436075382722980&amp;host=ca-host-pub-2644536267352236" crossorigin="anonymous"></script>
+
+<!-- End Google AdSense snippet added by Site Kit -->
+<link rel="icon" href="https://www.linuxbuzz.com/wp-content/uploads/2017/08/cropped-favicon-1-150x150.png" sizes="32x32" />
+<link rel="icon" href="https://www.linuxbuzz.com/wp-content/uploads/2017/08/cropped-favicon-1-300x300.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.linuxbuzz.com/wp-content/uploads/2017/08/cropped-favicon-1-300x300.png" />
+<meta name="msapplication-TileImage" content="https://www.linuxbuzz.com/wp-content/uploads/2017/08/cropped-favicon-1-300x300.png" />
+		<style id="wp-custom-css">
+			pre {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+	font-family: monospace, monospace;
+	font-size: 15px;
+  color: #171616;
+}
+/* open-sans-regular - latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://www.linuxbuzz.com/wp-content/uploads/2022/07/open-sans-v29-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('https://www.linuxbuzz.com/wp-content/uploads/2022/07/open-sans-v29-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('https://www.linuxbuzz.com/wp-content/uploads/2022/07/open-sans-v29-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('https://www.linuxbuzz.com/wp-content/uploads/2022/07/open-sans-v29-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('https://www.linuxbuzz.com/wp-content/uploads/2022/07/open-sans-v29-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('https://www.linuxbuzz.com/wp-content/uploads/2022/07/open-sans-v29-latin-regular.svg#OpenSans') format('svg'); /* Legacy iOS */
+}		</style>
+		</head>
+
+<body class="post-template-default single single-post postid-2340 single-format-standard wp-custom-logo wp-embed-responsive post-image-above-header post-image-aligned-center sticky-menu-fade mobile-header mobile-header-logo mobile-header-sticky right-sidebar nav-below-header separate-containers nav-search-enabled header-aligned-left dropdown-hover" itemtype="https://schema.org/Blog" itemscope>
+	<a class="screen-reader-text skip-link" href="#content" title="Skip to content">Skip to content</a>		<nav id="mobile-header" data-auto-hide-sticky itemtype="https://schema.org/SiteNavigationElement" itemscope class="main-navigation mobile-header-navigation has-branding has-sticky-branding has-menu-bar-items">
+			<div class="inside-navigation grid-container grid-parent">
+				<form method="get" class="search-form navigation-search" action="https://www.linuxbuzz.com/">
+					<input type="search" class="search-field" value="" name="s" title="Search" />
+				</form><div class="site-logo mobile-header-logo">
+						<a href="https://www.linuxbuzz.com/" title="LinuxBuzz" rel="home">
+							<img src="https://www.linuxbuzz.com/wp-content/uploads/2020/11/LinuxBuzz-Logo.png" alt="LinuxBuzz" class="is-logo-image" width="300" height="76" />
+						</a>
+					</div>					<button class="menu-toggle" aria-controls="mobile-menu" aria-expanded="false">
+						<span class="mobile-menu">Menu</span>					</button>
+					<div id="mobile-menu" class="main-nav"><ul id="menu-top-menu" class=" menu sf-menu"><li id="menu-item-60" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-60"><a href="http://www.linuxbuzz.com">Home</a></li>
+<li id="menu-item-62" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-62"><a href="https://www.linuxbuzz.com/how-tos/">How To&#8217;s</a></li>
+<li id="menu-item-870" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-870"><a href="https://www.linuxbuzz.com/automation/">Automation</a></li>
+<li id="menu-item-61" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-61"><a href="https://www.linuxbuzz.com/linux-desktop/">Linux Desktop</a></li>
+<li id="menu-item-64" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-64"><a href="https://www.linuxbuzz.com/news/">Linux News</a></li>
+<li id="menu-item-81" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-81"><a href="https://www.linuxbuzz.com/about-us/">About Us</a></li>
+<li id="menu-item-73" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-73"><a href="https://www.linuxbuzz.com/contact-us/">Contact Us</a></li>
+<li id="menu-item-991" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-991"><a rel="privacy-policy" href="https://www.linuxbuzz.com/privacy-policy/">Privacy Policy</a></li>
+</ul></div><div class="menu-bar-items"><span class="menu-bar-item search-item"><a aria-label="Open Search Bar" href="#"></a></span></div>			</div><!-- .inside-navigation -->
+		</nav><!-- #site-navigation -->
+				<nav class="has-branding main-navigation nav-align-center has-menu-bar-items sub-menu-right" id="site-navigation" aria-label="Primary"  itemtype="https://schema.org/SiteNavigationElement" itemscope>
+			<div class="inside-navigation">
+				<div class="navigation-branding"><div class="site-logo">
+						<a href="https://www.linuxbuzz.com/" title="LinuxBuzz" rel="home">
+							<img  class="header-image is-logo-image" alt="LinuxBuzz" src="https://www.linuxbuzz.com/wp-content/uploads/2020/11/cropped-LinuxBuzz-Logo-2.png" title="LinuxBuzz" width="300" height="57" />
+						</a>
+					</div></div><form method="get" class="search-form navigation-search" action="https://www.linuxbuzz.com/">
+					<input type="search" class="search-field" value="" name="s" title="Search" />
+				</form>				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+					<span class="mobile-menu">Menu</span>				</button>
+				<div id="primary-menu" class="main-nav"><ul id="menu-top-menu-1" class=" menu sf-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-60"><a href="http://www.linuxbuzz.com">Home</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-62"><a href="https://www.linuxbuzz.com/how-tos/">How To&#8217;s</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-870"><a href="https://www.linuxbuzz.com/automation/">Automation</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-61"><a href="https://www.linuxbuzz.com/linux-desktop/">Linux Desktop</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-64"><a href="https://www.linuxbuzz.com/news/">Linux News</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-81"><a href="https://www.linuxbuzz.com/about-us/">About Us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-73"><a href="https://www.linuxbuzz.com/contact-us/">Contact Us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-991"><a rel="privacy-policy" href="https://www.linuxbuzz.com/privacy-policy/">Privacy Policy</a></li>
+</ul></div><div class="menu-bar-items"><span class="menu-bar-item search-item"><a aria-label="Open Search Bar" href="#"></a></span></div>			</div>
+		</nav>
+		
+	<div class="site grid-container container hfeed" id="page">
+				<div class="site-content" id="content">
+			
+	<div class="content-area" id="primary">
+		<main class="site-main" id="main">
+			
+<article id="post-2340" class="post-2340 post type-post status-publish format-standard has-post-thumbnail hentry category-how-tos tag-minikube-install-ubuntu-22-04" itemtype="https://schema.org/CreativeWork" itemscope>
+	<div class="inside-article">
+					<header class="entry-header" aria-label="Content">
+				<h1 class="entry-title" itemprop="headline">How to Install Minikube on Ubuntu 22.04 Step-by-Step</h1>		<div class="entry-meta">
+			<span class="posted-on"><time class="entry-date published" datetime="2023-11-13T07:49:52+05:30" itemprop="datePublished">Published on: November 13, 2023</time></span> <span class="byline">by <span class="author vcard" itemprop="author" itemtype="https://schema.org/Person" itemscope><a class="url fn n" href="https://www.linuxbuzz.com/author/pradeep/" title="View all posts by Pradeep Antil" rel="author" itemprop="url"><span class="author-name" itemprop="name">Pradeep Antil</span></a></span></span> 		</div>
+					</header>
+			
+		<div class="entry-content" itemprop="text">
+			<p>In this blog post, we will explain how to install minikube on Ubuntu 22.04 step-by-step.</p>
+<p>Minikube is an open-source tool that facilitates the local deployment of Kubernetes clusters. It is designed to simplify the process of learning and developing applications for Kubernetes by providing a lightweight, single-node Kubernetes cluster that runs on a user&#8217;s local machine.</p>
+<p><span style="color: #0000ff;">Minikube </span>is an excellent tool for those who want to experiment with Kubernetes features, test applications, and develop and debug containerized applications without the need for a full-scale, production-level Kubernetes cluster.</p><div class="9dK0YWmC" style="clear:both;float:left;width:100%;margin:0 0 20px 0;"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-1436075382722980"
+     data-ad-slot="9785285638"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+<div id="ez-toc-container" class="ez-toc-v2_0_63 counter-hierarchy ez-toc-counter ez-toc-grey ez-toc-container-direction">
+<div class="ez-toc-title-container">
+<p class="ez-toc-title " >Table of Contents</p>
+<span class="ez-toc-title-toggle"><a href="#" class="ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle" aria-label="Toggle Table of Content"><span class="ez-toc-js-icon-con"><span class=""><span class="eztoc-hide" style="display:none;">Toggle</span><span class="ez-toc-icon-toggle-span"><svg style="fill: #999;color:#999" xmlns="http://www.w3.org/2000/svg" class="list-377408" width="20px" height="20px" viewBox="0 0 24 24" fill="none"><path d="M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z" fill="currentColor"></path></svg><svg style="fill: #999;color:#999" class="arrow-unsorted-368013" xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" viewBox="0 0 24 24" version="1.2" baseProfile="tiny"><path d="M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z"/></svg></span></span></span></a></span></div>
+<nav><ul class='ez-toc-list ez-toc-list-level-1 ' ><ul class='ez-toc-list-level-4' ><li class='ez-toc-heading-level-4'><ul class='ez-toc-list-level-4' ><li class='ez-toc-heading-level-4'><a class="ez-toc-link ez-toc-heading-1" href="#Prerequisites" title="Prerequisites">Prerequisites</a></li></ul></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-2" href="#1_Update_Your_System" title="1) Update Your System">1) Update Your System</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-3" href="#2_Install_Docker" title="2) Install Docker">2) Install Docker</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-4" href="#3_Download_and_Install_Minikube_Binary" title="3) Download and Install Minikube Binary">3) Download and Install Minikube Binary</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-5" href="#4_Install_Kubectl_tool" title="4) Install Kubectl tool">4) Install Kubectl tool</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-6" href="#5_Start_Minikube_Cluster" title="5) Start Minikube Cluster">5) Start Minikube Cluster</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-7" href="#6_Interact_with_Your_Minikube_Cluster" title="6) Interact with Your Minikube Cluster">6) Interact with Your Minikube Cluster</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-8" href="#7_Managing_Minikube_Addons" title="7) Managing Minikube Addons">7) Managing Minikube Addons</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-9" href="#8_Managing_Minikube_Cluster" title="8) Managing Minikube Cluster">8) Managing Minikube Cluster</a></li></ul></nav></div>
+
+<h4><span class="ez-toc-section" id="Prerequisites"></span><span style="color: #000000;">Prerequisites</span><span class="ez-toc-section-end"></span></h4>
+<ul>
+<li>Pre-Install Ubuntu 22.04 system</li>
+<li>2 GB RAM or more</li>
+<li>2 CPU or more</li>
+<li>20 GB free disk space</li>
+<li>Sudo used with admin access</li>
+<li>Reliable Internet Connectivity</li>
+<li>Docker or VirtualBox or KVM</li>
+</ul>
+<p>Without any further delay, let’s jump into minikube installation steps.</p>
+<h2><span class="ez-toc-section" id="1_Update_Your_System"></span><span style="color: #800080;">1) Update Your System</span><span class="ez-toc-section-end"></span></h2>
+<p>Before starting the minikube installation, it is recommended to install all available updates on your system. Run following command.</p>
+<pre>$ sudo apt update
+$ sudo apt upgrade -y</pre>
+<p><img loading="lazy" decoding="async" class="alignnone wp-image-2349" src="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Updates-Ubuntu-22-04-Apt-Command.png" alt="Install-Updates-Ubuntu-22-04-Apt-Command" width="902" height="564" title="Install Updates Ubuntu 22 04 Apt Command" srcset="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Updates-Ubuntu-22-04-Apt-Command.png 1280w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Updates-Ubuntu-22-04-Apt-Command-300x188.png 300w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Updates-Ubuntu-22-04-Apt-Command-1024x640.png 1024w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Updates-Ubuntu-22-04-Apt-Command-768x480.png 768w" sizes="(max-width: 902px) 100vw, 902px" /></p>
+<p>Once all the updates are installed then reboot your system.</p>
+<pre>$ sudo reboot</pre>
+<h2><span class="ez-toc-section" id="2_Install_Docker"></span><span style="color: #800080;">2) Install Docker</span><span class="ez-toc-section-end"></span></h2>
+<p>Minikube requires either docker or VirtualBox, in this post, we will be installing docker on Ubuntu 22.04 system. Run the following set of command one after the another to docker apt repository.</p>
+<pre>$ sudo apt install ca-certificates curl gnupg wget apt-transport-https -y
+$ sudo install -m 0755 -d /etc/apt/keyrings
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+$ sudo chmod a+r /etc/apt/keyrings/docker.gpg
+$ echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release &amp;&amp; echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+$ sudo apt update</pre>
+<p><img loading="lazy" decoding="async" class="alignnone wp-image-2342" src="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Add-Docker-APT-Repository-Ubuntu-22-04.png" alt="Add-Docker-APT-Repository-Ubuntu-22-04" width="906" height="516" title="Add Docker APT Repository Ubuntu 22 04" srcset="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Add-Docker-APT-Repository-Ubuntu-22-04.png 1199w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Add-Docker-APT-Repository-Ubuntu-22-04-300x171.png 300w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Add-Docker-APT-Repository-Ubuntu-22-04-1024x583.png 1024w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Add-Docker-APT-Repository-Ubuntu-22-04-768x437.png 768w" sizes="(max-width: 906px) 100vw, 906px" /></p>
+<p>Next, install docker by running the following command.</p>
+<pre>$ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</pre>
+<p><img loading="lazy" decoding="async" class="alignnone wp-image-2346" src="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Docker-Ubuntu-Minikube.png" alt="Install-Docker-Ubuntu-Minikube" width="901" height="397" title="Install Docker Ubuntu Minikube" srcset="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Docker-Ubuntu-Minikube.png 1201w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Docker-Ubuntu-Minikube-300x132.png 300w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Docker-Ubuntu-Minikube-1024x451.png 1024w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Docker-Ubuntu-Minikube-768x338.png 768w" sizes="(max-width: 901px) 100vw, 901px" /></p>
+<p>Add your local user to docker group so that your local user run docker commands without sudo.</p>
+<pre>$ sudo usermod -aG docker $USER
+$ newgrp docker</pre>
+<p>Note: To make above changes into the affect logout and login.</p>
+<p><img loading="lazy" decoding="async" class="alignnone wp-image-2343" src="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Add-Local-User-Docker-Group.png" alt="Add-Local-User-Docker-Group" width="903" height="329" title="Add Local User Docker Group" srcset="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Add-Local-User-Docker-Group.png 1195w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Add-Local-User-Docker-Group-300x109.png 300w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Add-Local-User-Docker-Group-1024x373.png 1024w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Add-Local-User-Docker-Group-768x280.png 768w" sizes="(max-width: 903px) 100vw, 903px" /></p>
+<h2><span class="ez-toc-section" id="3_Download_and_Install_Minikube_Binary"></span><span style="color: #800080;">3) Download and Install Minikube Binary</span><span class="ez-toc-section-end"></span></h2>
+<p>To download and install minikube binary, run following commands,</p>
+<pre>$ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+$ sudo install minikube-linux-amd64 /usr/local/bin/minikube</pre>
+<p>To verify the minikube version, run</p>
+<pre>$ minikube version</pre>
+<p><img loading="lazy" decoding="async" class="alignnone wp-image-2348" src="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Minikube-Ubuntu-22-04.png" alt="Install-Minikube-Ubuntu-22-04" width="904" height="196" title="Install Minikube Ubuntu 22 04" srcset="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Minikube-Ubuntu-22-04.png 1014w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Minikube-Ubuntu-22-04-300x65.png 300w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Minikube-Ubuntu-22-04-768x167.png 768w" sizes="(max-width: 904px) 100vw, 904px" /></p>
+<h2><span class="ez-toc-section" id="4_Install_Kubectl_tool"></span><span style="color: #800080;">4) Install Kubectl tool</span><span class="ez-toc-section-end"></span></h2>
+<p>Kubectl is a command line tool, used to interact with your Kubernetes cluster. So, to install kubectl run beneath curl command.</p>
+<pre>$ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl</pre>
+<p>Next, set the executable permission on it and move to<span style="color: #0000ff;"> /usr/local/bin</span></p>
+<pre>$ chmod +x kubectl
+$ sudo mv kubectl /usr/local/bin/</pre>
+<p>Verify the kubectl version, run</p>
+<pre>$  kubectl version -o yaml</pre>
+<p><img loading="lazy" decoding="async" class="alignnone wp-image-2347" src="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Kubectl-for-minikube-Ubuntu.png" alt="Install-Kubectl-for-minikube-Ubuntu" width="903" height="348" title="Install Kubectl for minikube Ubuntu" srcset="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Kubectl-for-minikube-Ubuntu.png 1194w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Kubectl-for-minikube-Ubuntu-300x116.png 300w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Kubectl-for-minikube-Ubuntu-1024x395.png 1024w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Install-Kubectl-for-minikube-Ubuntu-768x296.png 768w" sizes="(max-width: 903px) 100vw, 903px" /></p>
+<h2><span class="ez-toc-section" id="5_Start_Minikube_Cluster"></span><span style="color: #800080;">5) Start Minikube Cluster</span><span class="ez-toc-section-end"></span></h2>
+<p>Now that Minikube is installed, start a Kubernetes cluster using the following command:</p>
+<pre>$ minikube start --driver=docker</pre>
+<p><img loading="lazy" decoding="async" class="alignnone wp-image-2356" src="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Start-Minikube-Cluster-Ubuntu-22-04.png" alt="Start-Minikube-Cluster-Ubuntu-22-04" width="701" height="291" title="Start Minikube Cluster Ubuntu 22 04" srcset="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Start-Minikube-Cluster-Ubuntu-22-04.png 908w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Start-Minikube-Cluster-Ubuntu-22-04-300x125.png 300w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Start-Minikube-Cluster-Ubuntu-22-04-768x319.png 768w" sizes="(max-width: 701px) 100vw, 701px" /></p>
+<p>This command initializes a single-node Kubernetes cluster, and it might take a few minutes to download the necessary components.</p>
+<p>Once the minikube has started, verify the status of your cluster, run</p>
+<pre>$ minikube status</pre>
+<p><img loading="lazy" decoding="async" class="alignnone wp-image-2354" src="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Minikube-Status-Command-Output-Ubuntu-22-04.png" alt="Minikube-Status-Command-Output-Ubuntu-22-04" width="465" height="154" title="Minikube Status Command Output Ubuntu 22 04" srcset="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Minikube-Status-Command-Output-Ubuntu-22-04.png 555w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Minikube-Status-Command-Output-Ubuntu-22-04-300x99.png 300w" sizes="(max-width: 465px) 100vw, 465px" /></p>
+<h2><span class="ez-toc-section" id="6_Interact_with_Your_Minikube_Cluster"></span><span style="color: #800080;">6) Interact with Your Minikube Cluster</span><span class="ez-toc-section-end"></span></h2>
+<p>Use kubectl to interact with your Minikube Kubernetes cluster. For example, you can check the nodes in your cluster:</p>
+<pre>$ kubectl get nodes
+$ kubectl cluster-info</pre>
+<p><img loading="lazy" decoding="async" class="alignnone wp-image-2350" src="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Kubectl-Cluster-Node-Info-Ubuntu-Minikube.png" alt="Kubectl-Cluster-Node-Info-Ubuntu-Minikube" width="770" height="167" title="Kubectl Cluster Node Info Ubuntu Minikube" srcset="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Kubectl-Cluster-Node-Info-Ubuntu-Minikube.png 972w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Kubectl-Cluster-Node-Info-Ubuntu-Minikube-300x65.png 300w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Kubectl-Cluster-Node-Info-Ubuntu-Minikube-768x167.png 768w" sizes="(max-width: 770px) 100vw, 770px" /></p>
+<p>Try to deploy a sample nginx deployment, run following set of commands.</p>
+<pre>$ kubectl create deployment nginx-web --image=nginx
+$ kubectl expose deployment nginx-web --type NodePort --port=80
+$ kubectl get deployment,pod,svc</pre>
+<p><img loading="lazy" decoding="async" class="alignnone wp-image-2351" src="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Kubectl-Deploy-Nginx-SVC-Minikube-Ubuntu-22-04.png" alt="Kubectl-Deploy-Nginx-SVC-Minikube-Ubuntu-22-04" width="769" height="320" title="Kubectl Deploy Nginx SVC Minikube Ubuntu 22 04" srcset="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Kubectl-Deploy-Nginx-SVC-Minikube-Ubuntu-22-04.png 798w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Kubectl-Deploy-Nginx-SVC-Minikube-Ubuntu-22-04-300x125.png 300w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Kubectl-Deploy-Nginx-SVC-Minikube-Ubuntu-22-04-768x320.png 768w" sizes="(max-width: 769px) 100vw, 769px" /></p>
+<h2><span class="ez-toc-section" id="7_Managing_Minikube_Addons"></span><span style="color: #800080;">7) Managing Minikube Addons</span><span class="ez-toc-section-end"></span></h2>
+<p>If you want to add some additional functionality toy Kubernetes cluster like Kubernetes dashboard, ingress controller and more. You can enable these with addons. To view all the available addons, run</p>
+<pre>$ minikube addons list</pre>
+<p><img loading="lazy" decoding="async" class="alignnone wp-image-2353" src="https://www.linuxbuzz.com/wp-content/uploads/2023/11/List-Minikube-addons-Ubuntu.png" alt="List-Minikube-addons-Ubuntu" width="808" height="613" title="List Minikube addons Ubuntu" srcset="https://www.linuxbuzz.com/wp-content/uploads/2023/11/List-Minikube-addons-Ubuntu.png 904w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/List-Minikube-addons-Ubuntu-300x228.png 300w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/List-Minikube-addons-Ubuntu-768x583.png 768w" sizes="(max-width: 808px) 100vw, 808px" /></p>
+<p>In order to enable addons, run</p>
+<pre>$ minikube addons enable dashboard
+$ minikube addons enable ingress</pre>
+<p><img loading="lazy" decoding="async" class="alignnone wp-image-2344" src="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Enable-Minikube-Addons-Ubuntu-22-04.png" alt="Enable-Minikube-Addons-Ubuntu-22-04" width="802" height="319" title="Enable Minikube Addons Ubuntu 22 04" srcset="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Enable-Minikube-Addons-Ubuntu-22-04.png 973w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Enable-Minikube-Addons-Ubuntu-22-04-300x119.png 300w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Enable-Minikube-Addons-Ubuntu-22-04-768x305.png 768w" sizes="(max-width: 802px) 100vw, 802px" /></p>
+<p>To start the Kubernetes dashboard run below command, it will automatically launch the dashboard in the web browser as shown below:</p>
+<pre>$ minikube dashboard</pre>
+<p><img loading="lazy" decoding="async" class="alignnone wp-image-2355" src="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Starting-Kubernetes-Dashboard-Minikube.png" alt="Starting-Kubernetes-Dashboard-Minikube" width="808" height="73" title="Starting Kubernetes Dashboard Minikube" srcset="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Starting-Kubernetes-Dashboard-Minikube.png 1200w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Starting-Kubernetes-Dashboard-Minikube-300x27.png 300w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Starting-Kubernetes-Dashboard-Minikube-1024x93.png 1024w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Starting-Kubernetes-Dashboard-Minikube-768x70.png 768w" sizes="(max-width: 808px) 100vw, 808px" /></p>
+<p><img loading="lazy" decoding="async" class="alignnone wp-image-2352" src="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Kubernetes-Dashboard-GUI-Minikube-Ubuntu.png" alt="Kubernetes-Dashboard-GUI-Minikube-Ubuntu" width="898" height="562" title="Kubernetes Dashboard GUI Minikube Ubuntu" srcset="https://www.linuxbuzz.com/wp-content/uploads/2023/11/Kubernetes-Dashboard-GUI-Minikube-Ubuntu.png 1280w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Kubernetes-Dashboard-GUI-Minikube-Ubuntu-300x188.png 300w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Kubernetes-Dashboard-GUI-Minikube-Ubuntu-1024x640.png 1024w, https://www.linuxbuzz.com/wp-content/uploads/2023/11/Kubernetes-Dashboard-GUI-Minikube-Ubuntu-768x480.png 768w" sizes="(max-width: 898px) 100vw, 898px" /></p>
+<h2><span class="ez-toc-section" id="8_Managing_Minikube_Cluster"></span><span style="color: #800080;">8) Managing Minikube Cluster</span><span class="ez-toc-section-end"></span></h2>
+<p>To stop and start the minikube cluster, run beneath commands.</p>
+<pre>$ minikube stop
+$ minikube start</pre>
+<p>In order to delete the minikube cluster, run</p>
+<pre>$ minikube delete</pre>
+<p>That’s all from this post, we believe you have found it informative and useful. Feel free to post your queries and feedback in below comments section.</p>
+<p><span style="color: #ff6600;">Also Read</span>: <a title="How to Install Brave Web Browser on Ubuntu 22.04" href="https://www.linuxbuzz.com/how-to-install-brave-browser-on-ubuntu/" target="_blank" rel="noopener"><span style="color: #0000ff;">How to Install Brave Web Browser on Ubuntu 22.04</span></a></p>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-1436075382722980"
+     data-ad-slot="9785285638"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>		</div>
+
+			</div>
+</article>
+
+			<div class="comments-area">
+				<div id="comments">
+
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/install-minikube-on-ubuntu/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://www.linuxbuzz.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea autocomplete="new-password"  id="df86f861fc"  name="df86f861fc"   cols="45" rows="8" required></textarea><textarea id="comment" aria-label="hp-comment" aria-hidden="true" name="comment" autocomplete="new-password" style="padding:0 !important;clip:rect(1px, 1px, 1px, 1px) !important;position:absolute !important;white-space:nowrap !important;height:1px !important;width:1px !important;overflow:hidden !important;" tabindex="-1"></textarea><script data-noptimize>document.getElementById("comment").setAttribute( "id", "aa3001b8cd748c1d4f603b488e0b019e" );document.getElementById("df86f861fc").setAttribute( "id", "comment" );</script></p><label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required />
+<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required />
+<label for="url" class="screen-reader-text">Website</label><input placeholder="Website" id="url" name="url" type="url" value="" size="30" />
+<p class="aiowps-captcha hide-when-displaying-tfa-input"><label for="aiowps-captcha-answer">Please enter an answer in digits:</label><div class="aiowps-captcha-equation hide-when-displaying-tfa-input"><strong>12 &#8722; 10 = <input type="hidden" name="aiowps-captcha-string-info" class="aiowps-captcha-string-info" value="7ff10lq5vr" /><input type="hidden" name="aiowps-captcha-temp-string" class="aiowps-captcha-temp-string" value="1709733077" /><input type="text" size="2" class="aiowps-captcha-answer" name="aiowps-captcha-answer" value="" autocomplete="off" /></strong></div></p><p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='2340' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	
+</div><!-- #comments -->
+			</div>
+
+					</main>
+	</div>
+
+	<div class="widget-area sidebar is-right-sidebar" id="right-sidebar">
+	<div class="inside-right-sidebar">
+		<aside id="block-7" class="widget inner-padding widget_block"><!-- Begin Brevo Form -->
+<!-- START - We recommend to place the below code in head tag of your website html  -->
+
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+<!--  END - We recommend to place the above code in head tag of your website html -->
+
+<!-- START - We recommend to place the below code where you want the form in your website html  -->
+<div class="sib-form" style="text-align: center;
+         background-color: #ffffff;                                 ">
+  <div id="sib-form-container" class="sib-form-container">
+    <div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+          <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z" />
+        </svg>
+        <span class="sib-form-message-panel__inner-text">
+                          Your subscription could not be saved. Please try again.
+                      </span>
+      </div>
+    </div>
+    <div></div>
+    <div id="success-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+          <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
+        </svg>
+        <span class="sib-form-message-panel__inner-text">
+                          Your subscription has been successful.
+                      </span>
+      </div>
+    </div>
+    <div></div>
+    <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(255,255,255,1); max-width:540px; border-radius:3px; border-width:1px; border-color:#C0CCD9; border-style:solid; direction:ltr">
+      <form id="sib-form" method="POST" action="https://a18a3619.sibforms.com/serve/MUIFAKltn5gsG-CJrKYOjEZIExtnRZvlzEE9f-AXZlnhpX81IvPjJipMdAkYcoXeWk0yDiFaYCnGLvUtfa0GtateMAejdlg4R0k8bPTtlm24x9SxEdNQouzUA5fOgO_vBPDEG8eS97PrsiTXLFITX2k5jesk2P0-M_1sZ_eJecZHhZCjZ2AREZaB3Jk4Y9Ofx-nDqrv-FQ5EVsqI" data-type="subscription">
+        <div style="padding: 8px 0;">
+          <div class="sib-form-block" style="font-size:20px; text-align:left; font-weight:700; font-family:&quot;Helvetica&quot;, sans-serif; color:#3C4858; background-color:transparent; text-align:left">
+            <p>Newsletter</p>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-form-block" style="font-size:10px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#3C4858; background-color:transparent; text-align:left">
+            <div class="sib-text-form-block">
+              <p>Subscribe to our newsletter and stay updated.</p>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-input sib-form-block">
+            <div class="form__entry entry_block">
+              <div class="form__label-row ">
+
+                <div class="entry__field">
+                  <input class="input " type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="EMAIL" data-required="true" required />
+                </div>
+              </div>
+
+              <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
+              </label>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-form-block" style="text-align: left">
+            <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:14px; text-align:left; font-weight:700; font-family:&quot;Helvetica&quot;, sans-serif; color:#FFFFFF; background-color:#3E4857; border-radius:3px; border-width:0px;" form="sib-form" type="submit">
+              <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
+                <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+              </svg>
+              SUBSCRIBE
+            </button>
+          </div>
+        </div>
+
+        <input type="text" name="email_address_check" value="" class="input--hidden">
+        <input type="hidden" name="locale" value="en">
+      </form>
+    </div>
+  </div>
+</div>
+<!-- END - We recommend to place the below code where you want the form in your website html  -->
+
+<!-- START - We recommend to place the below code in footer or bottom of your website html  -->
+<script>
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+  window.LOCALE = 'en';
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+
+  window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
+
+  window.GENERIC_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+
+
+
+
+  window.translation = {
+    common: {
+      selectedList: '{quantity} list selected',
+      selectedLists: '{quantity} lists selected'
+    }
+  };
+
+  var AUTOHIDE = Boolean(0);
+</script>
+
+<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+
+
+<!-- END - We recommend to place the above code in footer or bottom of your website html  -->
+<!-- End Brevo Form --></aside><aside id="block-4" class="widget inner-padding widget_block"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436075382722980"
+     crossorigin="anonymous"></script>
+<!-- ads-lbzz-responsive -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1436075382722980"
+     data-ad-slot="8072146072"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></aside><aside id="recent-posts-widget-with-thumbnails-3" class="widget inner-padding recent-posts-widget-with-thumbnails">
+<div id="rpwwt-recent-posts-widget-with-thumbnails-3" class="rpwwt-widget">
+<h2 class="widget-title">Recent Posts</h2>
+	<ul>
+		<li><a href="https://www.linuxbuzz.com/how-to-install-teamviewer-on-ubuntu/" target="_blank"><span class="rpwwt-post-title">How to Install TeamViewer on Ubuntu Linux</span></a></li>
+		<li><a href="https://www.linuxbuzz.com/install-crio-container-runtime-on-ubuntu/" target="_blank"><span class="rpwwt-post-title">How to Install CRI-O Container Runtime on Ubuntu 22.04</span></a></li>
+		<li><a href="https://www.linuxbuzz.com/xubuntu-18-04-installation-guide-screenshots/" target="_blank"><span class="rpwwt-post-title">Xubuntu 18.04 LTS Installation Guide with Screenshots</span></a></li>
+		<li><a href="https://www.linuxbuzz.com/use-variables-in-ansible-playbook/" target="_blank"><span class="rpwwt-post-title">How to Use Variables in Ansible Playbook (Simple Guide)</span></a></li>
+		<li><a href="https://www.linuxbuzz.com/set-or-change-time-zone-in-linux/" target="_blank"><span class="rpwwt-post-title">How to Change Time Zone in Linux</span></a></li>
+		<li><a href="https://www.linuxbuzz.com/install-virtualbox-6-on-zorin-os-15/" target="_blank"><span class="rpwwt-post-title">How to Install VirtualBox 6 on Zorin OS (Core) 15</span></a></li>
+		<li><a href="https://www.linuxbuzz.com/how-to-install-ansible-in-ubuntu/" target="_blank"><span class="rpwwt-post-title">How to Install Ansible in Ubuntu 22.04 LTS (Jammy Jellyfish)</span></a></li>
+		<li><a href="https://www.linuxbuzz.com/linux-mint-18-3-sylvia-mate-installation-guide-screenshots/" target="_blank"><span class="rpwwt-post-title">Linux Mint 18.3 &#8220;Sylvia&#8221; Mate Installation Guide with Screenshots</span></a></li>
+		<li><a href="https://www.linuxbuzz.com/execute-ansible-ad-hoc-commands/" target="_blank"><span class="rpwwt-post-title">How to Execute Ansible Ad-Hoc Commands</span></a></li>
+		<li><a href="https://www.linuxbuzz.com/top-10-reasons-why-to-use-linux-servers/" target="_blank"><span class="rpwwt-post-title">Top 10 Reasons why to use Linux Servers</span></a></li>
+	</ul>
+</div><!-- .rpwwt-widget -->
+</aside><aside id="block-3" class="widget inner-padding widget_block"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1436075382722980"
+     crossorigin="anonymous"></script>
+<!-- ads-lbzz-responsive -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1436075382722980"
+     data-ad-slot="8072146072"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></aside>	</div>
+</div>
+
+	</div>
+</div>
+
+
+<div class="site-footer">
+			<footer class="site-info" aria-label="Site"  itemtype="https://schema.org/WPFooter" itemscope>
+			<div class="inside-site-info">
+								<div class="copyright-bar">
+					&copy; 2024 - LinuxBuzz				</div>
+			</div>
+		</footer>
+		</div>
+
+<script id="generate-a11y">!function(){"use strict";if("querySelector"in document&&"addEventListener"in window){var e=document.body;e.addEventListener("mousedown",function(){e.classList.add("using-mouse")}),e.addEventListener("keydown",function(){e.classList.remove("using-mouse")})}}();</script>		<script>
+			document.addEventListener('DOMContentLoaded', function (event) {
+				for (let i = 0; i < document.forms.length; ++i) {
+					let form = document.forms[i];
+					if (form.method != "get") {  var input1clzsw2r = document.createElement("input"); input1clzsw2r.setAttribute("type", "hidden"); input1clzsw2r.setAttribute("name", "1clzsw2r");  input1clzsw2r.setAttribute("value", "ncg2zvrthqcc"); form.appendChild(input1clzsw2r); }
+if (form.method != "get") {  var input8yo6zylw = document.createElement("input"); input8yo6zylw.setAttribute("type", "hidden"); input8yo6zylw.setAttribute("name", "8yo6zylw");  input8yo6zylw.setAttribute("value", "tjx6z7iym5r4"); form.appendChild(input8yo6zylw); }
+if (form.method != "get") {  var inputze9gchmb = document.createElement("input"); inputze9gchmb.setAttribute("type", "hidden"); inputze9gchmb.setAttribute("name", "ze9gchmb");  inputze9gchmb.setAttribute("value", "5avb7jwwduqm"); form.appendChild(inputze9gchmb); }
+				}
+			});
+		</script>
+		
+<script id="generate-smooth-scroll-js-extra">
+var gpSmoothScroll = {"elements":[".smooth-scroll","li.smooth-scroll a"],"duration":"800","offset":""};
+</script>
+
+<script id="ez-toc-scroll-scriptjs-js-extra">
+var eztoc_smooth_local = {"scroll_offset":"30","add_request_uri":""};
+</script>
+
+
+
+<script id="ez-toc-js-js-extra">
+var ezTOC = {"smooth_scroll":"1","visibility_hide_by_default":"","scroll_offset":"30","fallbackIcon":"<span class=\"\"><span class=\"eztoc-hide\" style=\"display:none;\">Toggle<\/span><span class=\"ez-toc-icon-toggle-span\"><svg style=\"fill: #999;color:#999\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" class=\"list-377408\" width=\"20px\" height=\"20px\" viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M6 6H4v2h2V6zm14 0H8v2h12V6zM4 11h2v2H4v-2zm16 0H8v2h12v-2zM4 16h2v2H4v-2zm16 0H8v2h12v-2z\" fill=\"currentColor\"><\/path><\/svg><svg style=\"fill: #999;color:#999\" class=\"arrow-unsorted-368013\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"10px\" height=\"10px\" viewBox=\"0 0 24 24\" version=\"1.2\" baseProfile=\"tiny\"><path d=\"M18.2 9.3l-6.2-6.3-6.2 6.3c-.2.2-.3.4-.3.7s.1.5.3.7c.2.2.4.3.7.3h11c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7s-.1-.5-.3-.7zM5.8 14.7l6.2 6.3 6.2-6.3c.2-.2.3-.5.3-.7s-.1-.5-.3-.7c-.2-.2-.4-.3-.7-.3h-11c-.3 0-.5.1-.7.3-.2.2-.3.5-.3.7s.1.5.3.7z\"\/><\/svg><\/span><\/span>"};
+</script>
+
+<!--[if lte IE 11]>
+<script src="https://www.linuxbuzz.com/wp-content/themes/generatepress/assets/js/classList.min.js?ver=3.3.1" id="generate-classlist-js"></script>
+<![endif]-->
+<script id="generate-menu-js-extra">
+var generatepressMenu = {"toggleOpenedSubMenus":"1","openSubMenuLabel":"Open Sub-Menu","closeSubMenuLabel":"Close Sub-Menu"};
+</script>
+
+<script id="generate-navigation-search-js-extra">
+var generatepressNavSearch = {"open":"Open Search Bar","close":"Close Search Bar"};
+</script>
+
+
+
+<script id="jquery-fancybox-js-after">
+var fb_timeout, fb_opts={'overlayShow':true,'hideOnOverlayClick':true,'showCloseButton':true,'margin':20,'enableEscapeButton':true,'autoScale':true };
+if(typeof easy_fancybox_handler==='undefined'){
+var easy_fancybox_handler=function(){
+jQuery([".nolightbox","a.wp-block-fileesc_html__button","a.pin-it-button","a[href*='pinterest.com\/pin\/create']","a[href*='facebook.com\/share']","a[href*='twitter.com\/share']"].join(',')).addClass('nofancybox');
+jQuery('a.fancybox-close').on('click',function(e){e.preventDefault();jQuery.fancybox.close()});
+/* IMG */
+var fb_IMG_select=jQuery('a[href*=".jpg" i]:not(.nofancybox,li.nofancybox>a),area[href*=".jpg" i]:not(.nofancybox),a[href*=".jpeg" i]:not(.nofancybox,li.nofancybox>a),area[href*=".jpeg" i]:not(.nofancybox),a[href*=".png" i]:not(.nofancybox,li.nofancybox>a),area[href*=".png" i]:not(.nofancybox),a[href*=".webp" i]:not(.nofancybox,li.nofancybox>a),area[href*=".webp" i]:not(.nofancybox)');
+fb_IMG_select.addClass('fancybox image');
+var fb_IMG_sections=jQuery('.gallery,.wp-block-gallery,.tiled-gallery,.wp-block-jetpack-tiled-gallery');
+fb_IMG_sections.each(function(){jQuery(this).find(fb_IMG_select).attr('rel','gallery-'+fb_IMG_sections.index(this));});
+jQuery('a.fancybox,area.fancybox,.fancybox>a').each(function(){jQuery(this).fancybox(jQuery.extend(true,{},fb_opts,{'transitionIn':'elastic','easingIn':'easeOutBack','transitionOut':'elastic','easingOut':'easeInBack','opacity':false,'hideOnContentClick':false,'titleShow':false,'titlePosition':'over','titleFromAlt':true,'showNavArrows':true,'enableKeyboardNav':true,'cyclic':false}))});
+};};
+var easy_fancybox_auto=function(){setTimeout(function(){jQuery('a#fancybox-auto,#fancybox-auto>a').first().trigger('click')},1000);};
+jQuery(easy_fancybox_handler);jQuery(document).on('post-load',easy_fancybox_handler);
+jQuery(easy_fancybox_auto);
+</script>
+
+<script id="q2w3_fixed_widget-js-extra">
+var q2w3_sidebar_options = [{"use_sticky_position":true,"margin_top":0,"margin_bottom":0,"stop_elements_selectors":"","screen_max_width":0,"screen_max_height":0,"widgets":[]}];
+</script>
+
+
+<script defer src="https://www.linuxbuzz.com/wp-content/cache/autoptimize/js/autoptimize_e24a82b9d7d32c30c6e5e9c3c22e3cc1.js"></script></body>
+</html>
+
+<!-- Dynamic page generated in 0.155 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2024-03-06 19:21:17 -->
+
+<!-- Compression = gzip -->
