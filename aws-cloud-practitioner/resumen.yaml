@@ -1,0 +1,278 @@
+Resumen - IAM:
+• Usuarios: mapeado a un usuario físico, tiene una contraseña para la consola de AWS
+• Grupos: contiene sólo usuarios
+• Políticas: Documento JSON que describe los permisos para los usuarios o grupos
+• Roles: para instancias EC2 o servicios AWS
+• Seguridad: MFA + Política de contraseñas
+• AWS CLI: gestiona tus servicios de AWS mediante la línea de comandos
+• AWS SDK: gestiona tus servicios de AWS utilizando un lenguaje de programación
+• Claves de acceso: accede a AWS mediante la CLI o el SDK
+• Auditoría: Informes de credenciales de IAM y Asesor de acceso de IAM
+
+Resumen - EC2:
+• Instancia EC2: AMI (SO) + Tamaño de la Instancia (CPU + RAM) +
+Almacenamiento + Grupos de Seguridad + Datos de Usuario EC2
+• Grupos de seguridad: Firewall adjunto a la instancia EC2
+• Datos de usuario de EC2: Script lanzado en el primer arranque de una
+instancia
+• SSH: iniciar un terminal en nuestras instancias EC2 (puerto 22)
+• Rol de la Instancia EC2: enlace a los roles de IAM
+• Opciones de compra: On-Demand, Spot, Reservada (Estándar +
+Convertible + Programada), Host Dedicado, Instancia Dedicada
+
+Resumen - Almacenamiento de instancias EC2:
+• Volúmenes EBS:
+  • Unidades de red adjuntas a una instancia EC2 a la vez
+  • Asignados a una zona de disponibilidad
+  • Puede utilizar EBS Snapshots para copias de seguridad / transferir volúmenes EBS a través de AZ
+• AMI: crea instancias EC2 listas para usar con nuestras personalizaciones
+• EC2 Image Builder: construye, prueba y distribuye automáticamente AMIs
+• EC2 Instance Store:
+  • Disco de hardware de alto rendimiento unido a nuestra instancia EC2
+  • Se pierde si nuestra instancia se detiene / termina
+• EFS: sistema de archivos en red, se puede adjuntar a 100s de instancias en una región
+• EFS-IA: clase de almacenamiento de coste optimizado para archivos de acceso poco frecuente
+• FSx para Windows: sistema de archivos en red para servidores Windows
+• FSx para Lustre: sistema de archivos Linux de alto rendimiento informático
+
+Resumen - ELB y ASG:
+• Alta disponibilidad vs escalabilidad (vertical y horizontal) vs elasticidad vs agilidad en el Cloud:
+• Elastic Load Balancers (ELB):
+• Distribuyen el tráfico entre las instancias EC2 del backend, pueden ser Multi-AZ
+• Soporta chequeos de salud
+• 4 tipos-> Classic (antiguo), Application (HTTP - L7), Network (TCP - L4), Gateway (L3)
+• Auto Scaling Groups (ASG):
+• Implementa la elasticidad para tu aplicación, a través de múltiples AZ
+• Escala las instancias EC2 en función de la demanda de tu sistema, sustituye las instancias
+en mal estado
+• Integrado con el ELB
+
+Resumen - Amazon S3:
+• Buckets vs Objetos: nombre único global, ligado a una región
+• Seguridad de S3: política de IAM, política de bucket S3 (acceso público), cifrado S3
+• Sitios web de S3: aloja un sitio web estático en Amazon S3
+• Versionado de S3: múltiples versiones de archivos, para evitar borrados accidentales
+• Replicación de S3: en la misma región o entre regiones, debe activar el control de versiones
+• Clases de almacenamiento S3: Standard, IA, One Zone-IA, Intelligent, Glacier (Instant, Flexible, Deep)
+• Familia Snow: importar datos a S3 a través de un dispositivo físico, edge computing
+• OpsHub: aplicación de escritorio para gestionar los dispositivos de la Familia Snow
+• Storage Gateway: solución híbrida para ampliar el almacenamiento local a S3
+
+Resumen de bases de datos y análisis en AWS:
+• Bases de datos relacionales - OLTP: RDS y Aurora (SQL)
+• Diferencias entre Multi-AZ, Réplicas de Lectura, Multi-Región:
+• Base de datos en memoria (in-memory): ElastiCache
+• Base de datos de claves/valores: DynamoDB (sin servidor) y DAX (caché para DynamoDB)
+• Warehouse - OLAP: Redshift (SQL)
+• Cluster Hadoop: EMR
+• Athena: consulta de datos en Amazon S3 (sin servidor y SQL)
+• QuickSight: dashboards sobre tus datos (sin servidor)
+• DocumentDB: "Aurora para MongoDB" (JSON - base de datos NoSQL)
+• Amazon QLDB: Libro de transacciones financieras (libro inmutable, verificable criptográficamente)
+• Amazon Managed Blockchain: cadenas de bloques Hyperledger Fabric y Ethereum gestionadas
+• Glue: Servicio gestionado de ETL (Extract-Transform-Load) y Catálogo de Datos
+• Database Migration: DMS
+• Neptune: base de datos gráfica
+
+Resumen - Otros servicios de computación:
+• Docker: tecnología de contenedores para ejecutar aplicaciones
+• ECS: ejecuta contenedores Docker en instancias EC2
+• Fargate:
+  • Ejecuta contenedores Docker sin aprovisionar la infraestructura
+  • Oferta serverless (sin instancias EC2)
+• ECR: Repositorio privado de imágenes Docker
+• Batch: ejecuta trabajos por lotes en AWS a través de instancias EC2
+gestionadas
+• Lightsail: precios predecibles y bajos para pilas de aplicaciones y bases de
+datos sencillas
+
+Resumen - Lambda:
+• Lambda es serverless, función como servicio, escalado sin fisuras, reactivo
+• Facturación de Lambda:
+• Por el tiempo de ejecución x por la RAM aprovisionada
+• Por el número de invocaciones
+• Soporte de lenguajes: muchos lenguajes de programación excepto (arbitrariamente) Docker
+• Tiempo de invocación: hasta 15 minutos
+• Casos de uso:
+• Crear miniaturas para imágenes subidas a S3
+• Ejecutar un trabajo cron sin servidor
+• Gateway de la API: exponer las funciones Lambda como API HTTP
+
+Resumen - Despliegue:
+• CloudFormation: (sólo AWS)
+• Infraestructura como código, funciona con casi todos los recursos de AWS
+• Se repite en todas las regiones y cuentas
+• Beanstalk: (sólo AWS)
+• Plataforma como servicio (PaaS), limitada a ciertos lenguajes de programación o Docker
+• Implementa el código de forma coherente con una arquitectura conocida: por ejemplo,
+ALB + EC2 + RDS
+• CodeDeploy (híbrido): despliega y actualiza cualquier aplicación en los servidores
+• Systems Manager (híbrido): parchea, configura y ejecuta comandos a escala
+• OpsWorks (híbrido): gestiona Chef y Puppet en AWS
+
+Resumen - Servicios para desarrolladores:
+• CodeCommit: Almacena el código en un repositorio git privado (versión controlada)
+• CodeBuild: Construye y prueba el código en AWS
+• CodeDeploy: Implementa el código en los servidores
+• CodePipeline: Orquestación del pipeline (desde el código hasta la construcción y el
+despliegue)
+• CodeArtifact: Almacena paquetes de software / dependencias en AWS
+• CodeStar: Vista unificada para permitir a los desarrolladores hacer CICD y código
+• Cloud9: IDE (Entorno de Desarrollo Integrado) en el Cloud con collab
+• AWS CDK: Define tu infraestructura en el Cloud utilizando un lenguaje de
+programación
+
+Resumen - Aplicaciones globales en AWS:
+• DNS global - Route 53:
+• Genial para dirigir a los usuarios a la implementación más cercana con la menor latencia
+• Excelente para las estrategias de recuperación de desastres
+• Red global de entrega de contenidos (CDN) - CloudFront:
+• Replica parte de tu aplicación a las ubicaciones de borde de AWS - disminuye la latencia
+• Almacena las solicitudes comunes - mejora la experiencia del usuario y disminuye la
+latencia
+• S3 Transfer Acceleration:
+• Acelera las cargas y descargas globales en Amazon S3
+• AWS Global Accelerator:
+• Mejora la disponibilidad y el rendimiento de la aplicación global utilizando la red global
+de AWS
+
+Resumen - Aplicaciones globales en AWS:
+• AWS Outposts:
+• Implementa racks Outposts en tus propios centros de datos para ampliar
+los servicios de AWS
+• AWS WaveLength:
+• Lleva los servicios de AWS a edge location de las redes 5G
+• Aplicaciones de latencia ultrabaja
+• AWS Local Zones:
+• Acerca los recursos de AWS (computación, base de datos, almacenamiento,
+...) a tus usuarios
+• Buenas para aplicaciones sensibles a la latencia
+
+Resumen - Integración:
+• SQS:
+• Servicio de colas en AWS
+• Múltiples productores, los mensajes se conservan hasta 14 días
+• Múltiples consumidores comparten la lectura y borran los mensajes cuando han terminado
+• Se utiliza para desacoplar aplicaciones en AWS
+• SNS:
+• Servicio de notificaciones en AWS
+• Suscriptores - Correo electrónico, Lambda, SQS, HTTP, Móvil...
+• Múltiples suscriptores, envía todos los mensajes a todos ellos
+• Sin retención de mensajes
+• Kinesis: streaming de datos en tiempo real, persistencia y análisis
+• Amazon MQ: broker de mensajes gestionados para ActiveMQ y RabbitMQ en el Cloud (protocolos MQTT, AMQP..)
+
+Resumen - Monitorización:
+• CloudWatch:
+  • Métricas: monitorización del rendimiento de los servicios AWS y métricas de facturación
+  • Alarmas: automatiza la notificación, realiza acciones EC2, notifica a SNS en función de la métrica
+  • Logs: recopila logs de instancias EC2, servidores, funciones Lambda...
+  • Eventos (o EventBridge): reacciona a eventos en AWS, o activa una regla según un programa
+• CloudTrail: audita las llamadas a la API realizadas en tu cuenta de AWS
+• CloudTrail Insights: análisis automatizado de tus Eventos CloudTrail
+• X-Ray: rastrea las peticiones realizadas a través de tus aplicaciones distribuidas
+• AWS Health Dashboard: estado de todos los servicios de AWS en todas las regiones
+• AWS Health Dashboard – Estado de su cuenta: Eventos de AWS que afectan a tu infraestructura
+• Amazon CodeGuru: revisiones de código automatizadas y recomendaciones sobre el rendimiento de las aplicaciones
+
+Resumen - Virtual Private Cloud (VPC):
+• VPC: - Virtual Private Cloud (nube privada virtual)
+• Subredes: - Vinculadas a una AZ, partición de red de la VPC
+• Gateway de Internet: - A nivel de la VPC, proporcionan acceso a Internet
+• Los Gateways NAT / Instancias: - Dan acceso a Internet a las subredes
+privadas
+• NACL: - Sin estado, reglas de subred para entrada y salida
+• Grupos de seguridad: - Con estado, operan a nivel de instancia EC2 o ENI
+• VPC Peering: - Conecta dos VPC con rangos de IP no solapados, no
+transitivos
+• IP elástica: - IPv4 pública fija, coste continuo si no se utiliza
+
+Resumen - Virtual Private Cloud (VPC):
+• VPC Endpoints: - Proporcionan acceso privado a los servicios de AWS dentro de la VPC
+• PrivateLink: - Conecta de forma privada a un servicio en una VPC de terceros
+• Logs de flujo de la VPC: - Registros de tráfico de red
+• Site to Site VPN: - VPN a través de la Internet pública entre el DC local y AWS
+• VPN de cliente: - Conexión OpenVPN desde tu ordenador a tu VPC
+• Direct Connect: - Conexión privada directa a AWS
+• Transit Gateway: - Conecta miles de redes VPC y locales entre sí
+
+Resumen - Seguridad y normativa:
+• Responsabilidad compartida en AWS:
+• Shield: Protección DDoS automática + soporte 24/7 avanzado
+• WAF: Firewall para filtrar las peticiones entrantes basado en reglas
+• KMS: Claves de cifrado gestionadas por AWS
+• CloudHSM: Cifrado por hardware, gestionamos las claves de cifrado
+• AWS Certificate Manager: Aprovisiona, administra e implementa certificados SSL/TLS
+• Artifact: Accede a informes de normativa como PCI, ISO, etc...
+• GuardDuty: Encuentra comportamientos maliciosos con los logs de VPC, DNS y CloudTrail
+• Inspector: Encuentra vulnerabilidades de software en EC2, Imágenes ECR y funciones Lambda
+• Network Firewall: Protege la VPC contra ataques de red
+
+Resumen - Seguridad y normativa:
+• Config: Rastrea los cambios de configuración y el cumplimiento de la normativa
+• Macie: Encuentra datos sensibles (por ejemplo, datos PII) en buckets de Amazon S3
+• CloudTrail: Rastrea las llamadas a la API realizadas por los usuarios dentro de la cuenta
+• AWS Security Hub: reúne los resultados de seguridad de varias cuentas de AWS
+• Amazon Detective: encuentra la causa raíz de los problemas de seguridad o las actividades sospechosas
+• AWS Abuse: Informa de los recursos de AWS utilizados con fines abusivos o ilegales
+• Privilegios del usuario root:
+  • Cambia la configuración de la cuenta
+  • Cierra tu cuenta de AWS
+  • Cambia o cancela tu plan de AWS Support
+  • Registrarte como vendedor en el Marketplace de instancias reservadas
+• IAM Access Analyzer: identifica qué recursos se comparten externamente
+
+Resumen - Machine Learning:
+• Rekognition: detección de caras, etiquetado, reconocimiento de famosos
+• Transcribe: de audio a texto (por ejemplo, subtítulos)
+• Polly: de texto a audio
+• Translate: traducciones
+• Lex: construir bots conversacionales - chatbots
+• Connect: centro de contacto en el Cloud
+• Comprehend: procesamiento del lenguaje natural
+• SageMaker: Machine Learning para todos los desarrolladores y científicos de datos
+• Forecast: construye previsiones muy precisas
+• Kendra: motor de búsqueda con ML
+• Personalize: recomendaciones personalizadas en tiempo real
+• Textract: detecta texto y datos en los documentos
+
+Resumen - Mejores prácticas para las cuentas:
+• Operar múltiples cuentas utilizando organizaciones
+• Utiliza SCP: (políticas de control de servicios) para restringir el poder de las cuentas
+• Configura fácilmente varias cuentas con las mejores prácticas con AWS Control Tower
+• Utiliza etiquetas y etiquetas de asignación: de costes para facilitar la gestión y la facturación
+• Pautas de IAM: MFA, mínimo privilegio, política de contraseñas, rotación de contraseñas
+• Config: para registrar todas las configuraciones de recursos y la normativa a lo largo del tiempo
+• CloudFormation: para desplegar pilas entre cuentas y regiones
+• Trusted Advisor: para obtener información, plan de soporte adaptado a tus necesidades
+• Envía logs de servicio y de acceso a S3 o a CloudWatch Logs
+• CloudTrail: para registrar las llamadas a la API realizadas en tu cuenta
+• Si tu cuenta se ve comprometida: cambia la contraseña root, borra y rota todas las contraseñas/claves,
+contacta con el soporte de AWS
+• Permitir a los usuarios crear stacks predefinidos definidos por los administradores mediante AWS Service
+Catalog
+
+Resumen - Herramientas de facturación y cálculo de costes:
+• Compute Optimizer: recomienda configuraciones de recursos para reducir el coste
+• Pricing Calculator: coste de los servicios en AWS
+• Dashboard de facturación: visión general de alto nivel + dashboards de niveles gratuitos
+• Etiquetas de asignación de costes: etiqueta los recursos para crear informes detallados
+• Cost & Usage Reports: el conjunto de datos de facturación más completo
+• Cost Explorer: Visualiza el uso actual (detallado) y el uso previsto
+• Alarmas de facturación: en us-east-1 - haz un seguimiento de la facturación global y por
+servicio
+• Budgets: más avanzados - rastrea el uso, los costes y recibe alertas
+• Planes de ahorro: forma sencilla de ahorrar según el uso a largo plazo de AWS
+• Cost Anomaly Detection: detecta gastos inusuales utilizando Machine Learning
+• Service Quotas: te avisa cuando estás cerca del umbral de cuota de servicio
+
+Resumen - Identidad avanzada:
+• IAM:
+  • Gestión de la identidad y el acceso dentro de tu cuenta de AWS
+  • Para usuarios de confianza y pertenecientes a tu empresa
+• Organizations: gestionar varias cuentas de AWS
+• Security Token Service (STS): credenciales temporales con privilegios limitados
+para acceder a los recursos de AWS
+• Cognito: crea una base de datos de usuarios para tus aplicaciones móviles y web
+• Directory Services: integra Microsoft Active Directory en AWS
+• IAM Identity Center: un inicio de sesión para varias cuentas y aplicaciones de AWS
