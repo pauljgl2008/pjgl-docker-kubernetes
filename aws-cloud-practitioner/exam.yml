@@ -3,6 +3,379 @@
 • Los Gateways NAT (gestionados por AWS) y las Instancias NAT (autogestionadas) permiten
 que tus instancias en tus subredes privadas accedan a internet sin dejar de ser privadas
 
+¿Qué servicio de AWS puede utilizarse para automatizar el despliegue de código en instancias de Amazon Elastic Compute Cloud (Amazon EC2), así como en instancias locales?:
+- AWS CodeDeploy:
+AWS CodeDeploy es un servicio que automatiza las implementaciones de código en cualquier instancia, incluidas las instancias de Amazon EC2 y las instancias que se ejecutan en las instalaciones.
+AWS CodeDeploy te facilita el lanzamiento rápido de nuevas características, te ayuda a evitar el tiempo de inactividad durante la implementación y gestiona la complejidad de la actualización de tus aplicaciones.
+Puedes utilizar AWS CodeDeploy para automatizar las implementaciones, eliminando la necesidad de operaciones manuales propensas a errores, y el servicio se escala con tu infraestructura para que puedas implementar fácilmente en una instancia o en miles.
+
+Un grupo de investigación quiere aprovisionar una instancia de Amazon Elastic Compute Cloud (Amazon EC2) para una aplicación flexible que puede interrumpirse.:
+Como Cloud Practitioner, ¿cuál de las siguientes recomendarías como la opción MÁS óptima en cuanto a costes?:
+- Instancia spot:
+Una instancia spot es una instancia EC2 no utilizada que está disponible por menos del precio bajo demanda.
+Como las instancias de subasta te permiten solicitar instancias EC2 no utilizadas con grandes descuentos (hasta el 90%), puedes reducir significativamente tus costes de Amazon EC2.
+Las Instancias de subasta son muy adecuadas para análisis de datos, trabajos por lotes, procesamiento en segundo plano y otras tareas flexibles que pueden interrumpirse.
+Pueden interrumpirse con poca antelación, por lo que no son adecuadas para cargas de trabajo críticas que deban ejecutarse en un momento determinado.
+
+AWS Trusted Advisor analiza tu entorno de AWS y proporciona recomendaciones de mejores prácticas para:
+¿cuál de las siguientes categorías? (Selecciona dos):
+- Límites del servicio:
+- Optimización de costes:
+AWS Trusted Advisor es una herramienta online que proporciona orientación en tiempo real para ayudar a aprovisionar tus recursos siguiendo las mejores prácticas de AWS.
+Ya sea para establecer nuevos flujos de trabajo, desarrollar aplicaciones o como parte de una mejora continua, las recomendaciones que proporciona Trusted Advisor de forma regular ayudan a mantener tus soluciones aprovisionadas de forma óptima.
+AWS Trusted Advisor analiza tu entorno de AWS y proporciona recomendaciones de mejores prácticas en cinco categorías -> Optimización de costes, Rendimiento, Seguridad, Tolerancia a fallos, Límites de servicio.
+
+Según el modelo de responsabilidad compartida de AWS, ¿cuál de las siguientes es responsabilidad de un cliente en relación con AWS Lambda?:
+- Mantener las versiones de una función de AWS Lambda:
+Bajo el modelo de responsabilidad compartida de AWS, AWS es responsable de proteger la infraestructura que ejecuta todos los servicios ofrecidos en el Cloud de AWS.
+Esta infraestructura se compone del hardware, software, redes e instalaciones que ejecutan los servicios del Cloud de AWS.
+Según el modelo de responsabilidad compartida de AWS, la responsabilidad del cliente viene determinada por los servicios en el Cloud de AWS que seleccione.
+Para los servicios abstraídos, como Amazon S3 y Amazon DynamoDB, AWS opera la capa de infraestructura, el sistema operativo y las plataformas, y los clientes acceden a los endpoints para almacenar y recuperar datos.
+Los clientes son responsables de gestionar sus datos (incluidas las opciones de cifrado), clasificar sus activos y utilizar las herramientas IAM para aplicar los permisos adecuados.
+Para el caso de uso dado, el cliente es responsable de mantener las versiones de una función de AWS Lambda.
+
+Una empresa multinacional tiene sus datos críticos para el negocio almacenados en una flota de instancias de Amazon Elastic Compute Cloud (Amazon EC2), en varios países, configuradas con reglas de normativa específicas para cada región.:
+Para demostrar la normativa, la empresa necesita presentar configuraciones históricas de forma periódica.:
+¿Qué servicio de AWS es el más adecuado para este requisito?:
+- AWS Config:
+AWS Config proporciona una vista detallada de la configuración de los recursos de AWS en tu cuenta de AWS.
+Esto incluye cómo se relacionan los recursos entre sí y cómo se configuraron en el pasado, para que puedas ver cómo cambian las configuraciones y las relaciones con el tiempo.
+AWS Config está diseñado para ayudarte a supervisar los recursos de tu aplicación en los siguientes escenarios -> Administración de recursos, Auditoría y normativa, Administración y solución de problemas de cambios de configuración, Análisis de seguridad.
+
+¿Cuál de los siguientes servicios de AWS está especializado en la migración de datos de las instalaciones al Cloud de AWS? (Selecciona dos):
+- Snowball:
+- AWS Database Migration Service (AWS DMS):
+AWS Snowball es una solución de transporte de datos que acelera el movimiento de terabytes a petabytes de datos dentro y fuera de los servicios de AWS utilizando dispositivos de almacenamiento diseñados para ser seguros para el transporte físico.
+El servicio AWS Database Migration Service (AWS DMS) te ayuda a migrar bases de datos de las instalaciones a AWS de forma rápida y segura.
+La base de datos de origen permanece plenamente operativa durante la migración, minimizando el tiempo de inactividad de las aplicaciones que dependen de la base de datos.
+AWS Database Migration Service (AWS DMS) puede migrar tus datos desde y hacia las bases de datos comerciales y de código abierto más utilizadas.
+Puedes hacer migraciones de bases de datos homogéneas y heterogéneas utilizando el AWS Database Migration Service (AWS DMS).
+
+¿Cuáles de los siguientes servicios de AWS tienen el cifrado de datos activado automáticamente? (Selecciona dos):
+- AWS Storage Gateway:
+- Amazon Simple Storage Service (Amazon S3):
+AWS Storage Gateway es un servicio híbrido de almacenamiento en el Cloud que te proporciona acceso local a un almacenamiento prácticamente ilimitado en el Cloud.
+Todos los datos transferidos entre la puerta de enlace y el almacenamiento de AWS se cifran mediante SSL (para los tres tipos de puertas de enlace -> de archivos, de volumen y de cinta).
+Todos los buckets de Amazon S3 tienen el cifrado configurado por defecto, y los objetos se cifran automáticamente utilizando el cifrado del lado del servidor con claves administradas de Amazon S3 (SSE-S3).
+Esta configuración de cifrado se aplica a todos los objetos de tus buckets de Amazon S3.
+
+¿Cuáles de las siguientes son las mejores prácticas recomendadas para el servicio AWS Identity and Access Management (AWS IAM)? (Selecciona dos):
+- Activa la autenticación multifactor (MFA) para todos los usuarios:
+- Rota las credenciales regularmente:
+AWS recomienda que exijas la autenticación multifactor (MFA) a todos los usuarios de tu cuenta.
+Con la autenticación multifactor (MFA), los usuarios disponen de un dispositivo que genera una respuesta a un desafío de autenticación.
+Tanto las credenciales del usuario como la respuesta generada por el dispositivo son necesarias para completar el proceso de inicio de sesión.
+AWS recomienda que cambies tus propias contraseñas y claves de acceso con regularidad, y que te asegures de que todos los usuarios de IAM de tu cuenta también lo hagan.
+De ese modo, si una contraseña o clave de acceso se ve comprometida sin tu conocimiento, limitas el tiempo durante el que las credenciales pueden utilizarse para acceder a tus recursos.
+Puedes aplicar una política de contraseñas a tu cuenta para exigir a todos tus usuarios de IAM que roten sus contraseñas.
+
+¿Cuál de las siguientes afirmaciones es CORRECTA sobre el grupo AWS Auto Scaling? (Selecciona dos):
+- El grupo de Auto Scaling escala y añade más número de instancias de Amazon EC2 para adaptarse a un aumento de la demanda:
+- El grupo de Auto Scaling escala y reduce el número de instancias de Amazon EC2 para adaptarse a una disminución de la demanda:
+AWS Auto Scaling monitoriza tus aplicaciones y ajusta automáticamente la capacidad para mantener un rendimiento constante y predecible al menor coste posible.
+Con AWS Auto Scaling, es fácil configurar el escalado de aplicaciones para múltiples recursos a través de múltiples servicios en cuestión de minutos.
+El servicio proporciona una interfaz de usuario sencilla y potente que te permite crear planes de escalado para recursos como instancias de Amazon EC2 y Spot Fleets, tareas de Amazon ECS, tablas e índices de Amazon DynamoDB y réplicas de Amazon Aurora.
+Puedes utilizar políticas de escalado para aumentar o reducir el número de instancias de tu grupo de forma dinámica, a fin de satisfacer las condiciones cambiantes.
+Cuando la política de escalado está en vigor, el grupo de Escalado Automático ajusta la capacidad deseada del grupo, entre los valores de capacidad mínimo y máximo que especifiques, y lanza o finaliza las instancias según sea necesario.
+También puedes escalar según una programación.
+
+Un usuario de AWS está intentando lanzar una instancia de Amazon Elastic Compute Cloud (Amazon EC2) en una región determinada.:
+¿Cuál es la restricción específica de la región que debe cumplir la Amazon Machine Image (AMI) para que pueda utilizarse para esta instancia de Amazon Elastic Compute Cloud (Amazon EC2)?:
+- Debes utilizar una Amazon Machine Image (AMI) de la misma región que la de la instancia de Amazon EC2.:
+- La región de la imagen de máquina de Amazon (AMI) no influye en el rendimiento de la instancia de Amazon EC2:
+Una Amazon Machine Image (AMI) proporciona la información necesaria para lanzar una instancia.
+Debes especificar una Amazon Machine Image (AMI) cuando lances una instancia.
+Puedes lanzar varias instancias desde una única AMI cuando necesites varias instancias con la misma configuración.
+La Amazon Machine Image (AMI) debe estar en la misma región que la de la instancia de Amazon EC2 que se va a lanzar.
+Si la Amazon Machine Image (AMI) existe en una región diferente, puedes copiar esa Amazon Machine Image (AMI) a la región en la que deseas lanzar la instancia EC2.
+La región de la Amazon Machine Image (AMI) no influye en el rendimiento de la instancia de Amazon EC2.
+
+Un laboratorio de investigación desea optimizar las capacidades de almacenamiento en caché para su aplicación de cálculos científicos que se ejecuta en instancias de Amazon Elastic Compute Cloud (Amazon EC2).:
+¿Qué opción de almacenamiento de Amazon Elastic Compute Cloud (Amazon EC2) es la más adecuada para este caso de uso?:
+- Almacén de instancias:
+Un almacén de instancias proporciona almacenamiento temporal a nivel de bloque para tu instancia de Amazon EC2.
+Este almacenamiento se encuentra en discos que están físicamente conectados al ordenador anfitrión.
+El almacén de instancias es ideal para el almacenamiento temporal de información que cambia con frecuencia, como búferes, cachés, datos de memoria virtual y otros contenidos temporales, o para datos que se replican en una flota de instancias, como un conjunto de servidores web con equilibrio de carga.
+El almacenamiento en instancias es temporal, los datos se pierden si la instancia experimenta un fallo o se cierra.
+
+¿Qué servicio de AWS puede utilizarse para el procesamiento analítico en línea?:
+- Amazon Redshift:
+Amazon Redshift es un almacén de datos en el Cloud rápido y totalmente administrado que simplifica y rentabiliza el análisis de todos tus datos utilizando SQL estándar y tus herramientas de Inteligencia Empresarial (BI) existentes.
+Te permite ejecutar consultas analíticas complejas contra terabytes a petabytes de datos estructurados, utilizando una sofisticada optimización de consultas, almacenamiento columnar en almacenamiento de alto rendimiento y ejecución de consultas masivamente paralela.
+
+Una empresa de TI tiene una arquitectura de nube híbrida y quiere centralizar los registros de servidor de sus instancias de Amazon Elastic Compute Cloud (Amazon EC2) y de sus servidores locales.:
+¿Cuál de las siguientes opciones es la MÁS eficaz para este caso de uso?:
+- Utiliza Amazon CloudWatch Logs tanto para la instancia de Amazon Elastic Compute Cloud (Amazon EC2) como para los servidores locales:
+Puedes utilizar Amazon CloudWatch Logs para monitorizar, almacenar y acceder a tus archivos de registro desde instancias de Amazon Elastic Compute Cloud (Amazon EC2), AWS CloudTrail, Route 53 y otras fuentes como servidores locales.
+Amazon CloudWatch Logs te permite centralizar los logs de todos tus sistemas, aplicaciones y servicios de AWS que utilices, en un único servicio altamente escalable.
+Luego puedes verlos fácilmente, buscar en ellos códigos de error o patrones específicos, filtrarlos en función de campos concretos o archivarlos de forma segura para futuros análisis.
+
+¿Cuál de las siguientes es la mejor forma de proteger tus datos de un borrado accidental en Amazon S3?:
+- Versionado de Amazon S3:
+El versionado es un medio de mantener múltiples variantes de un objeto en el mismo bucket.
+Puedes utilizar el versionado para conservar, recuperar y restaurar cada versión de cada objeto almacenado en tu bucket de Amazon S3.
+Con el versionado, puedes recuperarte fácilmente tanto de acciones no intencionadas del usuario como de fallos de la aplicación.
+Los buckets con versiones habilitadas te permiten recuperar objetos en caso de borrado o sobrescritura accidental.
+Por ejemplo -> si borras un objeto, en lugar de eliminarlo permanentemente, Amazon S3 inserta un marcador de borrado, que se convierte en la versión actual del objeto.
+
+Una startup ejecuta su aplicación propia en contenedores Docker.:
+Como Cloud Practitioner, ¿qué servicio de AWS recomendarías para que la startup pueda ejecutar contenedores y seguir teniendo acceso a los servidores subyacentes?:
+- Amazon Elastic Container Service (Amazon ECS):
+Amazon Elastic Container Service (Amazon ECS) es un servicio de administración de contenedores rápido y altamente escalable que facilita la ejecución, detención y administración de contenedores Docker en un clúster.
+No es un servicio totalmente gestionado y puedes administrar tú mismo los servidores subyacentes.
+
+¿Qué característica del Cloud de AWS ofrece la posibilidad de innovar más rápido y desarrollar, probar y lanzar aplicaciones de software rápidamente?:
+- Agilidad:
+La agilidad se refiere a la capacidad del Cloud de darte fácil acceso a una amplia gama de tecnologías para que puedas innovar más rápido y construir casi cualquier cosa que puedas imaginar.
+Puedes activar rápidamente los recursos que necesites -> desde servicios de infraestructura, como computación, almacenamiento y bases de datos, hasta Internet de las Cosas, aprendizaje automático, lagos de datos y análisis, y mucho más
+
+¿Cuál de las siguientes es una perspectiva del AWS Cloud Adoption Framework (AWS CAF)?:
+- Negocio:
+El AWS Cloud Adoption Framework (AWS CAF) aprovecha la experiencia y las mejores prácticas de AWS para ayudarte a transformar digitalmente y acelerar tus resultados empresariales mediante el uso innovador de AWS.
+El CAF de AWS identifica capacidades organizativas específicas que apuntalan las transformaciones exitosas en el Cloud.
+AWS CAF agrupa sus capacidades en seis perspectivas -> Negocio, Personas, Gobernanza, Plataforma, Seguridad y Operaciones.
+
+¿Qué pilar del AWS Well-Architected Framework recomienda mantener la infraestructura como código (IaC)?:
+- Excelencia operativa:
+El AWS Well-Architected Framework te ayuda a comprender los pros y los contras de las decisiones que tomas al crear sistemas en AWS.
+Utilizando el Framework aprenderás las mejores prácticas de arquitectura para diseñar y operar sistemas fiables, seguros, eficientes y rentables en el Cloud.
+Te proporciona una forma de medir sistemáticamente tus arquitecturas con respecto a las mejores prácticas e identificar áreas de mejora.
+El AWS Well-Architected Framework se basa en seis pilares -> Excelencia Operativa, Seguridad, Fiabilidad, Eficiencia de Rendimiento, Optimización de Costes y Sostenibilidad.
+El pilar de la excelencia operativa incluye la capacidad de ejecutar y supervisar sistemas para aportar valor empresarial y mejorar continuamente los procesos y procedimientos de apoyo.
+En el Cloud, puedes aplicar a todo tu entorno la misma disciplina de ingeniería que utilizas para el código de las aplicaciones.
+Puedes definir toda tu carga de trabajo (aplicaciones, infraestructura) como código y actualizarla con código.
+Puedes implementar tus procedimientos operativos como código y automatizar su ejecución activándolos en respuesta a eventos.
+
+Una empresa de TI está en un proceso de optimización de costes y quiere identificar todas las instancias de Amazon Elastic Compute Cloud (Amazon EC2) que están infrautilizadas.:
+¿Qué servicios de AWS se pueden utilizar para abordar este caso de uso sin necesidad de configuraciones manuales? (Selecciona dos):
+- AWS Cost Explorer:
+- AWS Trusted Advisor:
+El AWS Cost Explorer tiene una interfaz fácil de usar que te permite visualizar, comprender y administrar tus costes y uso de AWS a lo largo del tiempo.
+El AWS Cost Explorer incluye un informe predeterminado que te ayuda a visualizar los costes y el uso asociados a tus cinco principales servicios de AWS que generan costes, y te ofrece un desglose detallado de todos los servicios en la vista de tabla.
+Los informes te permiten ajustar el intervalo de tiempo para ver datos históricos que se remontan hasta doce meses atrás para comprender mejor las tendencias de tus costes.
+La función de recomendaciones de redimensionamiento del AWS Cost Explorer te ayuda a identificar oportunidades de ahorro reduciendo o eliminando instancias de Amazon EC2. Puedes ver todas tus instancias de Amazon EC2 infrautilizadas en todas las cuentas miembro en una única vista para identificar inmediatamente cuánto puedes ahorrar.
+AWS Trusted Advisor es una herramienta online que proporciona orientación en tiempo real para ayudar a aprovisionar tus recursos siguiendo las mejores prácticas de AWS. Ya sea estableciendo nuevos flujos de trabajo, desarrollando aplicaciones o como parte de una mejora continua, las recomendaciones proporcionadas por Trusted Advisor ayudan regularmente a mantener tus soluciones aprovisionadas de forma óptima. AWS Trusted Advisor analiza tu entorno de AWS y proporciona recomendaciones de mejores prácticas en cinco categorías -> Optimización de costes, Rendimiento, Seguridad, Tolerancia a fallos, Límites de servicio.
+AWS Trusted Advisor comprueba las instancias de Amazon Elastic Compute Cloud (Amazon EC2) que estuvieron funcionando en cualquier momento durante los últimos 14 días y te alerta si la utilización diaria de la CPU fue del 10% o menos y la E/S de red fue de 5 MB o menos en 4 días o más.
+
+¿Cuál de los siguientes servicios de AWS ofrece almacenamiento a nivel de bloque? (Selecciona dos):
+- Almacén de instancias:
+- Amazon Elastic Block Store (Amazon EBS):
+Un almacén de instancia proporciona almacenamiento temporal a nivel de bloque para tu instancia EC2. Este almacenamiento se encuentra en discos conectados físicamente al ordenador anfitrión. El almacenamiento de instancia es ideal para el almacenamiento temporal de información que cambia con frecuencia, como búferes, cachés, datos de memoria virtual y otros contenidos temporales, o para datos que se replican en una flota de instancias, como un grupo de servidores web con carga equilibrada. El almacenamiento de instancia es temporal, los datos se pierden si la instancia experimenta un fallo o se da de baja. El almacén de instancias de Amazon EC2 no puede utilizarse para compartir archivos entre instancias.
+Amazon Elastic Block Store (Amazon EBS) es un servicio de almacenamiento en bloque de alto rendimiento y fácil de usar, diseñado para su utilización con Amazon Elastic Compute Cloud (Amazon EC2) para cargas de trabajo de alto rendimiento y transacciones intensivas a cualquier escala. Una amplia gama de cargas de trabajo, como bases de datos relacionales y no relacionales, aplicaciones empresariales, aplicaciones en contenedores, motores de análisis de big data, sistemas de archivos y flujos de trabajo multimedia, se despliegan ampliamente en Amazon EBS.
+
+Una empresa de comercio electrónico utiliza AWS Cloud y le gustaría recibir facturas separadas para los entornos de desarrollo y producción.:
+Como Cloud Practioner, ¿cuál de las siguientes soluciones recomendarías para este caso de uso?:
+- Crea cuentas de AWS separadas para entornos de desarrollo y producción para recibir facturas separadas:
+Cada cuenta de AWS proporciona su propia factura a final de mes. Puedes obtener facturas separadas para los entornos de desarrollo y producción configurando cuentas de AWS distintas para cada entorno.
+
+Una organización mantiene Virtual Private Clouds (Amazon VPC) independientes para cada uno de sus departamentos. Con la expansión del negocio, la organización quiere ahora conectar todas las Amazon Virtual Private Clouds (Amazon VPC) para mejorar la colaboración departamental.:
+¿Qué servicio de AWS ayudará a la organización a abordar el problema con eficacia?:
+- AWS Transit Gateway:
+AWS Transit Gateway conecta las Amazon Virtual Private Cloud (Amazon VPC) y las redes locales a través de un hub central.
+Esto simplifica tu red y pone fin a las complejas relaciones de interconexión.
+Actúa como un router en el Cloud -> cada nueva conexión sólo se realiza una vez.
+A medida que te expandes globalmente, el peering entre regiones conecta las puertas de enlace de tránsito de AWS utilizando la red global de AWS.
+Tus datos se cifran automáticamente y nunca viajan por el Internet público.
+
+Una empresa de TI desea trasladar sus recursos informáticos (incluidos los datos y las aplicaciones) de una región de AWS en EE.UU. a otra región de AWS en Europa.:
+¿Cuál de las siguientes opciones representa la solución correcta para este caso de uso?:
+- La empresa debería simplemente empezar a crear nuevos recursos en la región AWS de destino y luego migrar los datos y aplicaciones pertinentes a esta nueva región AWS:
+La empresa necesita crear recursos en la nueva región de AWS y, a continuación, trasladar los datos y aplicaciones pertinentes a la nueva región de AWS.
+No existe ninguna solución o servicio estándar que la empresa pueda utilizar para facilitar esta transición.
+
+¿Qué tipos de presupuesto se pueden crear en AWS Budgets (Selecciona tres)?:
+- Presupuesto de uso:
+- Presupuesto de reserva:
+- Presupuesto de costes:
+Presupuesto de uso - Te ayuda a planificar cuánto quieres utilizar uno o varios servicios.
+Presupuesto de reserva - Esto te ayuda a hacer un seguimiento del uso de tus instancias reservadas (RI). Dos formas de hacerlo - Presupuestos de utilización de instancias reservadas (RI) (Esto te permite ver si tus instancias reservadas (RI) están sin utilizar o infrautilizadas), Presupuestos de cobertura de instancias reservadas (RI) (Esto te permite ver qué parte del uso de tu instancia está cubierta por una reserva).
+Presupuesto de costes - Te ayuda a planificar cuánto quieres gastar en un servicio.
+
+¿Cuál de las siguientes afirmaciones es cierta sobre las etiquetas de asignación de costes en la facturación de AWS? (Selecciona dos):
+- Debes activar por separado las etiquetas generadas por AWS y las definidas por el usuario antes de que aparezcan en AWS Cost Explorer o en un informe de asignación de costes:
+- Para cada recurso, cada clave de etiqueta debe ser única, y cada clave de etiqueta sólo puede tener un valor:
+Una etiqueta de asignación de costes es una etiqueta que tú o AWS asignáis a un recurso de AWS. Cada etiqueta consta de una clave y un valor. Para cada recurso, cada clave de etiqueta debe ser única, y cada clave de etiqueta sólo puede tener un valor.
+Puedes utilizar etiquetas para organizar tus recursos, y etiquetas de asignación de costes para realizar un seguimiento detallado de tus costes de AWS.
+AWS proporciona dos tipos de etiquetas de asignación de costes -> las generadas por AWS y las definidas por el usuario. AWS define, crea y aplica las etiquetas generadas por AWS por ti, y tú defines, creas y aplicas las etiquetas definidas por el usuario.
+Debes activar ambos tipos de etiquetas por separado antes de que puedan aparecer en el AWS Cost Explorer o en un informe de asignación de costes.
+
+¿En qué región de AWS se almacenan los datos métricos de facturación de Amazon CloudWatch?:
+- Este de EE.UU. (Norte de Virginia) - us-east-1:
+Puedes monitorizar tus cargos estimados de AWS utilizando Amazon CloudWatch. Los datos de la métrica de facturación se almacenan en la región Este de EE.UU. (N. Virginia) y representan los cargos mundiales.
+Estos datos incluyen los cargos estimados de cada servicio de AWS que utilizas, además del total general estimado de tus cargos de AWS.
+
+¿Cuál de los siguientes modelos de Cloud Computing representa el servicio gmail?:
+- Software como servicio (SaaS):
+El Software como Servicio (SaaS) te proporciona un producto completo que dirige y gestiona el proveedor de servicios. Con una oferta de Software como Servicio (SaaS), no tienes que pensar en cómo se mantiene el servicio o cómo se gestiona la infraestructura subyacente. Sólo tienes que pensar en cómo vas a utilizar ese software concreto. Gmail es un ejemplo de Software como Servicio (SaaS).
+
+Un equipo de desarrollo busca un foro en el que figuren las preguntas y solicitudes más frecuentes de los clientes de AWS, junto con las soluciones proporcionadas por AWS.:
+¿Qué foro/servicio de AWS se puede utilizar para resolver un problema o buscar una solución?:
+- Centro de conocimiento de AWS (AWS re:post):
+El centro de conocimiento de AWS contiene las preguntas y solicitudes más frecuentes y comunes y las soluciones que AWS proporciona para las mismas.
+Este debería ser el punto de partida para buscar una solución o resolver un problema con los servicios de AWS.
+La URL del centro de conocimiento es https://aws.amazon.com/premiumsupport/knowledge-center/.
+
+¿Qué política de enrutamiento de Amazon Route 53 utilizarías cuando quieras enrutar tu tráfico en una configuración activo-pasivo?:
+- Enrutamiento de conmutación por error:
+Amazon Route 53 es un servicio web de Sistema de Nombres de Dominio (DNS) en el Cloud altamente disponible y escalable. Está diseñado para ofrecer a desarrolladores y empresas una forma extremadamente fiable y rentable de dirigir a los usuarios finales a las aplicaciones de Internet, traduciendo nombres como www.example.com en direcciones IP numéricas como 192.0.2.1, que los ordenadores utilizan para conectarse entre sí.
+La política de enrutamiento de conmutación por error se utiliza cuando quieres configurar la conmutación por error activo-pasivo. El enrutamiento de conmutación por error te permite enrutar el tráfico a un recurso cuando el recurso está sano o a un recurso diferente cuando el primer recurso no está sano. Los registros primario y secundario pueden enrutar el tráfico a cualquier cosa, desde un bucket de Amazon S3 configurado como sitio web hasta un complejo árbol de registros.
+
+¿Cuál de las siguientes afirmaciones es CORRECTA en relación con los grupos de seguridad y las listas de control de acceso a la red (NACL)? (Selecciona dos):
+- Un grupo de seguridad es de estado, es decir, permite automáticamente el tráfico de retorno:
+- Una lista de control de acceso a la red (NACL) contiene una lista numerada de reglas y las evalúa en orden creciente al decidir si permite el tráfico:
+Un grupo de seguridad actúa como un firewall virtual de tu instancia para controlar el tráfico entrante y saliente.
+Los grupos de seguridad actúan a nivel de instancia, no de subred. Los grupos de seguridad son de estado -> si envías una solicitud desde tu instancia, el tráfico de respuesta a esa solicitud se permite independientemente de las reglas del grupo de seguridad de entrada.
+Un grupo de seguridad evalúa todas las reglas antes de decidir si permite el tráfico.
+
+¿Qué servicio de AWS utilizarás si tienes que trasladar grandes volúmenes de datos locales al Cloud de AWS desde una ubicación remota con un ancho de banda limitado?:
+- AWS Snowball:
+AWS Snowball, que forma parte de la familia AWS Snow, es un dispositivo de migración de datos e informática de borde. Si tienes grandes cantidades de datos que necesitas migrar a AWS, la transferencia de datos offline con AWS Snowball puede superar el reto del ancho de banda limitado, y evitar la necesidad de alquilar ancho de banda adicional. AWS Snowball mueve terabytes de datos en aproximadamente una semana. Puedes utilizarlo para mover cosas como bases de datos, copias de seguridad, archivos, registros sanitarios, conjuntos de datos analíticos, datos de sensores IoT y contenido multimedia, especialmente cuando las condiciones de la red impiden plazos realistas para transferir grandes cantidades de datos tanto dentro como fuera de AWS.
+
+Una empresa busca una ruta guiada que le ayude a implementar, configurar y proteger sus nuevas cargas de trabajo, al tiempo que se asegura de que está preparada para operaciones continuas en el Cloud.:
+¿Cuál de los siguientes servicios/herramientas de AWS puede aprovecharse para este caso de uso?:
+- Fundamentos del Cloud:
+Cloud Foundations proporciona una ruta guiada para ayudar a los clientes a implementar, configurar y proteger sus nuevas cargas de trabajo, garantizando al mismo tiempo que están preparados para las operaciones continuas en el Cloud. Cloud Foundations ayuda a los clientes a navegar a través de las decisiones que necesitan tomar mediante Servicios de AWS, Soluciones de AWS, Soluciones de socios y Orientación.
+
+¿Cuál de los siguientes casos de uso es el más adecuado para la clase de almacenamiento Amazon EFS Standard-Infrequent Access (EFS Standard-IA)?:
+- Almacenamiento de archivos en una ubicación accesible para satisfacer los requisitos de auditoría:
+La clase de almacenamiento Amazon EFS Standard-Infrequent Access (EFS Standard-IA) reduce los costes de almacenamiento de los archivos a los que no se accede todos los días. Lo hace sin sacrificar la alta disponibilidad, la alta durabilidad, la elasticidad y el acceso al sistema de archivos POSIX que proporciona Amazon Elastic File System (Amazon EFS).
+AWS recomienda la clase de almacenamiento Amazon EFS Standard-Infrequent Access (EFS Standard-IA) si necesitas que todo tu conjunto de datos sea fácilmente accesible y quieres ahorrar automáticamente en costes de almacenamiento para los archivos a los que se accede con menos frecuencia. Los ejemplos incluyen mantener los archivos accesibles para satisfacer requisitos de auditoría, realizar análisis históricos o realizar copias de seguridad y recuperación. El almacenamiento de Amazon EFS Standard-Infrequent Access (EFS Standard-IA) es compatible con todas las características de Amazon EFS, y está disponible en todas las regiones de AWS en las que está disponible Amazon EFS.
+
+Las políticas de AWS Identity and Access Management (AWS IAM) se escriben como documentos JSON.:
+¿Cuáles de los siguientes son elementos obligatorios de una política IAM?:
+- Effect, Action:
+La mayoría de las políticas se almacenan en AWS como documentos JSON.
+Las políticas basadas en la identidad y las políticas utilizadas para establecer límites de permisos son documentos de política JSON que adjuntas a un usuario o rol.
+Las políticas basadas en recursos son documentos de política JSON que adjuntas a un recurso.
+Un documento de política JSON incluye estos elementos ->
+1. Información opcional sobre toda la política en la parte superior del documento
+2. Una o más declaraciones individuales
+Cada declaración incluye información sobre un único permiso. La información de una declaración está contenida en una serie de elementos.
+1. Versión - Especifica la versión del lenguaje de la política que quieres utilizar. Como mejor práctica, utiliza la última versión de 2012-10-17.
+2. Declaración - Utiliza este elemento principal de la política como contenedor de los siguientes elementos. Puedes incluir más de una declaración en una política.
+  a. Sid (Opcional) - Incluye un ID de declaración opcional para diferenciar tus declaraciones.
+  b. Effect - Utiliza ALLOW o DENY para indicar si la política permite o deniega el acceso.
+  c. Principal (Obligatorio sólo en algunas circunstancias) - Si creas una política basada en recursos, debes indicar la cuenta, usuario, rol o usuario federado al que quieres permitir o denegar el acceso. Si estás creando una política de permisos IAM para adjuntarla a un usuario o rol, no puedes incluir este elemento. El principal está implícito como ese usuario o rol.
+  d. Action - Incluye una lista de acciones que la política permite o deniega.
+  e. Resource (Obligatorio sólo en algunas circunstancias) - Si creas una política de permisos IAM, debes especificar una lista de recursos a los que se aplican las acciones. Si creas una política basada en recursos, este elemento es opcional. Si no incluyes este elemento, el recurso al que se aplica la acción es el recurso al que se adjunta la política.
+  f. Condition (Opcional) - Especifica las circunstancias en las que la política concede el permiso.
+
+Según el modelo de responsabilidad compartida de AWS, ¿cuáles de las siguientes son las responsabilidades del cliente? (Selecciona dos):
+- Habilitación del cifrado de datos almacenados en buckets de Amazon Simple Storage Service (Amazon S3):
+- Parches y actualizaciones del sistema operativo de una instancia de Amazon Elastic Compute Cloud (Amazon EC2):
+En el modelo de responsabilidad compartida de AWS, los clientes son responsables de administrar sus datos (incluidas las opciones de cifrado), clasificar sus activos y utilizar las herramientas de IAM para aplicar los permisos adecuados.
+La seguridad "en" el Cloud es responsabilidad del cliente. Un servicio como Amazon Elastic Compute Cloud (Amazon EC2) está categorizado como Infraestructura como Servicio (IaaS) y, como tal, requiere que el cliente realice todas las tareas necesarias de configuración y gestión de la seguridad.
+
+¿Qué servicios de AWS soportan Alta Disponibilidad por defecto? (Selecciona dos):
+- Amazon DynamoDB:
+- Amazon Elastic File System (Amazon EFS):
+Amazon DynamoDB es una base de datos de valores clave y documentos que ofrece un rendimiento de milisegundos de un solo dígito a cualquier escala. Se trata de una base de datos duradera, multiregión, multimaestro y totalmente gestionada, con seguridad, backup y restauración integrados, y almacenamiento en caché en memoria para aplicaciones a escala de Internet. Todos tus datos se almacenan en discos de estado sólido (SSD) y se replican automáticamente en varias zonas de disponibilidad (AZ) de una región de AWS, lo que proporciona alta disponibilidad y durabilidad de los datos.
+Amazon Elastic File System (Amazon EFS) proporciona un sistema de archivos NFS elástico, sencillo, escalable y totalmente administrado para su uso con los servicios en el Cloud de AWS y los recursos locales. Está diseñado para escalar bajo demanda a petabytes sin interrumpir las aplicaciones, creciendo y reduciéndose automáticamente a medida que añades y eliminas archivos, eliminando la necesidad de aprovisionar y administrar la capacidad para acomodar el crecimiento. Amazon EFS es un servicio regional que almacena datos dentro y a través de múltiples zonas de disponibilidad (AZ) para una alta disponibilidad y durabilidad.
+
+¿Cuál de las siguientes es una parte de la Infraestructura Global de AWS?:
+- Región de AWS:
+Una región de AWS es una ubicación física en todo el mundo donde AWS construye sus centros de datos.
+Cada grupo de centros de datos lógicos se denomina zona de disponibilidad (AZ).
+Cada región de AWS consta de múltiples AZ aisladas y físicamente separadas dentro de un área geográfica.
+
+¿El precio de AWS Lambda se basa en cuál de los siguientes criterios? (Selecciona dos):
+- El tiempo que tarda en ejecutarse la función de AWS Lambda:
+- Número de solicitudes de la función de AWS Lambda:
+AWS Lambda te permite ejecutar código sin aprovisionar ni administrar servidores. Con AWS Lambda, puedes ejecutar código para prácticamente cualquier tipo de aplicación o servicio backend, todo ello con cero administración. Sólo tienes que subir tu código y Lambda se encarga de todo lo necesario para ejecutar y escalar tu código con alta disponibilidad.
+Con AWS Lambda, pagas sólo por lo que utilizas. Se te cobra en función del número de solicitudes de tus funciones y de la duración, el tiempo que tarda en ejecutarse tu código. AWS Lambda cuenta una solicitud cada vez que comienza a ejecutarse en respuesta a una notificación de evento o a una llamada de invocación, incluidas las invocaciones de prueba desde la consola. La duración se calcula desde el momento en que tu código comienza a ejecutarse hasta que retorna o finaliza de otro modo, redondeado a los 100 ms más próximos.
+
+Un fallo de hardware de AWS ha afectado a uno de tus volúmenes de Amazon Elastic Block Store (Amazon EBS).:
+¿Qué servicio de AWS te alertará de los recursos afectados y te proporcionará una acción correctiva?:
+- AWS Health - AWS Personal Health Dashboard:
+AWS Health - AWS Personal Health Dashboard proporciona alertas y orientación para remediarlo cuando AWS experimenta eventos que pueden afectarte.
+AWS Health - AWS Personal Health Dashboard, las alertas se activan por cambios en la salud de tus recursos de AWS, dándote visibilidad de eventos, y orientación para ayudar a diagnosticar y resolver problemas rápidamente.
+Puedes consultar esta página https://health.aws.amazon.com/health/home para obtener información sobre el estado actual.
+
+Comparado con los precios de las instancias bajo demanda, ¿cuál es el mayor descuento posible ofrecido para las instancias reservadas (RI)?:
+- 72%:
+Las instancias reservadas (RI) te proporcionan un ahorro significativo (hasta el 72%) en tus costes de Amazon Elastic Compute Cloud (Amazon EC2) en comparación con los precios de las instancias bajo demanda. Las instancias reservadas (RI) no son instancias físicas, sino un descuento de facturación aplicado al uso de instancias bajo demanda en tu cuenta. Puedes adquirir una instancia reservada (RI) para un compromiso de un año o de tres, siendo el compromiso de tres años el que ofrece un mayor descuento.
+
+¿Qué servicio de AWS puede utilizarse como base de datos en memoria con alto rendimiento y baja latencia?:
+- Amazon ElastiCache:
+Amazon ElastiCache te permite configurar, ejecutar y escalar sin problemas almacenes de datos en memoria populares compatibles con código abierto en el Cloud. Crea aplicaciones de uso intensivo de datos o aumenta el rendimiento de tus bases de datos existentes recuperando datos de almacenes de datos en memoria de alto rendimiento y baja latencia. Amazon ElastiCache es una opción popular para casos de uso en tiempo real como almacenamiento en caché, almacenes de sesión, juegos, servicios geoespaciales, análisis en tiempo real y colas. ElastiCache no puede utilizarse para el procesamiento analítico en línea.
+
+Una empresa de productos sanitarios busca una forma duradera y rentable de almacenar sus datos históricos. Debido a requisitos de normativa, los datos deben almacenarse durante 10 años. ¿Qué solución de almacenamiento de AWS sugerirías?:
+- Amazon S3 Glacier Deep Archive:
+Amazon S3 Glacier Deep Archive es la clase de almacenamiento de menor coste de Amazon S3 y soporta la retención a largo plazo y la preservación digital de datos a los que se puede acceder una o dos veces al año.
+Está diseñado para clientes -especialmente los de sectores muy regulados, como los Servicios Financieros, la Sanidad y el Sector Público- que conservan conjuntos de datos durante 7-10 años o más para cumplir los requisitos normativos. Amazon S3 Glacier Deep Archive también puede utilizarse para casos de uso de backup y recuperación de desastres.
+Tiene un tiempo de recuperación (latencia del primer byte) de 12 a 48 horas.
+
+¿Qué servicio de AWS protege tu cuenta de AWS monitorizando la actividad maliciosa y detectando amenazas?:
+- Amazon GuardDuty:
+Amazon GuardDuty es un servicio de detección de amenazas que monitoriza la actividad maliciosa y el comportamiento no autorizado para proteger tu cuenta de AWS. Amazon GuardDuty analiza miles de millones de eventos en tus cuentas de AWS procedentes de AWS CloudTrail (actividad de usuarios y API de AWS en tus cuentas), Amazon VPC Flow Logs (datos de tráfico de red) y DNS Logs (patrones de consulta de nombres). Los hallazgos de seguridad se conservan y están disponibles a través de la consola y las API de Amazon GuardDuty durante 90 días. Transcurridos 90 días, los hallazgos se descartan. Para conservar las conclusiones durante más de 90 días, puedes habilitar AWS CloudWatch Events para que envíe automáticamente las conclusiones a un bucket de Amazon S3 de tu cuenta o a otro almacén de datos para su conservación a largo plazo.
+
+¿Cuáles de los siguientes son componentes de una VPN Site-to-Site de AWS? (Selecciona dos):
+- Customer Gateway:
+- Virtual Private Gateway (VGW):
+AWS Site-to-Site VPN te permite conectar de forma segura tu red local o sucursal a tu Amazon Virtual Private Cloud (Amazon VPC). Las conexiones VPN son una buena solución si tienes una necesidad inmediata y tus requisitos de ancho de banda son de bajos a modestos. Esta conexión va a través del Internet público. La pasarela privada virtual (VGW) / pasarela de tránsito y la pasarela de cliente son los componentes de una VPC.
+Una Virtual Private Gateway (VGW), también nombrada puerta de enlace privada virtual (VGW), es el concentrador VPN en el lado de Amazon de la conexión VPN Site-to-Site de AWS. Una puerta de enlace de cliente es un recurso en AWS que proporciona información a AWS sobre tu dispositivo de puerta de enlace de cliente.
+
+¿Cuál de las siguientes opciones es correcta en relación con los precios de AWS Shield Advanced?:
+- AWS Shield Advanced ofrece protección contra las tarifas más altas que podrían resultar de un ataque DDoS:
+AWS Shield Advanced ofrece cierta protección de costes frente a los picos en tu factura de AWS que podrían derivarse de un ataque DDoS. Esta protección de costes se proporciona para tus balanceadores de carga de Elastic Load Balancer (ELB), distribuciones de Amazon CloudFront, zonas alojadas en Amazon Route 53, instancias de Amazon Elastic Compute Cloud y tus aceleradores de AWS Global Accelerator.
+AWS Shield Advanced es un servicio de pago para todos los clientes, independientemente del plan de Soporte.
+
+¿Cuál de las siguientes opciones mejora la disponibilidad de una flota de instancias de Amazon Elastic Compute Cloud (Amazon EC2)?:
+- Implementar las instancias de Amazon Elastic Compute Cloud (Amazon EC2) en diferentes zonas de disponibilidad (AZ) de la misma región de AWS:
+AWS tiene el concepto de región, que es una ubicación física en todo el mundo donde AWS agrupa centros de datos. Cada región de AWS consta de varias (tres o más) zonas de disponibilidad (AZ) aisladas y separadas físicamente dentro de un área geográfica. Cada zona de disponibilidad (AZ) tiene energía, refrigeración y seguridad física independientes y está conectada mediante redes redundantes de latencia ultrabaja.
+Una zona de disponibilidad (AZ) es uno o más centros de datos discretos con alimentación, redes y conectividad redundantes en una región de AWS. Una región de AWS se refiere a una ubicación física en todo el mundo donde AWS agrupa centros de datos. Las zonas de disponibilidad (AZ) ofrecen a los clientes la posibilidad de operar aplicaciones de producción y bases de datos con mayor disponibilidad, tolerancia a fallos y escalabilidad de lo que sería posible desde un único centro de datos. Todas las zonas de disponibilidad (AZ) de una región de AWS están interconectadas con redes de gran ancho de banda y baja latencia, a través de fibra metropolitana dedicada totalmente redundante que proporciona redes de gran rendimiento y baja latencia entre las zonas de disponibilidad (AZ).
+
+Como Cloud Practitioner, ¿qué clase de almacenamiento de Amazon Simple Storage Service (Amazon S3) recomendarías para archivar datos?:
+- Amazon S3 Glacier Flexible Retrieval:
+Amazon S3 Glacier Flexible Retrieval (antes S3 Glacier) es la clase de almacenamiento ideal para archivar datos que no requieren acceso inmediato pero necesitan flexibilidad para recuperar grandes conjuntos de datos sin coste alguno, como los casos de uso de backup o recuperación de desastres. Es una clase de almacenamiento en el Cloud de Amazon S3 segura, duradera y de coste extremadamente bajo para archivar datos y realizar copias de seguridad a largo plazo. Está diseñado para ofrecer una durabilidad del 99,999999999%, y proporcionar capacidades integrales de seguridad y normativa que pueden ayudar a cumplir incluso los requisitos normativos más estrictos.
+
+¿Qué servicio de AWS se puede utilizar para ejecutar código activado por nuevos archivos que se cargan en Amazon Simple Storage Service (Amazon S3)?:
+- AWS Lambda:
+AWS Lambda te permite ejecutar código sin aprovisionar ni administrar servidores. Sólo pagas por el tiempo de computación que consumes. Con AWS Lambda, puedes ejecutar código para prácticamente cualquier tipo de aplicación o servicio backend, todo ello con cero administración. Sólo tienes que subir tu código y Lambda se encarga de todo lo necesario para ejecutar y escalar tu código con alta disponibilidad.
+Puedes utilizar Amazon S3 para que AWS Lambda procese datos inmediatamente después de una carga. Por ejemplo, puedes utilizar AWS Lambda para hacer miniaturas de imágenes, transcodificar vídeos, indexar archivos, procesar logs, validar contenido y agregar y filtrar datos en tiempo real.
+
+¿Cuál de las siguientes entidades de AWS proporciona la información necesaria para lanzar una instancia de Amazon Elastic Compute Cloud (Amazon EC2)?:
+- Amazon Machine Image (AMI):
+Amazon Machine Image (AMI) proporciona la información necesaria para lanzar una instancia. Debes especificar una Amazon Machine Image (AMI) cuando lances una instancia.
+Amazon Machine Image (AMI) incluye lo siguiente ->
+Una o varias instantáneas de Amazon Elastic Block Store (Amazon EBS), o, por ejemplo AMIs respaldadas por el almacén, una plantilla para el volumen raíz de la instancia (por ejemplo, un sistema operativo, un servidor de aplicaciones y aplicaciones).
+Permisos de lanzamiento que controlan qué cuentas de AWS pueden utilizar la Amazon Machine Image (AMI) para lanzar instancias.
+Una asignación de dispositivos de bloque que especifica los volúmenes que se adjuntarán a la instancia cuando se lance.
+
+¿Cuál de las siguientes capacidades proporciona Amazon Rekognition como característica lista para usar?:
+- Identificar objetos en una imagen:
+Con Amazon Rekognition, puedes identificar objetos, personas, texto, escenas y actividades en imágenes y vídeos, así como detectar cualquier contenido inapropiado. Amazon Rekognition también proporciona capacidades de análisis facial y búsqueda facial de gran precisión que puedes utilizar para detectar, analizar y comparar rostros para una amplia variedad de casos de uso de verificación de usuarios, recuento de personas y seguridad pública.
+
+Una agencia de ciberseguridad utiliza el Cloud de AWS y quiere llevar a cabo evaluaciones de seguridad en su propia infraestructura de AWS sin ninguna aprobación previa de AWS.:
+¿Cuál de las siguientes opciones describe/facilita esta práctica?:
+- Pruebas de penetración:
+Los clientes de AWS pueden llevar a cabo evaluaciones de seguridad o pruebas de penetración contra su infraestructura de AWS sin aprobación previa para unos pocos servicios comunes de AWS.
+Los clientes no pueden realizar evaluaciones de seguridad de la infraestructura de AWS, ni de los propios servicios de AWS.
+
+¿Cuál es la principal ventaja de desplegar una base de datos de Amazon Relational Database Service (Amazon RDS) en una configuración de réplica de lectura?:
+- La réplica de lectura mejora la escalabilidad de la base de datos:
+Amazon Relational Database Service (Amazon RDS) facilita la configuración, el funcionamiento y el escalado de una base de datos relacional en el Cloud. Las réplicas de lectura te permiten crear copias de sólo lectura que se sincronizan con tu base de datos maestra. Las réplicas de lectura se utilizan para mejorar el rendimiento de lectura.
+También puedes colocar tu réplica de lectura en una región de AWS diferente, más cerca de tus usuarios, para mejorar el rendimiento.
+Las réplicas de lectura son un ejemplo de escalado horizontal de recursos.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Una empresa de juegos está buscando una tecnología/servicio que pueda ofrecer un juego consistente de baja latencia para garantizar una gran experiencia de usuario a los usuarios finales en distintas ubicaciones.:
 ¿Qué tecnología/servicio de AWS proporcionará el necesario acceso de baja latencia a los usuarios finales?:
 - AWS Local Zones:
@@ -51,7 +424,8 @@ Una empresa de análisis de datos está ejecutando una aplicación propia de an�
 desea utilizar un servicio de almacenamiento al que accederían cientos de instancias EC2 simultáneamente para añadir datos a los archivos existentes.:
 Como Cloud Practitioner, ¿qué servicio de AWS sugerirías para este caso de uso?:
 - Amazon Elastic File System (Amazon EFS):
-Servicio de almacenamiento de archivos para su uso con Amazon EC2. Amazon EFS proporciona una interfaz de sistema de archivos,
+Servicio de almacenamiento de archivos para su uso con Amazon EC2.
+Amazon EFS proporciona una interfaz de sistema de archivos,
 semántica de acceso al sistema de archivos y almacenamiento accesible simultáneamente para hasta miles de instancias de Amazon EC2.
 Amazon EFS utiliza el protocolo Network File System.
 
@@ -73,7 +447,8 @@ para descubrir y proteger tus datos confidenciales en AWS.
 AWS Shield Advanced proporciona protección ampliada contra ataques DDoS para las aplicaciones web que se ejecutan en ¿cuál de los siguientes recursos? (Selecciona dos):
 - Amazon Route 53:
 - AWS Global Accelerator:
-AWS Shield Standard está activado para todos los clientes de AWS, por defecto. Para niveles superiores de protección contra ataques, puedes suscribirte a AWS Shield Advanced.
+AWS Shield Standard está activado para todos los clientes de AWS, por defecto.
+Para niveles superiores de protección contra ataques, puedes suscribirte a AWS Shield Advanced.
 Con Shield Advanced, también tienes acceso exclusivo a métricas e informes avanzados en tiempo real para obtener una amplia visibilidad de los ataques a tus recursos de AWS.
 Con la ayuda del DRT (equipo de respuesta DDoS), AWS Shield Advanced incluye detección y mitigación inteligente de ataques DDoS
 no sólo para los ataques de la capa de red (capa 3) y de transporte (capa 4), sino también para los de la capa de aplicación (capa 7).
@@ -97,7 +472,8 @@ Las instancias de tu VPC no necesitan direcciones IP públicas para comunicarse 
 El tráfico entre tu VPC y el otro servicio no sale de la red de Amazon.
 Hay dos tipos de endpoints de la VPC -> endpoints de interfaz y endpoints de Gateway.
 Un endpoint de interfaz es una interfaz de red elástica con una dirección IP privada del rango de direcciones IP de tu subred
-que sirve como punto de entrada para el tráfico destinado a un servicio soportado. Los puntos finales de interfaz funcionan con AWS PrivateLink,
+que sirve como punto de entrada para el tráfico destinado a un servicio soportado.
+Los puntos finales de interfaz funcionan con AWS PrivateLink,
 una tecnología que te permite acceder de forma privada a los servicios utilizando direcciones IP privadas.
 Un Gateway Endpoint es una puerta de enlace que especificas como destino de una ruta en tu tabla de rutas para el tráfico destinado a un servicio de AWS soportado.
 Se admiten los siguientes servicios de AWS ->
@@ -145,7 +521,8 @@ Consta de siete capacidades que se muestran en la siguiente figura.
 - ingenieros:
 
 Alerta de examen:
-Echa un vistazo a las siguientes seis ventajas del Cloud Computing. Seguro que te hacen preguntas sobre las ventajas del Cloud Computing en comparación con una configuración tradicional en las instalaciones
+Echa un vistazo a las siguientes seis ventajas del Cloud Computing.
+Seguro que te hacen preguntas sobre las ventajas del Cloud Computing en comparación con una configuración tradicional en las instalaciones
 https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html
 Seis ventajas de la computación en la nube:
 - Cambie los gastos fijos por gastos variables : en lugar de tener que invertir mucho en centros de datos y servidores antes de saber cómo los va a utilizar,
@@ -154,8 +531,8 @@ puede pagar sólo cuando consume recursos informáticos y pagar sólo por cuánt
 Debido a que el uso de cientos de miles de clientes se agrega en la nube, proveedores como AWS pueden lograr mayores economías de escala, lo que se traduce en precios de pago por uso más bajos.
 - Deje de adivinar la capacidad : elimine las conjeturas sobre las necesidades de capacidad de su infraestructura.
 Cuando toma una decisión sobre la capacidad antes de implementar una aplicación, a menudo termina con costosos recursos inactivos o lidiando con una capacidad limitada.
-Con la computación en la nube, estos problemas desaparecen. Puede acceder a tanta o tan poca capacidad como necesite y ampliarla o reducirla según sea necesario
-con solo unos minutos de aviso.
+Con la computación en la nube, estos problemas desaparecen.
+Puede acceder a tanta o tan poca capacidad como necesite y ampliarla o reducirla según sea necesario con solo unos minutos de aviso.
 - Aumente la velocidad y la agilidad : en un entorno de computación en la nube, los nuevos recursos de TI están a solo un clic de distancia,
 lo que significa que usted reduce el tiempo para poner esos recursos a disposición de sus desarrolladores de semanas a solo minutos.
 Esto da como resultado un aumento dramático en la agilidad de la organización, ya que el costo y el tiempo que lleva experimentar y desarrollar es significativamente menor.
@@ -171,7 +548,8 @@ Todos los demás servicios que admiten puntos finales de VPC utilizan un punto f
 (ten en cuenta que Amazon S3 también admite el endpoint de interfaz de VPC).
 
 Alerta de examen:
-Puede que veas casos de uso en los que se te pida que selecciones uno de CloudWatch vs CloudTrail vs Config. Recuerda esta regla general
+Puede que veas casos de uso en los que se te pida que selecciones uno de CloudWatch vs CloudTrail vs Config.
+Recuerda esta regla general ->
 Piensa en supervisión del rendimiento de los recursos, eventos y alertas; piensa en CloudWatch.
 Piensa en actividad, la gobernanza, la normativa y auditoría operativa y auditoría de riesgos de la cuenta; piensa en CloudTrail.
 Piensa en el historial de cambios, la auditoría y el cumplimiento de recursos específicos; piensa en Config.
@@ -214,10 +592,12 @@ pero la canceló a los 30 segundos porque quería aprovisionar otro tipo de inst
 Existe una tarifa mínima de un minuto para las instancias EC2 basadas en Linux, por lo que ésta es la opción correcta.
 
 ¿Cuál de las siguientes opciones es CORRECTA en relación con la eliminación de una cuenta de AWS Organizaciones AWS?:
-La cuenta de AWS debe poder funcionar como cuenta independiente. Sólo entonces se puede eliminar de las organizaciones de AWS:
+La cuenta de AWS debe poder funcionar como cuenta independiente.:
+Sólo entonces se puede eliminar de las organizaciones de AWS:
 Puedes eliminar una cuenta de tu organización sólo si la cuenta tiene la información necesaria para funcionar
-como cuenta independiente. Para cada cuenta que quieras convertir en autónoma, debes aceptar el Acuerdo de Cliente de AWS,
-elegir un plan de soporte, proporcionar y verificar la información de contacto requerida y proporcionar un método de pago actual. AWS utiliza el método de pago para cobrar cualquier actividad facturable (no de la capa gratuita de AWS) de AWS que se produzca mientras la cuenta no esté vinculada a una organización.
+como cuenta independiente.
+Para cada cuenta que quieras convertir en autónoma, debes aceptar el Acuerdo de Cliente de AWS, elegir un plan de soporte, proporcionar y verificar la información de contacto requerida y proporcionar un método de pago actual.
+AWS utiliza el método de pago para cobrar cualquier actividad facturable (no de la capa gratuita de AWS) de AWS que se produzca mientras la cuenta no esté vinculada a una organización.
 
 ¿Cuál de los siguientes planes de AWS Support proporciona acceso únicamente a las comprobaciones básicas de las comprobaciones de buenas prácticas de AWS Trusted Advisor? (Selecciona dos):
 - AWS Basic Support:
@@ -253,8 +633,8 @@ Amazon Elastic Block Store (EBS) es un servicio de almacenamiento en bloque fác
 diseñado para su uso con Amazon Elastic Compute Cloud (EC2) para cargas de trabajo intensivas en rendimiento
 y transacciones a cualquier escala.
 Diseñados para sistemas de misión crítica, los volúmenes EBS se replican dentro de una zona de disponibilidad (AZ)
-y pueden escalar fácilmente hasta petabytes de datos. Puedes adjuntar un volumen EBS disponible a una instancia
-que esté en la misma zona de disponibilidad (AZ) que el volumen.
+y pueden escalar fácilmente hasta petabytes de datos.
+Puedes adjuntar un volumen EBS disponible a una instancia que esté en la misma zona de disponibilidad (AZ) que el volumen.
 
 Según el modelo de responsabilidad compartida de AWS, ¿cuál de las siguientes es una responsabilidad compartida tanto de AWS como del cliente?:
 - Gestión de la configuración:
@@ -307,15 +687,16 @@ Cada región de AWS consta de un mínimo de tres AZ aisladas y físicamente sepa
 Cada AZ tiene energía, refrigeración y seguridad física independientes y
 está conectada mediante redes redundantes de latencia ultrabaja.
 Una zona de disponibilidad (AZ) es uno o más centros de datos discretos con energía, redes y
-conectividad redundantes en una región de AWS. Todas las AZ de una región de AWS están interconectadas
-con redes de gran ancho de banda y baja latencia, a través de fibra metropolitana dedicada totalmente redundante,
+conectividad redundantes en una región de AWS.
+Todas las AZ de una región de AWS están interconectadas con redes de gran ancho de banda y baja latencia, a través de fibra metropolitana dedicada totalmente redundante,
 que proporciona redes de alto rendimiento y baja latencia entre las AZ.
 
 ¿Cuál de las siguientes es una ventaja de utilizar los servicios gestionados de AWS, como Amazon Relational Database Service (Amazon RDS)?:
 - El rendimiento de una instancia de Amazon Relational Database Service (Amazon RDS) administrada por AWS es mejor que el de una instancia de base de datos administrada por el cliente:
 Como las instancias RDS están optimizadas para la memoria, el rendimiento o la E/S, por lo tanto, el rendimiento de la instancia de Amazon Relational Database Service (Amazon RDS) administrada por AWS es mejor que el de una instancia de base de datos administrada por el cliente.
 
-Una empresa necesita una solución de almacenamiento para un proyecto en el que se accede a los datos con menos frecuencia, pero se necesita un acceso rápido cuando es necesario. ¿Qué clase de almacenamiento S3 es la MÁS rentable para el caso de uso dado?:
+Una empresa necesita una solución de almacenamiento para un proyecto en el que se accede a los datos con menos frecuencia, pero se necesita un acceso rápido cuando es necesario.:
+¿Qué clase de almacenamiento S3 es la MÁS rentable para el caso de uso dado?:
 - S3 Standard-Infrequent Access (S3 Standard-IA):
 Es para datos a los que se accede con menos frecuencia, pero que requieren un acceso rápido cuando se necesitan.
 
@@ -340,7 +721,8 @@ Cuando tomas una decisión sobre la capacidad antes de desplegar una aplicación
 a menudo acabas sentado sobre costosos recursos ociosos o lidiando con una capacidad limitada.
 Con el Cloud Computing, estos problemas desaparecen.
 Puedes acceder a tanta o tan poca capacidad como necesites, y ampliarla o
-reducirla según sea necesario con sólo unos minutos de preaviso. Puedes dejar de adivinar la capacidad.
+reducirla según sea necesario con sólo unos minutos de preaviso.
+Puedes dejar de adivinar la capacidad.
 
 Un gestor de proyectos, que trabaja en AWS por primera vez, está confundido sobre cómo se utilizan los créditos en AWS.:
 Hay dos créditos disponibles en la cuenta del gestor.:
@@ -358,67 +740,89 @@ Crédito más antiguo
 Para el caso de uso dado, se aplica el crédito uno, que caduca en julio, al cargo de Amazon EC2,
 lo que te deja con un cargo de 900$ de Amazon EC2 y un cargo de 500$ de Amazon S3.
 A continuación, se aplica el crédito dos a los 900$ restantes de uso de Amazon EC2.
-Tienes que pagar 850$ por Amazon EC2 y 500$ por Amazon S3. Ahora se han agotado todos tus créditos.
+Tienes que pagar 850$ por Amazon EC2 y 500$ por Amazon S3.
+Ahora se han agotado todos tus créditos.
 
 Una empresa de análisis de big data está trasladando su infraestructura de TI de un centro de datos local al Cloud de AWS.:
 La empresa tiene algunas licencias de software vinculadas a servidores que desea utilizar en AWS.:
 Como Cloud Practitioner, ¿cuál de los siguientes tipos de instancia EC2 recomendarías a la empresa?:
 - Host dedicado:
-Los hosts dedicados de Amazon EC2 te permiten utilizar tus licencias de software elegibles de proveedores como Microsoft y Oracle en Amazon EC2. Un host dedicado de Amazon EC2 es un servidor físico totalmente dedicado para tu uso, por lo que puedes ayudar a cumplir los requisitos corporativos.
+Los hosts dedicados de Amazon EC2 te permiten utilizar tus licencias de software elegibles de proveedores como Microsoft y Oracle en Amazon EC2.
+Un host dedicado de Amazon EC2 es un servidor físico totalmente dedicado para tu uso, por lo que puedes ayudar a cumplir los requisitos corporativos.
 
 ¿Qué servicio de AWS te ayudará a recibir alertas cuando la utilización de la reserva caiga por debajo del umbral definido?:
 AWS Budgets:
 Permite establecer presupuestos personalizados que te avisan cuando tus costes o tu uso superan (o se prevé que superen) la cantidad presupuestada.
-También puedes utilizar AWS Budgets para establecer objetivos de utilización o cobertura de reservas y recibir alertas cuando tu utilización caiga por debajo del umbral que definas. Las alertas de reserva son compatibles con las reservas de Amazon EC2, Amazon RDS, Amazon Redshift, Amazon ElastiCache y Amazon Elasticsearch.
+También puedes utilizar AWS Budgets para establecer objetivos de utilización o cobertura de reservas y recibir alertas cuando tu utilización caiga por debajo del umbral que definas.
+Las alertas de reserva son compatibles con las reservas de Amazon EC2, Amazon RDS, Amazon Redshift, Amazon ElastiCache y Amazon Elasticsearch.
 
 ¿Cuál de los siguientes servicios de AWS puede utilizarse para conectar el entorno local de una empresa a una VPC sin utilizar el Internet público?:
 - AWS Direct Connect:
 Establece una conexión de red dedicada desde tus instalaciones a AWS.
-Puedes utilizar AWS Direct Connect para establecer una interfaz virtual privada desde tu red local directamente a tu Amazon VPC, proporcionándote una conexión de red privada de gran ancho de banda entre tu red y tu VPC. Esta conexión es privada y no va por el Internet público. Se tarda al menos un mes en establecer esta conexión física.
+Puedes utilizar AWS Direct Connect para establecer una interfaz virtual privada desde tu red local directamente a tu Amazon VPC, proporcionándote una conexión de red privada de gran ancho de banda entre tu red y tu VPC.
+Esta conexión es privada y no va por el Internet público.
+Se tarda al menos un mes en establecer esta conexión física.
 
 ¿Cuáles de los siguientes son los servicios de almacenamiento que ofrece el Cloud de AWS? (Selecciona dos):
 - Amazon Simple Storage Service (Amazon S3):
 - Amazon Elastic File System (Amazon EFS):
 Amazon Simple Storage Service (Amazon S3) es un servicio de almacenamiento de objetos que ofrece escalabilidad, disponibilidad de datos, seguridad y rendimiento líderes en el sector.
-Amazon Elastic File System (Amazon EFS) proporciona un sistema de archivos NFS elástico, sencillo, escalable y totalmente administrado para su uso con los servicios en el Cloud de AWS y los recursos locales. Está diseñado para escalar bajo demanda a petabytes sin interrumpir las aplicaciones, creciendo y reduciéndose automáticamente a medida que añades y eliminas archivos, eliminando la necesidad de aprovisionar y administrar la capacidad para acomodar el crecimiento.
+Amazon Elastic File System (Amazon EFS) proporciona un sistema de archivos NFS elástico, sencillo, escalable y totalmente administrado para su uso con los servicios en el Cloud de AWS y los recursos locales.
+Está diseñado para escalar bajo demanda a petabytes sin interrumpir las aplicaciones, creciendo y reduciéndose automáticamente a medida que añades y eliminas archivos, eliminando la necesidad de aprovisionar y administrar la capacidad para acomodar el crecimiento.
 
 Una empresa de TI está planeando migrar de un entorno on-premise (en las instalaciones) al Cloud de AWS.:
 ¿Cuál de las siguientes áreas de gasto supondría un ahorro de costes cuando la empresa se traslade al Cloud de AWS?:
 (Selecciona dos):
 - Gasto en infraestructura de hardware del centro de datos:
 - Gasto en seguridad física del centro de datos:
-La empresa no necesita gastar en la infraestructura de hardware informático ni en la seguridad física del centro de datos. Así que estas áreas de gasto supondrían un ahorro de costes. El gasto en la cuota de licencia de la aplicación SaaS, el salario del desarrollador y el salario del gestor de proyectos seguiría siendo el mismo.
+La empresa no necesita gastar en la infraestructura de hardware informático ni en la seguridad física del centro de datos.
+Así que estas áreas de gasto supondrían un ahorro de costes.
+El gasto en la cuota de licencia de la aplicación SaaS, el salario del desarrollador y el salario del gestor de proyectos seguiría siendo el mismo.
 
-Una empresa quiere mejorar la resiliencia de su aplicación insignia, por lo que desea pasar de su sistema de base de datos tradicional a un servicio de base de datos AWS NoSQL gestionado que soporte la configuración activa-activa tanto en la región Este como en la Oeste de EE.UU. de AWS. La configuración activo-activo con soporte entre regiones es el criterio principal para cualquier solución de base de datos que la empresa considere.:
+Una empresa quiere mejorar la resiliencia de su aplicación insignia, por lo que desea pasar de su sistema de base de datos tradicional a un servicio de base de datos AWS NoSQL gestionado que soporte la configuración activa-activa tanto en la región Este como en la Oeste de EE.UU. de AWS.:
+La configuración activo-activo con soporte entre regiones es el criterio principal para cualquier solución de base de datos que la empresa considere.:
 ¿Qué servicio de base de datos de AWS es el más adecuado para este requisito?:
 - Amazon DynamoDB con tablas globales:
-Amazon DynamoDB es una base de datos NoSQL de valores clave, sin servidor y totalmente administrada, diseñada para ejecutar aplicaciones de alto rendimiento a cualquier escala. DynamoDB ofrece seguridad integrada, copias de seguridad continuas, replicación multirregión automatizada, almacenamiento en caché en memoria y herramientas de exportación de datos.
-Las tablas globales de DynamoDB replican los datos automáticamente en las regiones de AWS que elijas y escalan automáticamente la capacidad para adaptarse a tus cargas de trabajo. Con las tablas globales, tus aplicaciones distribuidas globalmente pueden acceder a los datos localmente en las regiones seleccionadas para obtener un rendimiento de lectura y escritura de milisegundos de un solo dígito. DynamoDB ofrece el soporte activo-activo entre regiones que necesita la empresa.
+Amazon DynamoDB es una base de datos NoSQL de valores clave, sin servidor y totalmente administrada, diseñada para ejecutar aplicaciones de alto rendimiento a cualquier escala.
+DynamoDB ofrece seguridad integrada, copias de seguridad continuas, replicación multirregión automatizada, almacenamiento en caché en memoria y herramientas de exportación de datos.
+Las tablas globales de DynamoDB replican los datos automáticamente en las regiones de AWS que elijas y escalan automáticamente la capacidad para adaptarse a tus cargas de trabajo.
+Con las tablas globales, tus aplicaciones distribuidas globalmente pueden acceder a los datos localmente en las regiones seleccionadas para obtener un rendimiento de lectura y escritura de milisegundos de un solo dígito.
+DynamoDB ofrece el soporte activo-activo entre regiones que necesita la empresa.
 
 ¿Qué opción es una función común de las partes interesadas para la perspectiva de la plataforma AWS Cloud Adoption Framework (AWS CAF)? (Selecciona dos):
 - Chief Technology Officer (CTO):
 - Ingeniero:
-El AWS Cloud Adoption Framework (AWS CAF) aprovecha la experiencia y las mejores prácticas de AWS para ayudarte a transformar digitalmente y acelerar tus resultados empresariales mediante el uso innovador de AWS. El CAF de AWS identifica capacidades organizativas específicas que apuntalan el éxito de las transformaciones en el Cloud. Estas capacidades proporcionan orientación sobre las mejores prácticas que te ayudan a mejorar tu preparación paral Cloud.
+El AWS Cloud Adoption Framework (AWS CAF) aprovecha la experiencia y las mejores prácticas de AWS para ayudarte a transformar digitalmente y acelerar tus resultados empresariales mediante el uso innovador de AWS.
+El CAF de AWS identifica capacidades organizativas específicas que apuntalan el éxito de las transformaciones en el Cloud.
+Estas capacidades proporcionan orientación sobre las mejores prácticas que te ayudan a mejorar tu preparación paral Cloud.
 AWS CAF agrupa sus capacidades en seis perspectivas -> Negocio, Personas, Gobernanza, Plataforma, Seguridad y Operaciones.
-La perspectiva de la plataforma se centra en acelerar la entrega de tus cargas de trabajo en el Cloud mediante un entorno de Cloud híbrido, escalable y de nivel empresarial. Comprende siete capacidades que se muestran en la siguiente figura. Las partes interesadas habituales son el CTO, los líderes tecnológicos, los arquitectos y los ingenieros.
+La perspectiva de la plataforma se centra en acelerar la entrega de tus cargas de trabajo en el Cloud mediante un entorno de Cloud híbrido, escalable y de nivel empresarial.
+Comprende siete capacidades que se muestran en la siguiente figura.
+Las partes interesadas habituales son el CTO, los líderes tecnológicos, los arquitectos y los ingenieros.
 
 El equipo de DevOps de una empresa de comercio electrónico está intentando depurar problemas de rendimiento de su aplicación sin servidor construida mediante una arquitectura de microservicios.:
 Como profesional del Cloud, ¿qué servicio de AWS recomendarías para este caso de uso?:
 - AWS X-Ray:
-Puedes utilizar AWS X-Ray para analizar y depurar aplicaciones distribuidas y sin servidor, como las creadas con una arquitectura de microservicios. Con X-Ray, puedes comprender el rendimiento de tu aplicación y sus servicios subyacentes para identificar y solucionar la causa raíz de los problemas y errores de rendimiento.
+Puedes utilizar AWS X-Ray para analizar y depurar aplicaciones distribuidas y sin servidor, como las creadas con una arquitectura de microservicios.
+Con X-Ray, puedes comprender el rendimiento de tu aplicación y sus servicios subyacentes para identificar y solucionar la causa raíz de los problemas y errores de rendimiento.
 
 Una empresa quiere pasarse al Cloud de AWS y lanzar nuevas características con iteraciones rápidas utilizando los servicios pertinentes de AWS siempre que sea necesario.:
 ¿Cuál de las siguientes características del Cloud de AWS quiere aprovechar?:
 - Agilidad:
 En el mundo de la computación en el Cloud, "Agilidad" se refiere a la capacidad de desarrollar, probar y lanzar rápidamente aplicaciones de software
 que impulsen el crecimiento empresarial Otra forma de explicar la "Agilidad" -> AWS proporciona una infraestructura global masiva en el Cloud que te permite innovar,
-experimentar e iterar rápidamente. En lugar de esperar semanas o meses por el hardware, puedes desplegar instantáneamente nuevas aplicaciones. Esta capacidad se llama agilidad.
+experimentar e iterar rápidamente.
+En lugar de esperar semanas o meses por el hardware, puedes desplegar instantáneamente nuevas aplicaciones.
+Esta capacidad se llama agilidad.
 
 ¿Qué servicios de AWS se pueden utilizar para desacoplar componentes de una aplicación basada en microservicios en el Cloud de AWS? (Selecciona dos):
 - Amazon Simple Queue Service (SQS):
 - Amazon Simple Notification Service (SNS):
-Amazon Simple Queue Service (SQS) es un servicio de cola de mensajes totalmente administrado que te permite desacoplar y escalar microservicios, sistemas distribuidos y aplicaciones sin servidor. Utilizando SQS, puedes enviar, almacenar y recibir mensajes entre componentes de software a cualquier volumen, sin perder mensajes ni requerir que otros servicios estén disponibles.
-Amazon Simple Notification Service (SNS) es un servicio de mensajería pub/sub de alta disponibilidad, duradero, seguro y totalmente administrado que te permite desacoplar microservicios, sistemas distribuidos y aplicaciones sin servidor. Utilizando los temas de Amazon SNS, tus sistemas publicadores pueden enviar mensajes a un gran número de puntos finales suscriptores para procesarlos en paralelo, incluidas las colas de Amazon SQS, las funciones de AWS Lambda y los webhooks HTTP/S. Además, SNS puede utilizarse para distribuir notificaciones a los usuarios finales mediante push móvil, SMS y correo electrónico.
+Amazon Simple Queue Service (SQS) es un servicio de cola de mensajes totalmente administrado que te permite desacoplar y escalar microservicios, sistemas distribuidos y aplicaciones sin servidor.
+Utilizando SQS, puedes enviar, almacenar y recibir mensajes entre componentes de software a cualquier volumen, sin perder mensajes ni requerir que otros servicios estén disponibles.
+Amazon Simple Notification Service (SNS) es un servicio de mensajería pub/sub de alta disponibilidad, duradero, seguro y totalmente administrado que te permite desacoplar microservicios, sistemas distribuidos y aplicaciones sin servidor.
+Utilizando los temas de Amazon SNS, tus sistemas publicadores pueden enviar mensajes a un gran número de puntos finales suscriptores para procesarlos en paralelo, incluidas las colas de Amazon SQS, las funciones de AWS Lambda y los webhooks HTTP/S.
+Además, SNS puede utilizarse para distribuir notificaciones a los usuarios finales mediante push móvil, SMS y correo electrónico.
 
 ¿Qué servicios de AWS pueden utilizarse para facilitar la gestión del cambio organizativo, que forma parte del pilar fiabilidad del AWS Well-Architected Framework? (Selecciona tres):
 - AWS CloudTrail:
@@ -432,37 +836,56 @@ AWS Config es un servicio que te permite valorar, auditar y evaluar las configur
 Config monitoriza y registra continuamente las configuraciones de tus recursos de AWS y
 te permite automatizar la evaluación de las configuraciones registradas comparándolas con las configuraciones deseadas.
 Amazon CloudWatch es un servicio de monitorización y observabilidad creado para ingenieros de DevOps, desarrolladores, ingenieros de fiabilidad de sitios (SRE)
-y administradores de TI. CloudWatch proporciona datos y perspectivas procesables para monitorizar las aplicaciones,
+y administradores de TI.
+CloudWatch proporciona datos y perspectivas procesables para monitorizar las aplicaciones,
 responder a los cambios de rendimiento en todo el sistema, optimizar la utilización de los recursos y obtener una visión unificada de la salud operativa.
 
-Una startup unicornio está creando una aplicación analítica compatible con una interfaz basada en el habla. La aplicación aceptará entradas basadas en el habla de los usuarios y luego transmitirá los resultados mediante el habla. Como Profesional del Cloud, ¿qué solución recomendarías para este caso de uso?:
-- Utiliza Amazon Transcribe para convertir el habla en texto para el análisis posterior. A continuación, utiliza Amazon Polly para transmitir los resultados de texto a través del habla:
-Puedes utilizar Amazon Transcribe para añadir capacidad de conversión de habla a texto a tus aplicaciones. Amazon Transcribe utiliza un proceso de Deep Learning llamado reconocimiento automático del habla (ASR) para convertir el habla en texto con rapidez y precisión. Amazon Transcribe puede utilizarse para transcribir llamadas de atención al cliente, automatizar subtítulos y subtitulado, y generar metadatos para activos multimedia.
+Una startup unicornio está creando una aplicación analítica compatible con una interfaz basada en el habla.:
+La aplicación aceptará entradas basadas en el habla de los usuarios y luego transmitirá los resultados mediante el habla.:
+Como Profesional del Cloud, ¿qué solución recomendarías para este caso de uso?:
+- Utiliza Amazon Transcribe para convertir el habla en texto para el análisis posterior.:
+A continuación, utiliza Amazon Polly para transmitir los resultados de texto a través del habla:
+Puedes utilizar Amazon Transcribe para añadir capacidad de conversión de habla a texto a tus aplicaciones.
+Amazon Transcribe utiliza un proceso de Deep Learning llamado reconocimiento automático del habla (ASR) para convertir el habla en texto con rapidez y precisión.
+Amazon Transcribe puede utilizarse para transcribir llamadas de atención al cliente, automatizar subtítulos y subtitulado, y generar metadatos para activos multimedia.
 
 ¿Qué servicio de seguridad de AWS está habilitado para todos los clientes de AWS, por defecto, sin coste adicional?:
 - AWS Shield Standard:
-AWS Shield Standard te defiende contra los ataques DDoS más comunes y frecuentes de la capa de red y transporte dirigidos a tu sitio web o aplicaciones. Aunque AWS Shield Standard ayuda a proteger a todos los clientes de AWS, obtienes mejor protección si utilizas Amazon CloudFront y Amazon Route 53. Todos los clientes de AWS se benefician de las protecciones automáticas de AWS Shield Standard, sin cargo adicional.
+AWS Shield Standard te defiende contra los ataques DDoS más comunes y frecuentes de la capa de red y transporte dirigidos a tu sitio web o aplicaciones.
+Aunque AWS Shield Standard ayuda a proteger a todos los clientes de AWS, obtienes mejor protección si utilizas Amazon CloudFront y Amazon Route 53.
+Todos los clientes de AWS se benefician de las protecciones automáticas de AWS Shield Standard, sin cargo adicional.
 
-Una empresa utiliza instancias EC2 reservadas en varias unidades y cada unidad tiene su propia cuenta de AWS. Sin embargo, algunas de las unidades infrautilizan sus instancias reservadas, mientras que otras unidades necesitan más instancias reservadas. Como Cloud Practitioner, ¿cuál de las siguientes recomendarías como la solución más rentable?:
+Una empresa utiliza instancias EC2 reservadas en varias unidades y cada unidad tiene su propia cuenta de AWS.:
+Sin embargo, algunas de las unidades infrautilizan sus instancias reservadas, mientras que otras unidades necesitan más instancias reservadas.:
+Como Cloud Practitioner, ¿cuál de las siguientes recomendarías como la solución más rentable?:
 - Utiliza AWS Organizations para gestionar las cuentas de AWS de todas las unidades y luego comparte las instancias EC2 reservadas entre todas las unidades:
-AWS Organizations te ayuda a administrar centralmente la facturación; controlar el acceso, la normativa y la seguridad; y compartir recursos entre tus cuentas de AWS. Con AWS Organizaciones, puedes automatizar la creación de cuentas, crear grupos de cuentas que reflejen tus necesidades empresariales y aplicar políticas a estos grupos para su gobernanza. También puedes simplificar la facturación configurando un único método de pago para todas tus cuentas de AWS. AWS Organizaciones está disponible para todos los clientes de AWS sin coste adicional.
+AWS Organizations te ayuda a administrar centralmente la facturación; controlar el acceso, la normativa y la seguridad; y compartir recursos entre tus cuentas de AWS.
+Con AWS Organizaciones, puedes automatizar la creación de cuentas, crear grupos de cuentas que reflejen tus necesidades empresariales y aplicar políticas a estos grupos para su gobernanza.
+También puedes simplificar la facturación configurando un único método de pago para todas tus cuentas de AWS.
+AWS Organizaciones está disponible para todos los clientes de AWS sin coste adicional.
 
 Comparado con los precios de las instancias bajo demanda, ¿cuál es el mayor descuento posible ofrecido para las instancias spot?:
 - 90%:
-Las instancias spot de Amazon EC2 te permiten aprovechar la capacidad EC2 no utilizada en el Cloud de AWS. Las instancias spot están disponibles con un descuento de hasta el 90% en comparación con los precios de las instancias bajo demanda. Puedes utilizar instancias spot para diversas aplicaciones sin estado, tolerantes a fallos o flexibles, como big data, cargas de trabajo en contenedores, CI/CD, servidores web, informática de alto rendimiento (HPC) y otras cargas de trabajo de prueba y desarrollo.
+Las instancias spot de Amazon EC2 te permiten aprovechar la capacidad EC2 no utilizada en el Cloud de AWS.
+Las instancias spot están disponibles con un descuento de hasta el 90% en comparación con los precios de las instancias bajo demanda.
+Puedes utilizar instancias spot para diversas aplicaciones sin estado, tolerantes a fallos o flexibles, como big data, cargas de trabajo en contenedores, CI/CD, servidores web, informática de alto rendimiento (HPC) y otras cargas de trabajo de prueba y desarrollo.
 
 ¿Cuál de los siguientes planes de AWS Support proporciona acceso a orientación, configuración y resolución de problemas de interoperabilidad de AWS con software de terceros? (Selecciona dos):
 - AWS Business Support:
 - AWS Enterprise Support:
-Deberías utilizar AWS Business Support si tienes cargas de trabajo de producción en AWS y quieres acceso 24x7 por teléfono, correo electrónico y chat a soporte técnico y orientación arquitectónica en el contexto de tus casos de uso específicos. Obtienes acceso completo a las comprobaciones de buenas prácticas de AWS Trusted Advisor. Obtienes acceso a orientación, configuración y resolución de problemas de interoperabilidad de AWS con muchos sistemas operativos, plataformas y componentes de pila de aplicaciones comunes.
-AWS Enterprise Support proporciona a los clientes un servicio similar al de un conserje, en el que el objetivo principal es ayudar al cliente a conseguir sus resultados y a encontrar el éxito en el Cloud. Con Enterprise Support, obtienes soporte técnico 24x7 de ingenieros de alta calidad, herramientas y tecnología para gestionar automáticamente el estado de tu entorno, orientación arquitectónica consultiva en el contexto de tus aplicaciones y casos de uso, y un administrador técnico de cuentas (TAM) designado para coordinar el acceso a programas proactivos/preventivos y a expertos en la materia de AWS. Obtendrás acceso a orientación, configuración y resolución de problemas de interoperabilidad de AWS con muchos sistemas operativos, plataformas y componentes de pila de aplicaciones comunes.
+Deberías utilizar AWS Business Support si tienes cargas de trabajo de producción en AWS y quieres acceso 24x7 por teléfono, correo electrónico y chat a soporte técnico y orientación arquitectónica en el contexto de tus casos de uso específicos.
+Obtienes acceso completo a las comprobaciones de buenas prácticas de AWS Trusted Advisor.
+Obtienes acceso a orientación, configuración y resolución de problemas de interoperabilidad de AWS con muchos sistemas operativos, plataformas y componentes de pila de aplicaciones comunes.
+AWS Enterprise Support proporciona a los clientes un servicio similar al de un conserje, en el que el objetivo principal es ayudar al cliente a conseguir sus resultados y a encontrar el éxito en el Cloud.
+Con Enterprise Support, obtienes soporte técnico 24x7 de ingenieros de alta calidad, herramientas y tecnología para gestionar automáticamente el estado de tu entorno, orientación arquitectónica consultiva en el contexto de tus aplicaciones y casos de uso, y un administrador técnico de cuentas (TAM) designado para coordinar el acceso a programas proactivos/preventivos y a expertos en la materia de AWS.
+Obtendrás acceso a orientación, configuración y resolución de problemas de interoperabilidad de AWS con muchos sistemas operativos, plataformas y componentes de pila de aplicaciones comunes.
 
 ¿Cuál de las siguientes es una forma recomendada de proporcionar acceso programático a los recursos de AWS?:
 - Utiliza el ID de la clave de acceso y la clave de acceso secreta para acceder a los recursos de AWS mediante programación:
 Las claves de acceso son credenciales a largo plazo para un usuario de IAM o el usuario raíz de la cuenta de AWS.
 Puedes utilizar claves de acceso para firmar solicitudes programáticas a la CLI de AWS o a la API de AWS (directamente o utilizando el SDK de AWS).
-Las claves de acceso constan de dos partes -> un ID de clave de acceso y una clave de acceso secreta. Como nombre de usuario y contraseña,
-debes utilizar conjuntamente el ID de la clave de acceso y la clave de acceso secreta para autenticar tus solicitudes.
+Las claves de acceso constan de dos partes -> un ID de clave de acceso y una clave de acceso secreta.
+Como nombre de usuario y contraseña, debes utilizar conjuntamente el ID de la clave de acceso y la clave de acceso secreta para autenticar tus solicitudes.
 Cuando crees un par de claves de acceso, guarda el ID de la clave de acceso y la clave de acceso secreta en un lugar seguro.
 La clave de acceso secreta sólo está disponible en el momento en que la creas.
 Si pierdes la clave de acceso secreta, debes borrar la clave de acceso y crear una nueva.
@@ -474,21 +897,27 @@ Como Cloud Practitioner, ¿qué servicio de AWS sugerirías para este caso de us
 AWS Pricing Calculator te permite explorar los servicios de AWS y crear una estimación del coste de tus casos de uso en AWS.
 Puedes modelar tus soluciones antes de construirlas, explorar los puntos de precio y los cálculos que hay detrás de tu estimación,
 y encontrar los tipos de instancia disponibles y las condiciones contractuales que se ajusten a tus necesidades.
-Esto te permite tomar decisiones informadas sobre el uso de AWS. Puedes planificar tus costes y
-uso de AWS o calcular el precio de configurar un nuevo conjunto de instancias y servicios.
+Esto te permite tomar decisiones informadas sobre el uso de AWS.
+Puedes planificar tus costes y uso de AWS o calcular el precio de configurar un nuevo conjunto de instancias y servicios.
 La Calculadora de Precios de AWS puede proporcionar la estimación del uso del servicio de AWS basándose en la lista de servicios de AWS.
 
-Una startup quiere migrar sus datos y aplicaciones del centro de datos local al Cloud de AWS. ¿Cuál de las siguientes opciones puede utilizar la startup para facilitar esta migración? (Selecciona dos):
+Una startup quiere migrar sus datos y aplicaciones del centro de datos local al Cloud de AWS.:
+¿Cuál de las siguientes opciones puede utilizar la startup para facilitar esta migración? (Selecciona dos):
 - Utiliza la red de socios de AWS (APN) para crear una solución personalizada para esta migración de infraestructura:
 - Aprovechar los servicios profesionales de AWS para acelerar la migración de la infraestructura:
-La red de socios de AWS (APN) es el programa global de socios para empresas de tecnología y consultoría que aprovechan Amazon Web Services para crear soluciones y servicios para los clientes. La startup puede trabajar con expertos de APN para construir una solución personalizada para esta migración de infraestructura.
-La organización de servicios profesionales de AWS es un equipo global de expertos que puede ayudarte a conseguir los resultados empresariales deseados al utilizar el Cloud de AWS. Los consultores de los Servicios Profesionales de AWS pueden complementar tu equipo con habilidades especializadas y experiencia que pueden ayudarte a conseguir resultados rápidos. Por lo tanto, aprovechar los Servicios Profesionales de AWS puede acelerar la migración de la infraestructura para la startup.
+La red de socios de AWS (APN) es el programa global de socios para empresas de tecnología y consultoría que aprovechan Amazon Web Services para crear soluciones y servicios para los clientes.
+La startup puede trabajar con expertos de APN para construir una solución personalizada para esta migración de infraestructura.
+La organización de servicios profesionales de AWS es un equipo global de expertos que puede ayudarte a conseguir los resultados empresariales deseados al utilizar el Cloud de AWS.
+Los consultores de los Servicios Profesionales de AWS pueden complementar tu equipo con habilidades especializadas y experiencia que pueden ayudarte a conseguir resultados rápidos.
+Por lo tanto, aprovechar los Servicios Profesionales de AWS puede acelerar la migración de la infraestructura para la startup.
 
 Una empresa quiere tener el control sobre la creación y el uso de sus propias claves para el cifrado en los servicios de AWS.:
 ¿Cuál de las siguientes opciones puede utilizarse para este caso de uso?:
 - Clave gestionada por el cliente (CMK):
-Una clave KMS de AWS es una representación lógica de una clave criptográfica. Una clave KMS contiene metadatos, como el ID de la clave, la especificación de la clave, el uso de la clave, la fecha de creación, la descripción y el estado de la clave. Y lo que es más importante, contiene una referencia al material de la clave que se utiliza cuando realizas operaciones criptográficas con la clave KMS.
-Las claves KMS que creas son claves gestionadas por el cliente. Las claves gestionadas por el cliente son claves KMS en tu cuenta de AWS que tú creas, posees y administras. Tienes control total sobre estas claves KMS, incluyendo el establecimiento y mantenimiento de sus políticas de claves, políticas IAM y subvenciones, habilitándolas y deshabilitándolas, rotando su material criptográfico, añadiendo etiquetas, creando alias que hagan referencia a las claves KMS y programando las claves KMS para su eliminación.
+Una clave KMS de AWS es una representación lógica de una clave criptográfica.
+Una clave KMS contiene metadatos, como el ID de la clave, la especificación de la clave, el uso de la clave, la fecha de creación, la descripción y el estado de la clave. Y lo que es más importante, contiene una referencia al material de la clave que se utiliza cuando realizas operaciones criptográficas con la clave KMS.
+Las claves KMS que creas son claves gestionadas por el cliente.
+Las claves gestionadas por el cliente son claves KMS en tu cuenta de AWS que tú creas, posees y administras. Tienes control total sobre estas claves KMS, incluyendo el establecimiento y mantenimiento de sus políticas de claves, políticas IAM y subvenciones, habilitándolas y deshabilitándolas, rotando su material criptográfico, añadiendo etiquetas, creando alias que hagan referencia a las claves KMS y programando las claves KMS para su eliminación.
 
 Una empresa multinacional acaba de trasladar su infraestructura de su centro de datos local al Cloud de AWS.:
 Como parte del modelo de responsabilidad compartida, ¿AWS es responsable de cuál de las siguientes cosas?:
