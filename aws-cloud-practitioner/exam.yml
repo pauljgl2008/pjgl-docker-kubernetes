@@ -482,60 +482,55 @@ Google Authenticator es un ejemplo de dispositivo de xeAutenticación Multifacto
 Una empresa tiene un sitio web estático alojado en un bucket de Amazon Simple Storage Service (Amazon S3) en una región de AWS en Asia.:
 Aunque la mayoría de sus usuarios están en Asia, ahora quiere impulsar su crecimiento a nivel global.:
 ¿Cómo puede mejorar el rendimiento global de su sitio web estático?:
-Utiliza Amazon CloudFront para mejorar el rendimiento de tu sitio web
+- Utiliza Amazon CloudFront para mejorar el rendimiento de tu sitio web:
 Puedes utilizar Amazon CloudFront para mejorar el rendimiento de tu sitio web.
 Amazon CloudFront hace que los archivos de tu sitio web (como HTML, imágenes y vídeo) estén disponibles desde centros de datos de todo el mundo (denominados ubicaciones de borde).
 Cuando un visitante solicita un archivo de tu sitio web, Amazon CloudFront redirige automáticamente la solicitud a una copia del archivo en la ubicación de borde más cercana.
 Esto da lugar a tiempos de descarga más rápidos que si el visitante hubiera solicitado el contenido desde un centro de datos situado más lejos.
 
+¿Cuál de las siguientes afirmaciones es correcta en relación con el modelo de responsabilidad compartida de AWS? (Selecciona dos):
+- AWS es responsable de la seguridad 'del' Cloud:
+Para servicios abstraídos como Amazon S3, AWS opera la capa de infraestructura, el sistema operativo y las plataformas
+AWS es responsable de proteger la infraestructura que ejecuta todos los servicios ofrecidos en el Cloud de AWS.
+Esta infraestructura se compone del hardware, software, redes e instalaciones que ejecutan los servicios del Cloud de AWS.
+Para los servicios abstraídos, como Amazon S3 y Amazon DynamoDB, AWS opera la capa de infraestructura, el sistema operativo y las plataformas, y los clientes acceden a los endpoints para almacenar y recuperar datos.
 
+¿Cuál de las siguientes afirmaciones es correcta en relación con el servicio de almacenamiento Amazon Elastic File System (Amazon EFS)?:
+- Las instancias EC2 pueden acceder a archivos de un sistema de archivos de Amazon Elastic File System (Amazon EFS) en muchas zonas de disponibilidad (AZ), regiones y VPC:
+Amazon EFS es un servicio regional que almacena datos dentro y a través de múltiples zonas de disponibilidad (AZs) para una alta disponibilidad y durabilidad.
+Las instancias de Amazon EC2 pueden acceder a su sistema de archivos a través de AZs, regiones y VPCs, mientras que los servidores locales pueden acceder utilizando AWS Direct Connect o AWS VPN.
 
+¿Qué servicio de AWS puede ayudarte a crear casos empresariales basados en datos para la transición de tu negocio de las instalaciones al Cloud de AWS?:
+- AWS Migration Evaluator:
+AWS Migration Evaluator (antes TSO Logic) es un servicio complementario para crear casos empresariales basados en datos para la planificación y migración al Cloud de AWS.
+AWS Migration Evaluator proporciona rápidamente un argumento empresarial para tomar decisiones sólidas sobre la planificación y migración a AWS. Con AWS Migration Evaluator, tu organización puede crear un caso empresarial basado en datos para AWS, obtiene acceso a la experiencia de AWS, visibilidad de los costes asociados a múltiples estrategias de migración y perspectivas sobre cómo la reutilización de las licencias de software existentes reduce aún más los costes.
 
+Una empresa de TI ha desplegado un sitio web estático en Amazon Simple Storage Service (Amazon S3), pero el sitio web sigue siendo inaccesible.:
+Como Cloud Practioner, ¿cuál de las siguientes soluciones sugerirías para resolver este problema?:
+- Corregir la política de bucket de Amazon S3:
+Para alojar un sitio web estático en Amazon S3, debes configurar un bucket de Amazon S3 para el alojamiento de sitios web y, a continuación, cargar el contenido de tu sitio web en el bucket. Cuando configuras un bucket como sitio web estático, debes habilitar el alojamiento de sitios web, establecer permisos y crear y añadir un documento índice.
 
+Una importante empresa de investigación necesita acceder a información disponible en patentes y documentos antiguos (como PDF, archivos de texto, documentos de Word, etc.) presentes en su enorme base de conocimientos. La empresa está buscando una potente herramienta de búsqueda que pueda indagar en estos recursos de conocimiento y devolver los archivos/documentos más relevantes.:
+¿Cuál de los siguientes es el servicio correcto para abordar este requisito?:
+- Amazon Kendra:
+Amazon Kendra es un servicio de búsqueda inteligente impulsado por aprendizaje automático. Kendra reimagina la búsqueda empresarial para tus sitios web y aplicaciones, de forma que tus empleados y clientes puedan encontrar fácilmente el contenido que buscan, incluso cuando está disperso por múltiples ubicaciones y repositorios de contenido dentro de tu organización.
+Con Amazon Kendra, puedes dejar de buscar entre montones de datos no estructurados y descubrir las respuestas adecuadas a tus preguntas, cuando las necesites. Amazon Kendra es un servicio totalmente administrado, por lo que no hay servidores que aprovisionar ni modelos de aprendizaje automático que crear, entrenar o implementar. Amazon Kendra admite datos no estructurados y semiestructurados en formatos .html, MS Office (.doc, .ppt), PDF y texto.
+A diferencia de la tecnología de búsqueda convencional, las capacidades de búsqueda en lenguaje natural te devuelven las respuestas que buscas con rapidez y precisión, independientemente de dónde se encuentre la información dentro de tu organización.
+Los modelos de Deep Learning de Amazon Kendra vienen preentrenados en 14 dominios industriales, lo que le permite extraer respuestas más precisas en una amplia gama de casos de uso empresarial desde el primer momento. También puedes afinar los resultados de la búsqueda ajustando manualmente la importancia de las fuentes de datos, los autores, la frescura o utilizando etiquetas personalizadas.
 
+Un cliente está realizando un estudio comparativo de los modelos de precios de Amazon EFS y Amazon Elastic Block Store (Amazon EBS) que se utilizan con las instancias de Amazon EC2 que alojan la aplicación.:
+¿Cuál de las siguientes afirmaciones es correcta en relación con este caso de uso? (Selecciona dos):
+- Pagarás una tarifa cada vez que leas o escribas datos almacenados en la clase de almacenamiento Amazon Elastic File System (Amazon EFS) - Infrequent Access:
+- Las instantáneas de Amazon Elastic Block Store (Amazon EBS) se almacenan de forma incremental, lo que significa que sólo se te facturarán los bloques modificados almacenados:
+La clase de almacenamiento Amazon Elastic File System (Amazon EFS) - Acceso poco frecuente está optimizada en cuanto a costes para los archivos a los que se accede con menos frecuencia. Los datos almacenados en la clase de almacenamiento Amazon Elastic File System (Amazon EFS) - Acceso poco frecuente cuestan menos que la estándar y pagarás una cuota cada vez que leas o escribas en un archivo.
+Las instantáneas de Amazon EBS son una copia puntual de tus datos en bloque. En la primera instantánea de un volumen, Amazon EBS guarda una copia completa de tus datos en Amazon S3. Las instantáneas de Amazon EBS se almacenan de forma incremental, lo que significa que sólo se te facturarán los bloques almacenados que hayan cambiado.
 
+Una startup quiere instalar su infraestructura informática en el Cloud de AWS. Al director de tecnología le gustaría recibir informes detallados que desglosen los costes de AWS de la startup por horas en un bucket de Amazon Simple Storage Service (Amazon S3).:
+Como Cloud Practitioner, ¿qué servicio de AWS recomendarías para este caso de uso?:
+- AWS Cost & Usage Report (AWS CUR):
+AWS Cost & Usage Report (AWS CUR) contiene el conjunto más completo de datos de costes y uso disponible. Puedes utilizar el AWS Cost & Usage Report (AWS CUR) para publicar tus informes de facturación de AWS en un bucket de Amazon Simple Storage Service (Amazon S3) de tu propiedad. Puedes recibir informes que desglosen tus costes por hora o mes, por producto o recurso de producto, o por etiquetas que tú mismo definas. AWS actualiza el informe en tu bucket una vez al día en formato de valores separados por comas (CSV).
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Una empresa de juegos está buscando una tecnología/servicio que pueda ofrecer un juego consistente de baja latencia para garantizar una gran experiencia de usuario a los usuarios finales en distintas ubicaciones.:
 ¿Qué tecnología/servicio de AWS proporcionará el necesario acceso de baja latencia a los usuarios finales?:
