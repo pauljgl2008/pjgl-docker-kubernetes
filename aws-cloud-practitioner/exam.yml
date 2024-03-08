@@ -1,3 +1,5 @@
+https://repost.aws/es/knowledge-center
+
 • Los Gateways de Internet ayudan a nuestras instancias de la VPC a conectarse con Internet
 • Las subredes públicas tienen una ruta hacia el gateway de Internet.
 • Los Gateways NAT (gestionados por AWS) y las Instancias NAT (autogestionadas) permiten
