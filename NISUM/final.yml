@@ -1,0 +1,152 @@
+Heap y Stack en Java:
+Heap: Almacena objetos creados dinámicamente durante la ejecución del programa. Se asigna y libera memoria automáticamente mediante el recolector de basura.
+Stack: Almacena variables locales, métodos y referencias a objetos. Es una estructura LIFO (último en entrar, primero en salir).
+
+JDK vs JRE vs JVM:
+JDK: Kit de desarrollo de Java, contiene herramientas para crear aplicaciones Java (compilador, debugger, etc.).
+JRE: Entorno de ejecución Java, contiene la JVM y las bibliotecas necesarias para ejecutar aplicaciones Java.
+JVM: Máquina virtual Java, ejecuta el bytecode de Java y lo traduce en instrucciones específicas del sistema operativo.
+
+Características de Java 8:
+Expresiones Lambda: Permiten escribir código más conciso y funcional.
+Métodos por defecto en interfaces: Añaden funcionalidad a interfaces existentes sin romper la compatibilidad con versiones anteriores.
+API de Streams: Facilita el procesamiento de colecciones de datos.
+Fecha y hora: Nueva API para trabajar con fechas y horas.
+
+Patrones de diseño:
+Singleton: Garantiza que solo exista una instancia de una clase.
+Factory: Crea objetos de forma indirecta, encapsulando la lógica de creación.
+Observer: Permite que un objeto observe a otro y reciba notificaciones cuando cambia su estado.
+Builder: Crea objetos complejos paso a paso.
+
+Overloading vs Overriding:
+Overloading: Dos o más métodos con el mismo nombre pero diferentes parámetros.
+Overriding: Redefinir un método heredado de una clase padre en una clase hija.
+
+Apache Kafka:
+Es un sistema de mensajería distribuido: Permite la comunicación entre aplicaciones de forma asíncrona.
+Resuelve el problema de desacoplamiento: Las aplicaciones no necesitan estar conectadas entre sí para comunicarse.
+Ventajas: Alta escalabilidad, baja latencia, tolerancia a fallos.
+
+Microservicios:
+Es un estilo de arquitectura de software: Divide una aplicación en pequeños servicios independientes.
+Resuelve el problema de la complejidad: Facilita el desarrollo, la gestión y el mantenimiento de aplicaciones.
+Ventajas: Mayor flexibilidad, escalabilidad y resiliencia.
+Desventajas: Mayor complejidad en la gestión de la infraestructura y la comunicación entre servicios.
+
+Patrones de arquitectura:
+Cliente-Servidor: Un servidor proporciona servicios a los clientes.
+N-capas: Divide la aplicación en capas con diferentes responsabilidades.
+Modelo-Vista-Controlador (MVC): Separa la lógica de la presentación y la interacción del usuario.
+
+Docker vs Kubernetes:
+Docker: Herramienta para crear, empaquetar y ejecutar aplicaciones en contenedores.
+Kubernetes: Plataforma para orquestar contenedores a gran escala.
+
+Event Driven y Kafka:
+Event Driven: Es un paradigma de arquitectura donde las aplicaciones reaccionan a eventos.
+Kafka: Se puede usar como un sistema de mensajería para implementar una arquitectura Event Driven.
+
+Bean:
+Es un objeto Java que encapsula datos y comportamiento.
+Se utiliza para almacenar y manipular datos de forma POJO (Plain Old Java Object).
+
+Tipos de Scope:
+Singleton: Un único bean por aplicación.
+Prototype: Un nuevo bean por cada inyección.
+Request: Un nuevo bean por cada petición HTTP.
+Session: Un nuevo bean por cada sesión de usuario.
+
+Clase Abstracta vs Genérica:
+Clase Abstracta (abstract): Define una plantilla para clases derivadas que heredan sus atributos y métodos.
+Clase Genérica <T>: Permite trabajar con tipos de datos sin especificarlos de forma concreta.
+public class Contenedor<T> {
+    private T contenido;
+    public Contenedor(T contenido) {
+        this.contenido = contenido;
+    }
+    public T getContenido() {
+        return contenido;
+    }
+    public void setContenido(T contenido) {
+        this.contenido = contenido;
+    }
+}
+Contenedor<Integer> contenedorNumero = new Contenedor<>(5);
+int numero = contenedorNumero.getContenido();
+Contenedor<String> contenedorTexto = new Contenedor<>("Hola mundo");
+String texto = contenedorTexto.getContenido();
+
+Delimitadores de acceso:
+Public: Accesible desde cualquier clase.
+Protected: Accesible desde la clase que lo define y sus clases derivadas.
+Default (Package): Accesible desde las clases del mismo paquete.
+Private: Accesible solo desde la clase que lo define.
+
+Acceso a "package" en clases heredadas:
+Sí, se puede acceder a miembros "package" de una clase padre en una clase hija.
+
+stereotype:
+Los estereotipos en Spring son como etiquetas que le pones a tus clases para que Spring las entienda.
+Etiqueta @Controller: Para clases que manejan solicitudes web.
+Etiqueta @Service: Para clases que hacen cosas importantes (logica de negocio).
+Etiqueta @Repository: Para clases que trabajan con bases de datos.
+Etiqueta @Component: Para otras clases que quieres que Spring use.
+Los estereotipos te ayudan a:
+Organizar tu código.
+Evitar errores.
+Hacer que tu código sea más fácil de entender.
+
+Los patrones de diseño son soluciones reutilizables a problemas comunes de diseño de software. Ofrecen una forma de estructurar el código de forma eficiente y flexible, facilitando el mantenimiento y la comprensión del mismo.
+
+Patrones de diseño que se pueden clasificar en tres categorías principales:
+
+1. Patrones creacionales:
+Se enfocan en la creación de objetos de forma flexible y eficiente.
+Factory Method: Crea objetos sin especificar la clase concreta.
+Abstract Factory: Crea familias de objetos relacionados.
+Singleton: Garantiza que solo exista una instancia de una clase.
+Builder: Crea objetos complejos paso a paso.
+Prototype: Crea nuevos objetos clonando un prototipo existente.
+
+Ejemplos:
+Factory Method: Implementación de una fábrica para crear diferentes tipos de vehículos.
+Abstract Factory: Creación de una fábrica abstracta para familias de interfaces gráficas (GUI).
+Singleton: Implementación de un singleton para un gestor de conexiones a la base de datos.
+Builder: Creación de un constructor para configurar objetos complejos como un servidor web.
+Prototype: Clonación de objetos para crear nuevos documentos con la misma estructura.
+
+2. Patrones estructurales:
+Se enfocan en la forma en que se componen y relacionan los objetos entre sí.
+Adapter: Permite que dos interfaces incompatibles trabajen juntas.
+Decorator: Añade funcionalidades a un objeto sin modificar su clase.
+Proxy: Proporciona un sustituto para controlar el acceso a otro objeto.
+Facade: Ofrece una interfaz única para un conjunto de subsitemas.
+Composite: Organiza objetos en una estructura jerárquica.
+
+Ejemplos:
+Adapter: Adaptación de una biblioteca de terceros para que sea compatible con la arquitectura de la aplicación.
+Decorator: Decoración de un componente de interfaz de usuario para añadir un borde o un efecto de sombra.
+Proxy: Implementación de un proxy para controlar el acceso a un servicio web.
+Facade: Creación de una fachada para simplificar la interacción con un sistema complejo.
+Composite: Implementación de un árbol de directorios para organizar archivos y carpetas.
+
+3. Patrones de comportamiento:
+Se enfocan en la forma en que los objetos interactúan y colaboran entre sí.
+Command: Encapsula una solicitud como un objeto para que se pueda ejecutar en otro momento.
+Observer: Permite que un objeto se suscriba a los cambios de otro objeto.
+Strategy: Define una familia de algoritmos y permite que los objetos elijan uno de ellos.
+Chain of Responsibility: Enlaza objetos para que puedan manejar una solicitud de forma secuencial.
+Template Method: Define un esqueleto de un algoritmo y permite que las subclases definan algunos de sus pasos.
+
+Ejemplos:
+Command: Implementación de un comando para deshacer la última acción en un editor de texto.
+Observer: Notificación a los usuarios cuando se actualiza el estado de un objeto.
+Strategy: Implementación de diferentes estrategias de ordenación para una lista de datos.
+Chain of Responsibility: Manejo de solicitudes de autenticación por diferentes filtros de seguridad.
+Template Method: Definición de un algoritmo general para calcular el precio de un producto con diferentes descuentos.
+
+Beneficios de usar patrones de diseño:
+Mejora la calidad del código: Los patrones de diseño son soluciones probadas que han demostrado ser efectivas.
+Aumenta la flexibilidad: Los patrones de diseño permiten adaptar el código a diferentes necesidades.
+Facilita el mantenimiento: Los patrones de diseño hacen que el código sea más fácil de entender y modificar.

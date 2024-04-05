@@ -1,0 +1,77 @@
+1. ¿Puedes describir cómo funciona git? Incluye tantos detalles como sea posible.
+
+2. ¿Has trabajado en la optimización de consultas de bases de datos (database queries optimization)?
+¿Puede explicar qué es un plan de consulta (query plan) y cómo usarlo?
+
+3. ¿Puedes explicar los métodos HTTP y los códigos de estado en el contexto del desarrollo de API?
+¿Cómo eliges los métodos HTTP apropiados para diferentes operaciones y cómo manejas y
+comunicas de manera efectiva varios códigos de estado HTTP en tus API?
+
+4. ¿Cuáles son los patrones de diseño más populares? ¿Cuáles de ellos has usado?
+
+JAVA Y SPRING FRAMEWORK:
+5. ¿Cuál es el comportamiento de una variable final, una clase final y un método final?
+
+6. ¿Cómo se puede crear un método que acepte una función como parámetro? En otras palabras, ¿cómo puedes crear tus propias funciones lambda?
+
+7. Describe la diferencia entre @Valid y @Validated en el contexto de la validación de datos en Java.
+
+8. Explique el concepto de ORM y cómo se utiliza en el contexto de Java.
+
+9. Explica el concepto de polimorfismo en Java y cómo se implementa.
+
+10. ¿Cómo aplicas los principios SOLID en tu desarrollo con Java?
+
+11. ¿Qué es la inyección de dependencia (dependency injection)? Explique cómo se implementa en Java y Spring.
+
+12. ¿Cómo abordas las pruebas unitarias y de integración en Spring? ¿Has usado TDD?
+
+13. ¿Qué son los "bean scopes" en Spring? ¿Qué "scopes" conoces? ¿Cómo crearías tu propio "Scope"?
+
+14. Describe el propósito y uso de la anotación @Component en el marco de Spring.
+
+15. Habla sobre cómo implementar la seguridad en una aplicación Java Spring Boot, incluyendo el uso de JWT y/o OAuth.
+Además, describe las estrategias para proteger contra ataques de fuerza bruta.
+
+16. ¿Cómo manejas problemas de cross-domain en aplicaciones SpringBoot y cuáles son las consideraciones clave?
+
+17. Explica la diferencia entre JPA y Hibernate en el contexto de Java.
+
+18. ¿Cómo integrarías servicios de Azure en una aplicación Java Spring Boot?
+Proporciona ejemplos específicos de servicios de Azure que podrías utilizar y cómo los implementarías.
+
+19. ¿Qué anotaciones Spring Data/JPA conoces y qué hacen?
+¿Cómo puedes manejar una reversión de una declaración de inserción fallida (rollback for a failed insert statement)?
+
+20. Describe cómo implementarías pruebas de contrato y pruebas de mutación en una aplicación Java Spring Boot y cuál sería su propósito.
+
+21. Explora las características clave de la arquitectura de desarrollo DDD (Domain-Driven Design)
+y cómo estas pueden beneficiar el desarrollo de software en Java Spring Boot.
+
+JAVA EJERCICIO PRÁCTICO
+22. ¿Qué es un DTO y cuál es su propósito en el desarrollo de aplicaciones?
+
+23. Explica las diferentes capas que existen en una aplicación típica de Spring, ¿dónde se encuentran y cómo se manejan?
+
+24. ¿Por qué se utiliza Docker para desplegar aplicaciones y cuáles son las ventajas de esta práctica?
+
+25. ¿Por qué es importante realizar validaciones de entrada en una aplicación y en dónde es apropiado implementarlas?
+
+26. ¿Cómo gestionas excepciones y errores en una aplicación Spring Boot? ¿Qué estrategias utilizas para manejar situaciones inesperadas?
+
+27. Describe el propósito de las anotaciones @Service y @Repository en el contexto de Spring Boot y cuándo se deben usar.
+
+28. ¿Qué es una arquitectura de microservicios y cuándo es apropiado utilizarla en el desarrollo de aplicaciones?
+
+ENGLISH SKILLS:
+29. What are your short-term and long-term goals, and what are you doing in order to achieve them?
+
+Please respond in English, otherwise, we will assume that you do not speak English.
+
+30. Could you provide an example of what you are currently doing to improve as a professional?
+
+Please respond in English, otherwise, we will assume that you do not speak English.
+
+31. Could you tell us about your personal strategies for organizing your time?
+
+Please respond in English, otherwise, we will assume that you do not speak English.
