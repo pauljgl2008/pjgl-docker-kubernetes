@@ -1,0 +1,2152 @@
+Strategy: Útil cuando se necesitan algoritmos intercambiables
+y la selección del algoritmo se realiza en tiempo de ejecución.
+Factory: Útil cuando se necesita crear objetos de diferentes clases en función de un criterio
+y la selección de la clase se realiza generalmente en tiempo de compilación o configuración.
+
+Strategy Ejemplo:
+interface SortAlgorithm {
+  void sort(int[] data);
+}
+
+class BubbleSort implements SortAlgorithm {
+  @Override
+  public void sort(int[] data) {
+    // Implementación del algoritmo Bubble Sort
+  }
+}
+
+class QuickSort implements SortAlgorithm {
+  @Override
+  public void sort(int[] data) {
+    // Implementación del algoritmo Quick Sort
+  }
+}
+
+class SortingContext {
+  private SortAlgorithm sortAlgorithm;
+
+  public SortingContext(SortAlgorithm sortAlgorithm) {
+    this.sortAlgorithm = sortAlgorithm;
+  }
+
+  public void sortData(int[] data) {
+    sortAlgorithm.sort(data);
+  }
+}
+
+public class Demo {
+  public static void main(String[] args) {
+    SortAlgorithm bubbleSort = new BubbleSort();
+    SortAlgorithm quickSort = new QuickSort();
+
+    SortingContext context = new SortingContext(bubbleSort);
+    context.sortData(data); // Ordena usando Bubble Sort
+
+    context = new SortingContext(quickSort);
+    context.sortData(data); // Ordena usando Quick Sort
+  }
+}
+
+Factory Ejemplo:
+interface Shape {
+  void draw();
+}
+
+class Circle implements Shape {
+  @Override
+  public void draw() {
+    System.out.println("Dibujando un círculo");
+  }
+}
+
+class Rectangle implements Shape {
+  @Override
+  public void draw() {
+    System.out.println("Dibujando un rectángulo");
+  }
+}
+
+class ShapeFactory {
+  public Shape createShape(String type) {
+    switch (type) {
+      case "circle":
+        return new Circle();
+      case "rectangle":
+        return new Rectangle();
+      default:
+        throw new IllegalArgumentException("Tipo de forma no válido: " + type);
+    }
+  }
+}
+
+public class Demo {
+  public static void main(String[] args) {
+    ShapeFactory factory = new ShapeFactory();
+
+    Shape circle = factory.createShape("circle");
+    circle.draw();
+
+    Shape rectangle = factory.createShape("rectangle");
+    rectangle.draw();
+  }
+}
+
+
+Microservicios:
+Dividimos el sistema en contextos cerrados.
+- Creamos un microservicio por cada contexto.
+Micro en microservicios se refiere al alcance de las funcionalidades.
+- No hay estándar para los grandes que deben ser. Deben hacer una cosa bien.
+Cada microservicio vivirá de forma independiente a los demás.
+- Equipo propio
+- Repositorio de código propio
+- Base de Datos propia
+- Cada uno elige las tecnologías más apropiadas para su caso
+- Deben ser desplegables de forma independiente
+Métodos de comunicación
+- API Rest
+- Sistema de mensajes. Event Driven Architecture
+Nunca compartir BD en microservicios (Antipatrón):
+Si usamos una BD compartida para todos los Microservicios se considera una Antipatrón.
+Los microservicios dejan de ser independientes
+- No se pueden desarrollar de forma independiente
+- No se pueden desplegar de forma independiente
+- No se pueden escalar independientemente
+Encapsulación de los datos existentes
+- Un microservicio podría modificar información que no le corresponde
+- Con BBDD independientes forzamos a realizar la operación a través del microservicio dueño a esos datos
+Aspectos Positivos - Microservicios:
+División del sistema en subsistemas más manejables.
+- El código será más fácil de mantener.
+Independencia real entre equipos. Cada uno es dueño de su microservicio
+Posibilidad de realizar escalado y optimización independiente
+- Despliegue independiente. Si falla un microservicio, el resto podría seguir funcionando.
+Elección de la tecnología apropiada para cada microservicio.
+Aspectos Negativos - Microservicios:
+Cooperación entre distintos equipos para los puntos en común entre microservicios.
+Más complejo en general que una solución monolítica.
+- Necesidad de identificar correctamente los subdominio.
+- Test en las fronteras entre microservicios.
+- Despliegue del sistema completo.
+- Seguridad
+Interfaz de usuario.
+- Si es única, se puede volver un monolito difícil de mantener, y el equipo que la
+desarrolla puede ser el cuello de botella.
+- Si son varias puede haber problemas en la integración en una única UI.
+Cuándo Usar Microservicios?:
+Sistemas grandes y complejos con subdominios claramente identificables.
+Disponibilidad de personal para asignar al equipo de cada microservicio.
+Sistemas de alta disponibilidad en los que necesitemos escalar fácilmente cada pieza.
+Ahorro de costes.
+
+El event sourcing:
+En lugar de almacenar el estado actual de una entidad, el event sourcing implica almacenar un registro de eventos que describen las acciones realizadas en la entidad.
+Estos eventos capturan lo que sucedió, en lugar del estado actual resultante de esas acciones.
+Cada evento representa un cambio en el estado del sistema y se almacena en un almacén de eventos.
+Al reproducir estos eventos desde el principio, la aplicación puede reconstruir el estado actual de cualquier entidad en cualquier momento. 
+
+Rastro de auditoría completo: Dado que todos los cambios en el sistema se capturan como eventos.
+Consultas temporales: El event sourcing permite consultar el estado del sistema en cualquier momento al reproducir eventos hasta ese punto.
+Desacoplamiento de estado y comportamiento: Este desacoplamiento permite flexibilidad en la implementación de nuevas funciones o en el cambio de las existentes.
+Escalabilidad: Debido a que los eventos son solo de adición e inmutables, para tener un rendimiento de escritura.
+
+Apache Kafka:
+Se da en sistemas distribuidos,
+Una recarga de dinero (5segundos)
+Si tengo 1 millon de peticiones y solo tengo 100 hilos para procesar,
+si usara Kafka tendría computo dedicado para procesar todos esos mensajes a gran escala.
+
+
+1.	FORMULARIO BACKEND
+Preguntas
+¿Ha trabajado con microservicios? ¿En cuántos proyectos?
+Debe responder sí, además debe explicar los proyectos en los que ha trabajado con microservicios.
+Patrones en Java: Builder, Singleton, Factory
+Ejemplos de patrones de microservicios
+Que brinden ejemplos de patrones de programación para microservicios: SAGA (Patrón más importante – Este microservicio intenta resolver “transacciones”), CORTO CIRCUITO (Circuit Breaker), CQRS (Command Query Responsibility Segregation), otros. (Esta pregunta no debería de ser un criterio de descarte, solo es un plus)
+¿Cuánta cobertura deben tener tus test?
+Básica (70-80%): Objetivo inicial que proporciona una base sólida, identificando áreas críticas no probadas.
+Sólida (80-90%): Aspiración común para una cobertura más completa, indicativa de una suite de pruebas robusta.
+Exhaustiva (90% o más): En entornos críticos, se busca un alto nivel de cobertura. Alcanzar el 100% puede ser difícil o innecesario, considerando áreas difíciles de probar o de bajo riesgo.
+Mejores prácticas para tener un buen proyecto en backend:
+Manejo de excepciones, documentación con Swagger, catálogo de validaciones, complejidad cognitiva
+¿En qué consiste una arquitectura basada en microservicios?:
+Un microservicio es una aplicación pequeña a diferencia de las aplicaciones convencionales (ejm un ERP). 
+Es plantear pequeños sistemas con una funcionalidad muy específica o muy dirigida para resolver un problema y en conjunto constituyen un sistema más grande.
+Las Arquitectura más común es la de capas, más compleja es la hexagonal (Información para reclutamiento)
+La arquitectura de microservicios es un enfoque para el desarrollo de software que consiste en construir una aplicación como un conjunto de pequeños servicios, los cuales se ejecutan en su propio proceso y se comunican con mecanismos ligeros (normalmente una API de recursos HTTP). Cada servicio se encarga de implementar una funcionalidad completa del negocio. Cada servicio es desplegado de forma independiente y puede estar programado en distintos lenguajes y usar diferentes tecnologías de almacenamiento de datos.
+Una arquitectura de microservicios consta de una colección de servicios autónomos y pequeños. Cada uno de servicio es independiente y debe implementar una funcionalidad de negocio individual dentro de un contexto delimitado. Un contexto delimitado es una división natural de una empresa y proporciona un límite explícito dentro del cual existe un modelo de dominio.
+Los microservicios son pequeños e independientes, y están acoplados de forma imprecisa. Un único equipo reducido de programadores puede escribir y mantener un servicio.
+Cada servicio es un código base independiente, que puede administrarse por un equipo de desarrollo pequeño.
+Los servicios pueden implementarse de manera independiente. Un equipo puede actualizar un servicio existente sin tener que volver a generar e implementar toda la aplicación.
+Los servicios son los responsables de conservar sus propios datos o estado externo. Esto difiere del modelo tradicional, donde una capa de datos independiente controla la persistencia de los datos.
+Los servicios se comunican entre sí mediante API bien definidas. Los detalles de la implementación interna de cada servicio se ocultan frente a otros servicios.
+Admite la programación políglota. Por ejemplo, no es necesario que los servicios compartan la misma pila de tecnología, las bibliotecas o los marcos.
+¿Si había utilizado JPA y qué anotaciones?:
+¿Qué gestor de base de datos he utilizado?:
+Jdeveloper (ORACLE) DBeaver (ORACLE)
+¿Qué módulos has utilizado de Spring?:
+
+Spring Core Container:
+Anotaciones:
+@Component: Marca una clase como un componente de Spring, lo que permite la detección automática y la creación de beans.
+@Autowired: Indica a Spring que inyecte automáticamente dependencias en el bean.
+@Configuration: Marca una clase como una fuente de definiciones de beans para el contenedor de Spring.
+@Bean: Indica un método que produce un bean gestionado por Spring.
+@Value: Inyecta valores desde propiedades de configuración o expresiones en atributos de clases.
+
+Spring AOP (Aspect-Oriented Programming):
+Anotaciones:
+@Aspect: Marca una clase como un aspecto de Spring.
+@Pointcut: Define un punto de corte para las operaciones de código en las que se aplicará el aspecto.
+@Before: Indica que el consejo (código del aspecto) se ejecutará antes de que se invoque el método correspondiente.
+@After: Indica que el consejo se ejecutará después de que se invoque el método.
+@Around: Indica que el consejo controlará completamente la ejecución del método.
+
+Spring Data Access/Integration:
+Anotaciones:
+@Repository: Marca una clase como un bean de repositorio de Spring para el acceso a datos.
+@Transactional: Indica que un método debería ejecutarse dentro de una transacción.
+@PersistenceContext: Inyecta el EntityManager en el contexto de persistencia.
+@Entity: Marca una clase como una entidad JPA.
+@Query: Permite la definición de consultas personalizadas en repositorios.
+Spring Web:
+
+Anotaciones:
+@Controller: Marca una clase como un controlador de Spring.
+@RequestMapping: Mapea solicitudes web a métodos del controlador.
+@ResponseBody: Indica que el valor de retorno de un método debería ser serializado directamente a la respuesta HTTP.
+@PathVariable: Extrae valores de la URI de la solicitud y los asigna a parámetros del método.
+@RequestParam: Se utiliza para vincular parámetros de solicitud a los parámetros del método.
+
+Spring Security:
+Anotaciones:
+@EnableWebSecurity: Habilita la seguridad web en una aplicación.
+@Secured: Especifica que un método solo puede ser invocado por usuarios que tienen un rol específico.
+@PreAuthorize: Similar a @Secured, pero ofrece una expresión más avanzada.
+@EnableGlobalMethodSecurity: Habilita la seguridad de método a nivel global.
+@AuthenticationPrincipal: Inyecta el objeto de detalles de autenticación actual en un parámetro del método.
+
+¿Qué versiones de Java he trabajado con Java 8/11 o 17?:
+Debe responde sí, además debe explicar los proyectos en lo que ha trabajado con java (pueden ser los mismos que explicó en la anterior pregunta, aunque no necesariamente los mismos).
+
+¿Ha trabajado con Spring Framework?:
+Debe responde sí, además debe explicar los proyectos en lo que ha trabajado con Spring (pueden ser los mismos que explicó en la anterior pregunta, aunque no necesariamente los mismos).
+
+¿Ha implementado servicios REST?:
+¿Cuáles son los principales verbos HTTP y cómo se pueden implementan con Spring Boot?:
+Un verbo HTTP se emplea para indicar una acción a la API, debajo se muestran los principales verbos y la anotación de Spring MVC que permite usarlos dentro de Spring Boot.
+•	GET – @GetMapping
+•	POST – @PostMapping
+•	PUT – @PutMapping
+•	DELETE – @DeteleMapping
+•	PATCH – @PatchMapping
+
+¿Cómo o cuál es la estrategia para validar los datos de entrada de los servicios Rest? (Es una pregunta que demuestra la habilidad técnica, no es una pregunta de descarte):
+1.	Utiliza anotaciones para los objetos
+2.	O Creo un middle 
+3.	O Utilizo excepciones
+Todos tienen que estar alineados en que la validación se hace 1 por el lado del front y otra que la validación se hace en el controlador, antes de procesar la lógica del negocio.
+
+¿Qué es JPA? ¿Cuál es la diferencia con HIBERNATE? ¿Cuál es la diferencia con Spring Data?:
+Java Persistence API (JPA) define una especificación o interfaces para manejo de persistencia de datos.
+JPA es una definición de como otras librerías deben implementar la persistencia de datos.
+JPA es un estándar que especifica como es que algunas librerías de persistencia deben implementar la persistencia de datos.
+Hibernate o Spring Data es una implementación de JPA que sirve para persistir los datos. Sirven para el trabajo con bases de datos relacionales. Ayudan a disminuir el trabajo de integración de la aplicación backend con la base de datos.
+Spring Data es una implementación de JPA de SPRING que sirve para abstraer el trabajo con bases de datos SQL e incluso NO SQL
+
+¿Para qué sirve las anotaciones @Repository, @Component, @Service y @Controller y @RestController?:
+@Component: Esta anotación se usa en clases para indicar un componente Spring. La anotación @Component marca la clase Java como un bean o componente para que el mecanismo de exploración de componentes de Spring pueda agregarla al contexto de la aplicación.  
+@Repository : Esta anotación registra un componente a nivel del motor de inyección de dependencia. Esta anotación se utiliza en clases Java que acceden directamente a la base de datos. La anotación @Repository funciona como un marcador para cualquier clase que cumpla la función de repositorio u Objeto de acceso a datos. Esta anotación tiene una función de traducción automática. Por ejemplo, cuando ocurre una excepción en el @Repository, hay un controlador para esa excepción y no es necesario agregar un bloque try-catch.
+@Service: Esta anotación se usa en una clase. @Service marca una clase Java que realiza algún servicio, como ejecutar lógica de negocios, realizar cálculos y llamar a API externas. Esta anotación es una forma especializada de la anotación @Component destinada a ser utilizada en la capa de servicio. Es la anotación que más se parece a @Component ya que se encarga de registrar el Componente y permitir que se inyecten otras clases a él . Habitualmente un Servicio se relaciona con varios repositorios.
+@Controller : Esta anotación sirve para registrar los controladores que son los encargados de enlazarnos con la capa de presentación en el modelo MVC y de registrar las diferentes URLS a las que el componente responde a través de los diferentes @RequestMappings. La anotación @Controller se usa para indicar que la clase es un controlador Spring. Esta anotación se puede utilizar para identificar controladores para Spring MVC o Spring WebFlux.
+@RestController: Esta anotación se usa a nivel de clase. La anotación @RestController marca la clase como un controlador donde cada método devuelve un objeto de dominio en lugar de una vista. Al anotar una clase con esta anotación, ya no necesita agregar @ResponseBody a todos los métodos RequestMapping. Significa que ya no usa resuelve vistas ni envía HTML en respuesta. Simplemente envía el objeto de dominio como una respuesta HTTP en el formato que entienden los consumidores, como JSON. @RestController en el caso de que deseemos publicar servicios REST.
+
+¿Qué es la inyección de dependencias y como la implementa Spring?:
+DI es un patrón para separar responsabilidades, evitando que una clase sea responsable de instanciar objetos de otra. Promueve el bajo acoplamiento.
+Al arrancar Spring se crean los objetos (beans), y luego se “inyectan” donde son necesarios usando @Autowired.
+
+¿Cuántas formas de Inyección de dependencias hay en Spring? (Para conocer el nivel técnico):
+-	Puedo inyectarla por el constructor o puede inyectarla por el atributo.
+-	O Con parámetros.
+
+Pruebas unitarias (Podríamos pasar a una persona que tiene como mínimo el conocimiento pero que haya respondido las otras preguntas positivamente)
+Que indiquen si han dado como mínimo mantenimiento con pruebas unitarias y las herramientas que utiliza. 
+Herramientas: Junit (permite implementar pruebas unitarias), es una librería, esto es complementado con, o palabras relacionadas, “-Mock” “-Mockito”, si son otras, también es válido. 
+
+¿Qué son los principios SOLID? (Podemos hacer que el candidato estudie este concepto – Aparte debería de aplicar estos principios en sus prácticas):
+Los 5 principios SOLID de diseño de aplicaciones de software son:
+1.	S – Single Responsibility Principle (SRP)
+2.	O – Open/Closed Principle (OCP)
+3.	L – Liskov Substitution Principle (LSP)
+4.	I – Interface Segregation Principle (ISP)
+5.	D – Dependency Inversion Principle (DIP)
+
+1.	Principio de Responsabilidad Única: Según este principio “una clase debería tener una, y solo una, razón para cambiar”. Es esto, precisamente, “razón para cambiar”.
+2.	Principio de Abierto/Cerrado: Deberías ser capaz de extender el comportamiento de una clase, sin modificarla”. En otras palabras: las clases que usas deberían estar abiertas para poder extenderse y cerradas para modificarse.
+3.	Principio de Sustitución de Liskov: Las clases derivadas deben poder sustituirse por sus clases base. Esto significa que los objetos deben poder ser reemplazados por instancias de sus subtipos sin alterar el correcto funcionamiento del sistema o lo que es lo mismo: si en un programa utilizamos cierta clase, deberíamos poder usar cualquiera de sus subclases sin interferir en la funcionalidad del programa.  
+4.	Principio de Segregación de la Interfaz: Haz interfaces que sean específicas para un tipo de cliente, es decir, para una finalidad concreta. Es preferible contar con muchas interfaces que definan pocos métodos que tener una interface forzada a implementar muchos métodos a los que no dará uso.
+5.	Principio de Inversión de Dependencias: Los módulos de alto nivel no deberían depender de módulos de bajo nivel. Ambos deberían depender de abstracciones. Las abstracciones no deberían depender de los detalles. Los detalles deberían depender de las abstracciones. El objetivo del Dependency Inversion Principle (DIP) consiste en reducir las dependencias entre los módulos del código, es decir, alcanzar un bajo acoplamiento de las clases.
+
+¿Qué es JWT?:
+Basta que conozcan
+JWT (JSON Web Token) es un estándar qué define un mecanismo para poder propagar entre dos partes, y de forma segura, la identidad de un determinado usuario, además con una serie de claims o privilegios. Estos privilegios están codificados en objetos de tipo JSON, que se incrustan dentro de del payload o cuerpo de un mensaje que va firmado digitalmente.
+•	Token JWT: Se trata de una cadena de texto que tiene tres partes codificadas en Base64, cada una de ellas separadas por un punto, como la que vemos en la imagen siguiente:  
+•	Partes de un token:
+  o	Header: encabezado dónde se indica, al menos, el algoritmo y el tipo de token, que en el caso del ejemplo anterior era el algoritmo HS256 y un token JWT.
+  o	Payload: donde aparecen los datos de usuario y privilegios, así como toda la información que queramos añadir, todos los datos que creamos convenientes.
+  o	Signature: una firma que nos permite verificar si el token es válido, y aquí es donde radica el quid de la cuestión, ya que si estamos tratando de hacer una comunicación segura entre partes y hemos visto que podemos coger cualquier token y ver su contenido con una herramienta sencilla, ¿dónde reside entonces la potencia de todo esto?
+•	Ciclo de vida de un token:
+o	1.- Comenzaríamos desde el cliente, haciendo una petición POST para enviar el usuario y contraseña, y realizar el proceso de login.
+o	2.- Se comprobaría que ese usuario y su contraseña son correctos, y de serlos, generar el token JWT para devolverlo al usuario.
+o	3.- A partir de ahí la aplicación cliente, con ese token, haría peticiones solicitando recursos, siempre con ese token JWT dentro de un encabezado, que sería Authorization=> Bearer XXXXXXX, siendo Bearer el tipo de prefijo seguido de todo el contenido del token.
+o	4.- En el servidor se comprobaría el token mediante la firma, para verificar que el token es seguro, y, por tanto, podemos confiar en el usuario.
+o	5.- Dentro del cuerpo del token, además, tenemos los datos de quién es el usuario que ha realizado esa petición, porque podemos contener en el payload todos los datos de usuario que queramos.
+o	6.- Tras verificar que el token es correcto y saber quién es el que ha hecho la petición, podemos aplicar entonces el mecanismo de control de acceso, saber si puede acceder o no, y si es así, responder con el recurso protegido, de manera que lo podría recibir de una forma correcta.
+
+Pruebas unitarias
+Que indiquen si han trabajado con pruebas unitarias y las herramientas que utiliza : JUNIT,MOCKITO ETC	
+
+Perfil Scotiabank:
+Arquitectura (APi rest, Soap, monolitos, microservicios)
+Java, Spring boot
+Fundamentos de programacion (POO, Funcional)
+Buenas practicas (Diseño de patrones, Solid, DDD, RUP) 
+Tools (Git, Maven Gradle)
+Software Testing (TDD, Unit, Integracion, 2E)
+Software Delivery (CI/CD, git flow, TBD)
+Algoritmos & Data Sturctures (collections)
+Data Modeling (SQL, NoSQL ORM, ACID, CAP Theorem)
+Cyber Seguridad (Owasp Top 10, Oauth2, Encryption)
+Anthos
+**********************************************************************
+_Arquitectura:
+API Rest, SOAP, Monolitos, Microservicios:
+API Rest y SOAP: Estos son estilos de arquitectura de servicios web. REST se basa en la transferencia de representaciones de recursos a través de HTTP, mientras que SOAP utiliza protocolos como XML para la comunicación. En el contexto de Scotiabank, podrían usar estos para integrar sistemas internos o interactuar con socios externos.
+Monolitos y Microservicios: Estos representan dos enfoques opuestos para diseñar aplicaciones. Un monolito es una aplicación única y completa, mientras que los microservicios dividen la aplicación en componentes independientes y autónomos. Scotiabank podría adoptar microservicios para permitir una mayor escalabilidad y mantenibilidad.
+
+_Java, Spring Boot:
+Java: Lenguaje de programación de propósito general ampliamente utilizado en el desarrollo empresarial.
+Spring Boot: Marco de desarrollo que simplifica la creación de aplicaciones Java, facilitando el desarrollo de microservicios.
+
+_Fundamentos de Programación:
+POO (Programación Orientada a Objetos): Paradigma que utiliza objetos para organizar y estructurar el código. Ejemplo: creación de clases para representar entidades financieras.
+Funcional: Paradigma que trata la computación como la evaluación de funciones matemáticas. Ejemplo: uso de funciones lambda para operaciones sobre colecciones.
+
+_Buenas Prácticas:
+Diseño de Patrones, SOLID, DDD, RUP:
+Diseño de Patrones: Principios y patrones de diseño para resolver problemas comunes en el desarrollo de software.
+SOLID: Principios de diseño de software que promueven la creación de sistemas más mantenibles y escalables.
+DDD (Domain-Driven Design): Enfoque para el diseño de software basado en la comprensión profunda del dominio del problema.
+RUP (Rational Unified Process): Proceso de desarrollo de software que proporciona disciplinas y técnicas específicas.
+
+_Tools:
+Git, Maven, Gradle: Herramientas de control de versiones, gestión de dependencias y construcción de proyectos respectivamente.
+
+_Software Testing:
+TDD (Test-Driven Development): Enfoque de desarrollo donde las pruebas se escriben antes del código. Asegura que el código cumpla con los requisitos.
+Unit, Integración, 2E (End-to-End): Tipos de pruebas que abarcan desde la verificación de pequeñas unidades hasta la validación del sistema completo.
+
+_Software Delivery:
+CI/CD (Continuous Integration/Continuous Delivery): Práctica que implica integrar y entregar código de manera continua y automatizada.
+Git Flow: Modelo de ramificación para gestionar el flujo de trabajo en proyectos con Git.
+TBD (Test-Before-Deploy): Enfoque que garantiza la ejecución de pruebas antes de implementar el software.
+
+_Algoritmos & Data Structures:
+Collections: Estructuras de datos en Java para organizar y almacenar elementos, como listas, conjuntos y mapas.
+
+Data Structure are used to store, organize, manage, and retrieve data.
+Each data structure has its own unique features that set it apart from the others.
+But at a high level, these capabilities are provided by a few common operations
+that are found on every data structure.
+
+Store:
+First, there's operations that allow us to add values into the structure for storage.
+Some data structures will define the position where a new element is stored.
+For example, one data structure known as a queue pushes elements into the front fo its structure.
+Othe data structure like a list, let us choose the position where a new element is placed.
+So we might specify that we want to add a new element as the third item near the middle of its structure.
+
+Organize:
+Whe new elements are added to a data structure, they're stored according to an internally defined organization strategy.
+This strategy is typically optimized for a particular operation like retrieving or inserting an element.
+When working with a linear data structure, its elements are organized to a form a sequence.
+
+Other data strcutures based on trees or hashing functions, will use more complicated organizational strategies to store their elements.
+
+Manage:
+One elements are placed inside the structure for storage, we can use other operations to manage the elements if we need to make changes to the structure.
+For example, we might decide to remove an element. Or we might need to replace an element in the structure.
+Another common operation is to apply a sorting algorithm, that rearranges the data structure's elements.
+
+Retrieve:
+We also need to be able to retrieve elements that were stored in the data structure, which can be achieved using several operations that provide access to the elements.
+Retrieving an element at a specific position or with a key is known as random access.
+It normally provides better performance because it does not need to traverse all the elements in the structure to find the target element.
+If we need to retrieve every element in the data structure, we can use operations or control structures like loops that iterate through each element.
+Finally, many data structure expose operations that allow us to search for a particular element in the structure, either to remove it, find its position or the check if it exists.
+There's a bit more to it than that, but that's a high level look at some common operations found on data structures.
+
+Next, we'll start diving into the Java collections framework, where you'll find a hierarchy of collection types that support different mixtures of these capabilities.
+
+_Data Modeling:
+SQL, NoSQL, ORM, ACID, CAP Theorem:
+SQL y NoSQL: Tipos de bases de datos relacionales y no relacionales respectivamente.
+ORM (Object-Relational Mapping): Técnica que mapea objetos en el código a tablas en la base de datos.
+ACID y CAP Theorem: Principios que rigen la consistencia y disponibilidad en sistemas distribuidos.
+
+_Cyber Seguridad:
+OWASP Top 10, OAuth2, Encryption:
+OWASP Top 10: Lista de las principales vulnerabilidades de seguridad en aplicaciones web.
+OAuth2: Protocolo de autorización que permite el acceso seguro a recursos.
+Encryption: Técnica para proteger la información mediante la transformación de datos en un formato ilegible.
+
+_Anthos:
+Plataforma de Google para la gestión de aplicaciones en entornos de nube híbrida y multicloud. Permite desplegar, gestionar y escalar aplicaciones de manera consistente en diferentes entornos.
+****************************************************************************
+
+_API REST vs SOAP:
+Ambos, API REST (Representational State Transfer) y SOAP (Simple Object Access Protocol),
+son protocolos utilizados para la comunicación entre sistemas, pero difieren en su enfoque, formato y uso.
+Comparación detallada->
+
+Formato de Mensajes:
+API REST:
+Utiliza formatos ligeros como JSON o XML para el intercambio de datos.
+JSON es más común debido a su simplicidad y facilidad de lectura.
+SOAP:
+Utiliza XML como formato estándar para estructurar mensajes.
+XML es más verboso en comparación con JSON, lo que puede aumentar la complejidad y el tamaño de los mensajes.
+
+_Protocolo de Transferencia:
+API REST:
+Se basa en los métodos HTTP estándar como GET, POST, PUT y DELETE.
+Utiliza el estado del recurso y las URLs para definir operaciones.
+SOAP:
+Puede usar cualquier protocolo de transporte como HTTP, SMTP o JMS.
+Define sus propios estándares de operación y utiliza XML para la encapsulación del mensaje.
+
+_Ligereza y Eficiencia:
+API REST:
+Generalmente es más ligero y eficiente debido a su uso de formatos como JSON y la simplicidad de las operaciones HTTP.
+Ideal para aplicaciones con recursos limitados, como dispositivos móviles o servicios web de consumo masivo.
+SOAP:
+Puede ser más pesado y complejo debido al uso de XML y a la definición de operaciones más ricas.
+Adecuado para aplicaciones empresariales que requieren mayor seguridad y transacciones complejas.
+
+_Seguridad:
+API REST:
+Se puede implementar seguridad a través de HTTPS y autenticación estándar como OAuth.
+Más flexible en términos de selección de mecanismos de seguridad.
+SOAP:
+Proporciona estándares de seguridad integrados como WS-Security.
+Mejor adaptado para entornos donde la seguridad es una preocupación principal, como transacciones financieras.
+
+_Flexibilidad y Escalabilidad:
+API REST:
+Más flexible debido a su simplicidad y capacidad para evolucionar con el tiempo.
+Fácil de escalar horizontalmente y adaptarse a cambios en los requisitos.
+SOAP:
+Menos flexible debido a su estructura más rígida y definiciones de servicio.
+Puede ser más complejo de escalar debido a la estructura monolítica de los mensajes SOAP.
+
+***************************************************************
+_Respuestas Informativas (100 - 199):
+• 100 Continue:
+Ejemplo: Al realizar una solicitud POST para cargar un archivo, el servidor responde con 100 Continue para indicar que puede continuar enviando el cuerpo de la solicitud.
+• 101 Switching Protocols:
+Ejemplo: Cuando se recibe una solicitud con un encabezado "Upgrade" para cambiar a un protocolo diferente, como de HTTP a WebSocket.
+• 102 Processing:
+Ejemplo: Durante una solicitud prolongada, el servidor puede enviar 102 Processing para indicar que aún está procesando la solicitud.
+
+_Respuestas Exitosas (200 - 299):
+• 200 OK:
+Ejemplo: Una solicitud GET a GET /users/123 devuelve información sobre el usuario con ID 123.
+• 201 Created:
+Ejemplo: Después de un exitoso POST a POST /users, se crea un nuevo usuario y la respuesta es 201 Created.
+• 204 No Content:
+Ejemplo: Después de un DELETE a DELETE /resource/123, el servidor responde con 204 No Content para indicar que se realizó la acción sin contenido adicional.
+
+_Mensajes de Redirección (300 - 399):
+• 301 Moved Permanently:
+Ejemplo: GET /old-page redirige a GET /new-page después de que la página ha sido trasladada permanentemente.
+• 302 Found (o 307 Temporary Redirect):
+Ejemplo: GET /temp-page redirige temporalmente a otra página.
+• 304 Not Modified:
+Ejemplo: Al realizar una solicitud condicional como GET /cached-resource y la copia en caché aún es válida, el servidor responde con 304 Not Modified.
+
+_Respuestas de Error del Cliente (400 - 499):
+• 400 Bad Request:
+Ejemplo: El servidor recibe una solicitud mal formada, como una solicitud POST sin datos en POST /create-user.
+• 401 Unauthorized:
+Ejemplo: Acceso no autorizado a GET /user-profile debido a la falta de credenciales válidas.
+• 403 Forbidden:
+Ejemplo: Un intento de DELETE /admin-resource por un usuario no autorizado.
+• 404 Not Found:
+Ejemplo: Una solicitud a GET /non-existent-page para una página que no existe.
+
+_Respuestas de Error del Servidor (500 - 599):
+• 500 Internal Server Error:
+Ejemplo: Error en el servidor al procesar una solicitud compleja como POST /complex-operation.
+• 502 Bad Gateway:
+Ejemplo: Problema en la comunicación entre servidores en una arquitectura de microservicios.
+• 503 Service Unavailable:
+Ejemplo: El servidor está temporalmente fuera de servicio, como durante un reinicio, y responde con 503 Service Unavailable.
+
+ANOTACIONES SPRING BOOT, SPRING DATA, SPRING SECURITY:
+Spring Boot:
+@SpringBootApplication: Habilita la autoconfiguración de Spring Boot en la aplicación.
+Combina @Configuration, @EnableAutoConfiguration, y @ComponentScan.
+@RestController: Marca una clase como un controlador REST.
+@RequestMapping: Mapea una URL o expresión a un método controlador.
+@Autowired: Se utiliza para la inyección de dependencias.
+@Value: Inyecta valores desde archivos de propiedades o YAML en campos de una clase.
+@ConfigurationProperties: Vincula propiedades de configuración a un objeto Java personalizado.
+@Profile: Define perfiles de aplicación condicionales.
+@Async: Indica que un método debe ejecutarse de forma asíncrona.
+@Scheduled: Programa la ejecución periódica de un método.
+@Component: Anota una clase como un componente de Spring.
+@Conditional: Configura condicionalmente componentes o configuraciones.
+@Cacheable: Habilita la caché de métodos para mejorar el rendimiento almacenando en memoria
+los resultados de los métodos.
+
+Spring Data:
+JPQL (Java Persistence Query Language): Lenguaje de consulta orientado a objetos utilizado
+con la API de Persistencia de Java (JPA) para hacer consultas en bases de datos relacionales
+utilizando objetos y entidades Java en lugar de SQL directamente.
+@Entity: Marca una clase como una entidad JPA.
+@Repository: Anota una clase como un repositorio Spring Data.
+@Query: Define consultas personalizadas en repositorios Spring Data.
+@Id: Anota un campo como clave principal en una entidad.
+@GeneratedValue: Genera automáticamente valores para la clave principal.
+@OneToMany y @ManyToOne: Establece relaciones entre entidades en el mapeo de objetos a bases de datos.
+@QueryDSL: Proporciona soporte para consultas dinámicas y complejas utilizando DSL.
+@Procedure: Se utiliza para invocar procedimientos almacenados de base de datos
+desde un repositorio de Spring Data JPA.
+@Param: Se utiliza para vincular parámetros de métodos de repositorio
+con nombres específicos a los parámetros de una consulta JPQL.
+@Transactional: Define la transacción que rodea un método o clase para garantizar la integridad de la base de datos.
+@QueryHints: Permite la configuración de sugerencias de consulta JPA para optimizar el rendimiento de las consultas.
+
+Spring Security:
+@EnableWebSecurity: Habilita la configuración de seguridad web.
+@Secured: Asegura que un método o clase solo sea accesible por usuarios con roles específicos.
+@AuthenticationPrincipal: Permite acceder al objeto de autenticación principal en un método controlador.
+@PreAuthorize y @PostAuthorize: Autorización basada en expresiones SpEL antes y después de la ejecución de métodos.
+@CrossOrigin: Configura políticas de control de acceso a recursos para peticiones HTTP cruzadas (CORS).
+@CsrfToken: Genera tokens CSRF en formularios web.
+@RolesAllowed: Asegura que un método o clase solo sea accesible por usuarios con roles específicos.
+@OAuth2Client y @EnableOAuth2Client: Utilizadas en aplicaciones OAuth 2.0 para interactuar con proveedores de autenticación externos.
+@EnableResourceServer: Habilita una aplicación Spring como servidor de recursos para autenticación y autorización de recursos protegidos.
+
+Spring Security:
+Provides J2EE application security services
+Designed for enterprise applications and internet-facing applications
+Provides the authentication (who) and authorization (what)
+
+  Authentication (who):
+  Process of verifying a principal
+  Principals can be humans or machines
+
+  Authentication Support:
+  HTTP basic and digest, x509, and form-based authentication
+  LDAP and Active Directory
+  Spring can support OAuth and Oauth 2, OpenID, Jasig CAS (Central Authentication Service), and JAAs
+  Kerberos and SAML
+
+  Authorization (what):
+  Determines what the principal can or cannot do
+  Authorization is based on authentication
+  Authorization is often called access control
+
+  Authorization Support:
+  Web request
+  Method invocation
+  Domain object access control (Which can be very powerful in highly sensitive areas
+                                like PII, financial, healthcare information)
+
+  In-memory authentication:
+  package com.frankmoley.lil.adminweb.config;
+
+  @Configuration
+  @EnableWebSecurity
+  public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+      @Override
+      protected void configure(HttpSecurity http) throws Exception {
+          http
+                  .authorizeRequests()
+                  .antMatchers("/", "/home").permitAll()
+                  .anyRequest().authenticated()
+                  .and()
+                  .httpBasic();
+      }
+      @Bean
+      @Override
+      public UserDetailsService userDetailsService() {
+          UserDetails user =
+                  User.withDefaultPasswordEncoder()
+                          .username("user")
+                          .password("password")
+                          .roles("USER")
+                          .build();
+          return new InMemoryUserDetailsManager(user);
+      }
+  }
+
+  JDBC authentication:
+  @Configuration
+  @EnableWebSecurity
+  public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+      @Override
+      protected void configure(HttpSecurity http) throws Exception {
+          http
+                  .authorizeRequests()
+                  .antMatchers("/", "/home").permitAll()
+                  .anyRequest().authenticated()
+                  .and()
+                  .httpBasic();
+      }
+      @Bean
+      public UserDetailsService users(DataSource dataSource) {
+          return new JdbcUserDetailsManager(dataSource);
+      }
+      @Bean
+      public static PasswordEncoder getPasswordEncoder() {
+          return NoOpPasswordEncoder.getInstance();
+      }
+  }
+
+  Using Bcrypt: Aprovechamos bcrypt para hashing
+  Considerar que SHA-256 ya no se considera seguro
+  porque puede ser atacado por fuerza bruta
+  por cosas como GPU de alto rendimiento
+
+  Terminal
+  input => C:\project\spring-boot-cli> spring encodepassword passwordtest
+  ouput => {bcrypt}$2a$10$asflskjflajskljJEKjsflka6fxvASLFJkasdkLASDFKjKJj5la
+
+  Applying authorizations: Using the class GrantedAuthoritiesMapper
+  del package org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
+
+  @Configuration
+  @EnableWebSecurity
+  public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+      @Override
+      protected void configure(HttpSecurity http) throws Exception {
+          http
+                  .authorizeRequests()
+                  .antMatchers("/", "/home").permitAll()
+                  .antMatchers("/customers/**").hasRole("USER")
+                  .antMatchers("/orders").hasRole("ADMIN")
+                  .anyRequest().authenticated()
+                  .and()
+                  .httpBasic();
+      }
+      @Bean
+      public UserDetailsService users(DataSource dataSource) {
+          return new JdbcUserDetailsManager(dataSource);
+      }
+      @Bean
+      public GrantedAuthoritiesMapper authoritiesMapper() {
+          SimpleAuthorityMapper authorityMapper = new SimpleAuthorityMapper();
+          authorityMapper.setConvertToUpperCase(true);
+          return authorityMapper;
+      }
+  }
+
+  Form-based authentication:
+  @Configuration
+  @EnableWebSecurity
+  public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+      @Override
+      protected void configure(HttpSecurity http) throws Exception {
+          http
+                  .authorizeRequests()
+                  .antMatchers("/", "/home").permitAll()
+                  .antMatchers("/customers/**").hasRole("USER")
+                  .antMatchers("/orders").hasRole("ADMIN")
+                  .anyRequest().authenticated()
+                  .and()
+                  .formLogin()
+                  .loginPage("/login")
+                  .failureUrl("/login?error")
+                  .permitAll()
+                  .and()
+                  .logout()
+                  .clearAuthentication(true)
+                  .invalidateHttpSession(true)
+                  .logoutSuccessUrl("/login?logout")
+                  .permitAll()
+          ;
+      }
+      @Bean
+      public UserDetailsService users(DataSource dataSource) {
+          return new JdbcUserDetailsManager(dataSource);
+      }
+      @Bean
+      public GrantedAuthoritiesMapper authoritiesMapper() {
+          SimpleAuthorityMapper authorityMapper = new SimpleAuthorityMapper();
+          authorityMapper.setConvertToUpperCase(true);
+          return authorityMapper;
+      }
+  }
+
+  LDAP (Lightweight Directory Access Protocol / Protocolo Ligero de Acceso a Directorios):
+  User directory structure
+  Built into many operating systems
+  Interoperability
+  Scalability
+
+  _Spring Security LDAP:
+  spring-security-ldap project
+  Full support for native LDAP operations
+  Password-hashing algorithms included
+
+  _Paradigm:
+  Very similar to basic and form-based authentication
+  Leverages AuthenticationManagerBuilder in the same manner
+
+  _Internal LDAP:
+  User embedded LDAP
+  Can use OpenLDAP if you prefer
+  Active Directory is not LDAP, but can use LDAP for authentication
+
+  _pom.xml:
+    <dependency>
+      <groupId>org.springframework.ldap</groupId>
+      <artifactId>spring-ldap-core</artifactId>
+  </dependency>
+  <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-ldap</artifactId>
+  </dependency>
+  <dependency>
+      <groupId>com.unboundid</groupId>
+      <artifactId>unboundid-ldapsdk</artifactId>
+  </dependency>
+
+  _resources/test-server.ldif:
+  dn: dc=landon,dc=org
+  objectclass: top
+  objectclass: domain
+  objectclass: extensibleObject
+  dc: landon
+
+  dn: ou=groups,dc=landon,dc=org
+  objectclass: top
+  objectclass: organizationalUnit
+  ou: groups
+
+  dn: ou=subgroups,ou=groups,dc=landon,dc=org
+  objectclass: top
+  objectclass: organizationalUnit
+  ou: subgroups
+
+  dn: ou=people,dc=landon,dc=org
+  objectclass: top
+  objectclass: organizationalUnit
+  ou: people
+
+  dn: uid=user,ou=people,dc=landon,dc=org
+  objectclass: top
+  objectclass: person
+  objectclass: organizationalPerson
+  objectclass: inetOrgPerson
+  cn: user
+  sn: user
+  uid: user
+  userPassword: $2a$10$biqH/BsLZapkRlftOWwvz.o1Gye8R6eJFN4dp2YCaWvyTgMbFy8ui
+
+  dn: uid=admin,ou=people,dc=landon,dc=org
+  objectclass: top
+  objectclass: person
+  objectclass: organizationalPerson
+  objectclass: inetOrgPerson
+  cn: admin
+  sn: admin
+  uid: admin
+  userPassword: $2a$10$biqH/BsLZapkRlftOWwvz.o1Gye8R6eJFN4dp2YCaWvyTgMbFy8ui
+
+  dn: cn=admin,ou=groups,dc=landon,dc=org
+  objectclass: top
+  objectclass: groupOfUniqueNames
+  cn: admin
+  ou: admin
+  uniqueMember: uid=admin,ou=people,dc=landon,dc=org
+
+  dn: cn=user,ou=groups,dc=landon,dc=org
+  objectclass: top
+  objectclass: groupOfUniqueNames
+  cn: user
+  ou: user
+  uniqueMember: uid=admin,ou=people,dc=landon,dc=org
+  uniqueMember: uid=user,ou=people,dc=landon,dc=org
+
+  _resources/application.properties:
+  spring.jpa.hibernate.ddl-auto=none
+  server.error.whitelabel.enabled=false
+  spring.ldap.embedded.ldif=classpath:test-server.ldif
+  spring.ldap.embedded.base-dn=dc=landon,dc=org
+  spring.ldap.embedded.port=8389
+
+  _src/main/java/com/exampleweb/config/WebSecurityConfig.java:
+  package com.exampleweb.config;
+  import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+
+  @Configuration
+  @EnableWebSecurity
+  public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+      @Override
+      protected void configure(HttpSecurity http) throws Exception {
+          http
+                  .authorizeRequests()
+                  .antMatchers("/", "/home").permitAll()
+                  .antMatchers("/customers/**").hasRole("USER")
+                  .antMatchers("/orders").hasRole("ADMIN")
+                  .anyRequest().authenticated()
+                  .and()
+                  .formLogin()
+                  .loginPage("/login")
+                  .failureUrl("/login?error")
+                  .permitAll()
+                  .and()
+                  .logout()
+                  .clearAuthentication(true)
+                  .invalidateHttpSession(true)
+                  .logoutSuccessUrl("/login?logout")
+                  .permitAll()
+          ;
+      }
+      @Override
+      public void configure(AuthenticationManagerBuilder auth) throws Exception {
+          auth.ldapAuthentication()
+                  .userDnPatterns("uid={0},ou=people")
+                  .groupSearchBase("ou=groups")
+                  .contextSource()
+                  .url("ldap://localhost:8389/dc=landon,dc=org")
+                  .and()
+                  .passwordCompare()
+                  .passwordEncoder(new BCryptPasswordEncoder())
+                  .passwordAttribute("userPassword");
+      }
+      @Bean
+      public UserDetailsService users(DataSource dataSource) {
+          return new JdbcUserDetailsManager(dataSource);
+      }
+      @Bean
+      public GrantedAuthoritiesMapper authoritiesMapper() {
+          SimpleAuthorityMapper authorityMapper = new SimpleAuthorityMapper();
+          authorityMapper.setConvertToUpperCase(true);
+          return authorityMapper;
+      }
+  }
+
+  OAuth 2:
+  CommonOAuth2Provider:
+  Provides native support for Okta, Google, GitHub, and Facebook
+  Property-based configuration in Spring Boot
+  Client-side OAuth integration
+
+  Authorization Server:
+  Provides authorization services to the system
+  @EnableAuthorizationServer
+  AuthorizationServerConfigurerAdapter used to configure it
+  Supports various grant types
+
+  Resource Server:
+  Provides the resources being protected
+  @EnableResourceServer
+
+  OAuth 2 Client:
+  Full client-side support
+  @EnableOauth2Client
+  Oauth2RestTemplate provides much of the scaffolding(estructura provisional) (administra los tokens, manipular e inyectarlos en encabezados)
+  Supports various grant types
+
+  _admin-client/resources/application.properties:
+  # put real values below
+  spring.security.oauth2.client.registration.github.client-id=redacted
+  spring.security.oauth2.client.registration.github.client-secret=redacted
+
+Spring Data:
+Módulo de acceso a datos de Spring
+Soporte SQL y NoSQL
+Autoconfiguración con los starters
+Drivers y datos de conexión
+Fuentes de datos según perfil
+Solo un datasource autoconfigurado
+
+  Spring Data MongoDB:
+    pom.xml:
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artiactId>spring-boot-starter-data-mongodb</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>de.flapdoodle.embed</groupId>
+      <artiactId>de.flapdoodle.embed.mongo</artifactId>
+      <version>${flapdoodle.version}</version>
+    </dependency>
+
+    application.properties: se debe configurar para que Fungo funcione
+    spring.mongodb.embedded.version=4.0.2
+
+    package domain:
+    import org.springframework.data.annotation.Id;
+    import org.springframework.data.mongodb.core.mapping.Document;
+
+    /*
+    Mongo Document representing a staff member of a department.
+    */
+    @Document
+    public class Staff{
+        @Id
+        private String id;
+        private String name;
+        private Person person;
+        private Member member;
+    }
+
+    repository:
+    public interface StaffRepo extends PagingAndSortingRepository<Staff, Integer>{
+
+      Optional<Staff> findByName(String name);
+
+      '@Query("{"member.firstName": {$regex: ?0} }")
+      List<Staff> findByFirstNameByPattern(String firstName);
+
+      '@Query("{"member.firstName": ?0 }")
+      List<Staff> findByFirstName(String firstName);
+    }
+
+  Spring Data REST:
+    It's a module for exposing repositories as RESTful APIs (web services)
+
+    Spring Data REST Starter Dependency
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artiactId>spring-boot-starter-data-rest</artifactId>
+    </dependency>
+
+    RESTFul API Discovery and Exposition:
+    1. Finds the Spring Data repositories
+    2. Creates and endpoint that matchces the entity name
+    3. Appends an s(configurable if default not desired)
+    4. Exposes methods as a RESTful resource API over HTTP
+
+    HTTP GET Mapping:
+    public interface DepartmentRepo extends CrudRepository<Deparment, Integer> {
+      Optional<Department> findByName(String name);
+    }
+    GET /departments				                        | departmentRepo.findAll()
+    GET /departments/5			                      	| departmentRepo.findById(5)
+    GET /departments/search/findByName?name=Science	| departmentRepo.findByName("Science")
+
+    public interface Staff extends JpaRepository<Deparment, Integer> {
+      Page<Staff> findByLastName(String lastName, Pageable pageable);
+    }
+    GET /staffs?page=1&size=5		            	| staffRepo.findAll(PageRequest.of(1,5))
+    GET /staffs/search/lastName?page=0&size=3	| staffRepo.findByLastName("jones", PageRequest.of(0,3))
+
+    HTTP POST Mapping:
+    public interface Staff extends JpaRepository<Department, Integer> {
+    }
+
+    POST /staffs
+    {					                |
+      "member": {			        |
+        "firstName": "Jane",	| staffRepo.save( new Person("Jane", "Doe");
+        "lastName": "Doe"	    |
+      }				                |
+    }					                |
+
+    HTTP PUT / PATCH Mapping:
+    public interface Staff extends JpaRepository <Department, Integer> {
+    }
+
+    PUT /staffs/2
+    {					                |
+      "member": {			        | Staff two = findById(2);
+        "firstName": "John",	| two.setMember(new Person("John", "Smith"));
+        "lastName": "Smith"	  | staffRepo.save(two);
+      }				                |
+    }					                |
+
+    PATCH /staffs/2
+    {					                |
+      "member": {			        | Staff two = findById(2);
+        "lastName": "Smith"	  | two.getMember().setLastName("Smith");
+      }				                | staffRepo.save(two);
+    }					                |
+
+    HTTP DELETE Mapping:
+    public interface Staff extends JpaRepository<Department, Integer>{
+    }
+
+    DELETE /department/1      | Department one = departmentRepo.findById(1);
+    _                         | departmentRepo.delete(one);
+
+    Configure Response Body with Projections:
+    @Projection(name="showChair", types = {Department.class})
+    public interface ShowChair {
+      String getName();
+      @Value("#{target.chair.member.firstName} #{target.chair.member.lastName}")
+      String getChairName();
+    }
+
+    GET /departments/2?projection=showChair | RESPONSE
+                                            | {
+                                            |   "name": "Science",
+                                            |   "chairName": "John Smith"
+                                            | }
+
+    Configure Resource Path:
+    //Override default path "/staffs" to "/staff":
+    @RepositoryRestResource(path="staff",
+    collectionResourceRel="staff")
+    public interface StaffRepo extends JpaRepository<Staff, Integer>{
+    }
+  Dynamic Querying - When query methods are not enough:
+    *Specifications:
+      QueryMethods: CourseRepo
+      findByInstructor
+      findByInstructorAndCredits
+      findByInstructorAndCreditsAndDepartment
+      findByCredits
+      findByCreditsAndDepartment
+      findByDepartment
+      findByDepartmentAndInstructor
+
+      Java Persistence Criteria API:
+      CriteriaBuilder builder = entityManager.getCriteriaBuilder()
+      CriteriaQuery<Course> criteriaQuery = builder.getCriteriaQuery(Course.class);
+      Root<Course> root = query from(Course.class)
+      query.select(root).where(0..n Predicates);
+      List<Course> all = entityManager.createQuery(cq).getResultList();
+
+      JpaSpecificationExecutor Interface:
+      public interface CourseRepo implements JpaoRepository<Course, Integer>,
+          JpaSpecificationExecutor<Course>{
+        List<Course> courses = courseRepo.findAll(Specification);
+        List<Course> courses = courseRepo.findAll(Specification, Pageable);
+        List<Course> courses = courseRepo.findAll(Specification, Sort);
+      }
+      Spring Data JPA Specification via Anonymous Class:
+      Specification<Course> spect = new Specification<Course>() {
+        @Override
+        public Predicate toPredicate(Root<Course> root,
+            CriteriaQuery<?> query,
+            CriteriaBuilder criteriaBuilder){
+          return criteriaBuilder.and(0..n Predicates);
+        }
+      };
+      List<Course> courses = courseRepo.findAll(spec);
+      Spring Data JPA Specification via Java 8 Lambdas:
+      Specification<Course> spec =
+        (root, criteriaQuery, criteriaBuilder) -> {
+          return criteriaBuilder.and(0..n Predicates);
+        }
+      List<Course> courses = courseRepo.findAll(spec);
+    *Querydsl:
+      Dynamic Querying - Querydsl extension:
+      intuitive dynamic queries (library)
+      - plugin apt-maven-plugin (com.mysema.maven)
+      <plugin>
+        <groupId>com.mysema.maven</groupId>
+        <artifactId>apt-maven-plugin</artifactId>
+        <version>1.1.3</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>process</goal>
+            <configuration>
+              <outputDirectory>target/generated-sources/java</outputDirectory>
+              <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      - dependency querydsl-apt (com.querydsl)
+      <dependency>
+        <groupId>com.querydsl</groupId>
+        <artifactId>querydsl-jpa</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>com.querydsl</groupId>
+        <artifactId>querydsl-apt</artifactId>
+        <scope>provided</scope>
+      </dependency>
+      ..............................
+      target/generated-sources/java/com/example/university/domain/:
+      QCourse.java
+      QDepartment.java
+      QPerson.java
+      QStaff.java
+      QStudent.java
+
+      QuerydslPredicateExecutor<T>:
+      public interface StudentQdslRepo extends
+        CrudRepository<Studen, Integer>, QueryDslPredicateExecutor<Student> {
+      }
+
+      Optional<Student> findOne(Predicate predicate);
+      Iterable<Student> findAll(Predicate predicate);
+      Iterable<Student> findAll(Predicate predicate, Sort sort);
+      Page<Student> findAll(Predicate predicate, Pageable pageable);
+      long count(Predicate predicate);
+      boolean exists(Predicate predicate);
+
+      Query DSL Predicate != JPA Criteria Predicate
+      ...........
+      Querying with Q-Type Class Attributes:
+      public static BooleanExpression hasLastName(String lastName){
+        return QStudent.student.attendee.lastName.eq(lastName);
+      }
+      public static BooleanExpression isFullTime(){
+        return QStudent.student.fullTime.eq(true);
+      }
+      public static BooleanExpression isOlderThan(int age){
+        return QStudent.student.age.gt(age);
+      }
+
+      //Combine BooleanExpression Predicates and lookup Students
+      studentQdslRepo.findAll(hasLastName("Smith").and(isFullTime()).and(isOlderThan(20));
+      studentQdslRepo.findAll(hasLastName("Smith").and(isOlderThan(20));
+      studentQdslRepo.findAll(isFullTime().or(isOlderThan(20)));
+    *QueryByExample - simple dynamic queries - Dynamic Querying:
+      Query by Example:
+      Pros - Uses:
+      User-friendly alternative to SQL
+      Lookup objects similar to another object
+      Independent of underlying data store
+      Frequently refactored code
+
+      Cons - Difficulty querying:
+      Nested property constraints
+      Complex string matching
+
+      JpaRepository<T,ID> extends QueryByExampleExecutor<T>:
+      public interface DepartmentRepository extends JpaRepository<Department, String>{
+      }
+
+      List<Department> findAll(Example<Department> example);
+      List<Department> findAll(Example<Department> example, Sort sort);
+      Optional<Department> findOne(Example<Department> example);
+      Page<Department> findAll(Example<Department> example, Pageable pageable);
+      long count(Example<Department> example);
+      boolean exists(Example<Department> example);
+
+      Example<T> example = Example.of(T probe);:
+      //Given the following Constructors:
+      //	Department(String name, Staff chair)
+      //	Staff(Person member)
+      //	Person(String firstName, String lastName)
+      //Find the department with the name "Humanities"
+
+      Department humanities = departmentRepository.findOne(
+        Example.of(new Department("Humanities", null)));
+
+      //Find all departments whose chair has the first name of "Rachel"
+      List<Department> chairedByARachel = departmentRepository.findAll(
+          Example.of(new Department(null, new Staff(new Person("Rahcel",null)))));
+
+      Example<T> example = Example.of(T probe, ExampleMatcher matcher);:
+      //Find all departments with the name ending in sciences; ignore case:
+      List<Department> theSciences = departmentRepository.findAll(Example.of(
+                        Example.of(
+                          new Department("sciences",null),
+                          ExampleMatcher
+                            .matching()
+                            .withIgnoreCase()
+                            .withStringMatcher(StringMatcher.ENDING)
+                          }
+                        }
+                      );
+  Query Methods - Paging and Sorting Repository:
+    *Theory:
+      public interface JpaRepository extends PagingAndSortingRepository<T,ID> {
+        Page<T> findAll(params..., Pageable pageable);
+        List<T> findAll(params..., Sort);
+      }
+
+    *Practice:
+    //Custom Query Methods with Paging and Sorting:
+    public interface StaffRepository JpaRepository<Staff, Integer> {
+      Page<Staff> findBySomething(params..., Pageable pageable);
+      List<Staff> findBySomething(params..., Sort);
+    }
+
+    Creating a Sort for Staff:
+    Sort a = Sort.by(Sort.Direciton.DESC, "member.firstName");
+    Sort b = Sort.by(Sort.Order.desc("member.firstName"));
+    Sort c = Sort.by("member.firstName"); //default direction
+    Sort d = Sort.by("member.lastName", "member.firstName");
+
+    List<Staff> allStaffSortedByLastNameThenFirst = StaffRepo.findAll(d);
+
+    Creating a Pageable for Staff with PageRequest.of:
+    PageRequest.of(<page number>, <size of page>, <optional Sort>)
+    Sort nameSort = Sort.by("member.lastName", "member.firstName")
+    Pageable x = PageRequest.of(0, 5, nameSort);
+    Pageable y = PageRequest.of(1, 5, nameSort);
+
+    Page<Staff> Operations:
+    Sort nameSort = Sort.by("member.lastName", "member.firstName");
+    Page<Staff> firstPageOf4 = staffRepo.findAll(PageRequest.of(0,4,nameSort));
+    List<Staff> values = firstPageOf4.getContent();
+    Stream<Staff> valueStream = firstPageOf4.get();
+    int numOfElements = firstPageOf4.getTotalElements();
+    int numPage = firstPageOf4.getTotalPages();
+
+  Query-Annotated Method:
+    @Query("JPQL query string")
+    ReturnValue anymethodname(zero o more parameters);
+
+    @Query(value="SQL query string", nativeQuery=true)
+    ReturnValue anymethodname(zero o more parameters);
+
+    Native queries not verified at bootstrap
+    Cleaner Method Signature:
+      List<Course> findByDepartmentChairMemberLastName(String chairLastName);
+      //findByChairLastName using @Param:
+      @Query("Select c from Course c where c.department.chair.member.lastName=:chair")
+      List<Course> findByChairLastName(@Param("chair")String chairLastName);
+
+      //findByChairLastName using ?1 numeric parameter:
+      @Query("Select c from Course c where
+      c.department.chair.member.lastName = ?1")
+      List<Course> findByChairLastName(String chairLastName);
+
+    Complex JPQL Queries:
+      //JPQL se une al curso de los cursos de requisitos previos:
+      @Query("Select c from Course c join c.prerequisites p where p.id = ?1")
+      List<Course> findByPrerequisite(int id);
+
+      //objeto completamente nuevo que ni siquiera es una entidad JPA:
+      @Query("Select new com.example.university.CourseView(c.name,"
+        + "c.instructor.member.lastName, "
+        + "c.department.name) from Course c where c.id=?1")
+      CourseView getCourseView(int courseId);
+
+    Going Native Query:
+    @Query(value="SELECT * FROM student s ORDER BY s.age LIMIT 3",
+        nativeQuery=true)
+    List<Student> findThreeYoungestStudents();
+
+  JPQL:
+    Operaciones -> SELECT, INSERT, UPDATE, DELETE
+    Queries estáticas
+    Sin paginación
+    Suele ser más rápido
+    Difícil protección de la inyección SQL
+
+  Criteria:
+    Operaciones -> SELECT
+    Queries dinámicas
+    Con paginación
+    Suele ser más lento
+    Protegida de la inyección SQL
+
+  DAO: Data Access Object, un objeto de acceso a datos es un componente de software que suministra una
+  interfaz común entre aplicación y uno o más dispositivos de almacenamiento de datos, tales como una
+  base de datos o un archivo. El término se aplica frecuentemente al patrón de diseño Object
+
+  Entidades: Tablas de la base de datos
+  Métodos del DAO: Operaciones CRUD
+  Clases DAO: Una por entidad, consultas genéricas, consultas adaptadas a nuestro negocio, crud
+  Jerarquía:
+    Interfaz: define operaciones comunes
+    Clase abstracta: implementa lo común
+    Clases DAO: por cada entidad, sus métodos particulares
+  H2: motor de base de datos integrada de Spring que se puede desplegar en memoria
+  Entidades JPA:
+  Repository: extienden de JPARepository
+
+patrón repositorio:
+mediación entre dominio y datos
+colecciones en memoria
+persistencia transparente
+implementar casos de uso dle negocio
+
+patron DAO:
+Data Access Object
+abstracción cercana a las tablas
+usado por el repositorio
+ideales para acceso a los datos
+
+XML: para describir los datos
+SOAP: para transferir los datos
+WSDL: para describir los servicios disponibles
+UDDI: para listar los servicios disponibles
+
+¿ Cuál es el propósito del método public static void main en un programa Java?
+Propósito de public static void main en Java: Es el punto de entrada del programa donde comienza la ejecución.
+
+¿ Cuál es la diferencia entre System.out.println y System.err.println?
+Diferencia entre System.out.println y System.err.println: El primero es para mensajes normales, el segundo para mensajes de error.
+
+¿ Qué es un interface en Java?
+Interface en Java: Define un conjunto de métodos que otras clases deben implementar.
+
+¿ Cuándo usarías una clase abstract en lugar de una interface?
+Clase abstracta vs. interface: La primera proporciona implementación y la segunda define un contrato.
+
+¿ Cuáles son las diferencias entre un public método y protected uno?
+Diferencias entre métodos públicos y protegidos: Public es accesible desde cualquier lugar, protegido solo en clases relacionadas.
+
+¿ Qué es una static variable?
+Static variable: Variable compartida por todas las instancias de una clase.
+
+¿ Qué es un Exception en Java?
+Exception en Java: Representa errores o situaciones excepcionales durante la ejecución.
+
+¿Es una buena práctica atrapar un RuntimeException?
+Capturar RuntimeException: Generalmente no es recomendado, se usa para errores no recuperables.
+
+¿Cuál es la palabra clave que se debe utilizar en la firma de un método para permitir que no se detecte una exception en este método?
+Palabra clave para excepciones no capturadas: throws en la firma del método.
+
+¿Cuál es la última versión de Java?
+Última versión de java: Java 20 - año 2023
+
+¿Cuál es el propósito de un garbage collector?
+Propósito de garbage collector: Gestiona automáticamente la memoria liberando objetos no utilizados.
+
+¿Cuál es la diferencia entre a HashSety a TreeSet?
+Diferencia entre HashSet y TreeSet: El primero no mantiene orden, el segundo mantiene orden ascendente.
+
+¿ Qué Thread método se llama cuando se inicia un hilo?
+Método de inicio de hilo: Se llama run, pero debe iniciarse con start.
+
+¿ Es posible actualizar un objeto String (sin utilizar la introspección)?
+Actualizar un objeto String: Los Strings son inmutables, crea uno nuevo para cambios.
+
+¿Cuál es el contrato entre los métodos equals y hashcode?
+Contrato entre equals y hashCode: Si dos objetos son iguales, sus códigos hash deben ser iguales, pero no siempre es cierto.
+
+¿Quién es James Gosling?
+James Gosling: Uno de los creadores de Java, conocido como "el padre de Java".
+
+¿Qué son la complejidad del tiempo y el espacio?
+Complejidad Temporal: Cuánto tiempo tarda un problema en resolverse, dependiendo de su tamaño.
+Complejidad Espacial: Cuánta memoria se necesita para resolver un problema, dependiendo de su tamaño.
+
+¿Qué es la notación O?
+Notación O:
+Es una forma de decir cuán rápido o lento es un algoritmo.
+Nos da una idea de cuánto tiempo llevará un algoritmo a medida que el problema se hace más grande.
+
+Da el nombre de 3 algoritmos de clasificación y explica su lógica.
+Algoritmos de Clasificación y Cómo Funcionan:
+Bubble Sort: Compara elementos y los cambia de lugar hasta que estén ordenados.
+Selection Sort: Encuentra el más pequeño y lo coloca en su posición correcta.
+Insertion Sort: Toma elementos uno por uno y los coloca en la posición correcta en una lista ordenada.
+
+Arquitectura Hexagonal:
+La arquitectura hexagonal en Java es una forma de organizar el código de una aplicación para que sea fácil de entender y mantener. Imagina que tu aplicación es como una isla en el centro, rodeada de un "océano" de cosas externas como bases de datos, servicios web, interfaces de usuario, etc.
+
+El "núcleo" de tu aplicación contiene la lógica principal.
+Los "puertos" son como puentes que conectan tu núcleo con el mundo exterior. Representan cómo tu aplicación se comunica con cosas externas.
+Los "adaptadores" son como traductores que hacen que las cosas externas sean comprensibles para tu núcleo y viceversa.
+Esta separación ayuda a que tu código sea más limpio y flexible. Puedes cambiar las cosas externas sin afectar la lógica principal de tu aplicación, y viceversa. En resumen, la arquitectura hexagonal en Java es una forma inteligente de organizar tu código para que sea más fácil de trabajar y mantener.
+
+
+Spring Framework:
+Marco integral para el desarrollo Java.
+@Component, @Autowired, @Service, @Controller, @Repository, @Configuration, @Aspect.
+
+Spring Boot:
+Simplifica configuración y despliegue.
+@SpringBootApplication, @RestController, @RequestMapping, @Value, @EnableAutoConfiguration, @SpringBootTest, @Profile.
+
+Spring REST:
+Construcción de servicios web RESTful.
+@RestController, @RequestMapping, @GetMapping, @PostMapping, @PutMapping, @DeleteMapping, @RequestBody.
+
+Spring Data:
+Facilita el acceso a datos.
+@Repository, @Query, @Entity, @Table, @Id, @GeneratedValue, @Transactional.
+
+Spring Security:
+Funciones de seguridad a nivel de aplicación.
+@EnableWebSecurity, @Secured, @PreAuthorize, @PostAuthorize, @AuthenticationPrincipal, @EnableGlobalMethodSecurity, @CrossOrigin.
+
+----------------------------------------------------------------------------------------------------------
+*MICROSERVICIOS:
+Los microservicios son un enfoque arquitectónico que divide una aplicación en servicios pequeños e independientes,
+cada uno de los cuales se ejecuta en su propio proceso y se comunica con otros servicios.
+
+Patrones de diseño de microservicios:
+Son pautas y prácticas comunes que se utilizan
+para abordar los desafíos asociados con la construcción de sistemas distribuidos basados en microservicios.
+Aquí hay algunos patrones de diseño de microservicios comunes:
+
+Patrón de Arquitectura de Microservicios:
+Descripción: Divide una aplicación en servicios independientes y pequeños.
+Beneficios: Escalabilidad, despliegue independiente, mantenimiento facilitado, tecnologías y
+lenguajes de programación adecuados para cada servicio.
+
+Patrón de Registro y Descubrimiento de Servicios:
+Descripción: Los servicios registran su ubicación y otros servicios pueden descubrirlos dinámicamente.
+Beneficios: Facilita el descubrimiento y comunicación entre servicios en un entorno dinámico.
+
+Patrón de Puerta de Enlace (API Gateway):
+Descripción: Un punto de entrada único para las solicitudes de los clientes
+que enruta las solicitudes a los servicios apropiados.
+Beneficios: Simplifica la interfaz del cliente, gestiona la autenticación y la autorización,
+mejora el rendimiento al reducir múltiples solicitudes a una.
+
+Patrón de Descomposición de Bases de Datos:
+Descripción: Cada microservicio tiene su propia base de datos, evitando bases de datos compartidas.
+Beneficios: Independencia de datos, permite elegir la tecnología de almacenamiento de datos más adecuada
+para cada servicio.
+
+Patrón de Mensajería Asíncrona:
+Descripción: Los microservicios se comunican a través de mensajes asincrónicos, como colas de mensajes.
+Beneficios: Desacopla servicios, mejora la escalabilidad y la tolerancia a fallos.
+
+Patrón de Gestión de Configuración Externa:
+Descripción: Configuraciones como propiedades y valores se almacenan fuera del código y se gestionan externamente.
+Beneficios: Facilita la configuración y actualización de servicios sin necesidad de recompilar.
+
+Patrón de Tolerancia a Fallos:
+Descripción: Los microservicios están diseñados para manejar fallas de manera aislada
+y proporcionar mecanismos de recuperación.
+Beneficios: Mejora la resistencia del sistema, evita la propagación de fallos.
+
+Patrón de Autoescalamiento:
+Descripción: Los microservicios pueden escalar automáticamente según la demanda.
+Beneficios: Utilización eficiente de recursos, garantiza el rendimiento durante picos de carga.
+
+Patrón de Monitorización y Registro:
+Descripción: Instrumenta cada microservicio para recopilar datos y registros sobre su rendimiento y estado.
+Beneficios: Facilita la detección de problemas, mejora la capacidad de diagnóstico y resolución.
+
+---------------------------------------------------------------------------------------------------------------
+*JWT:
+JWT es un estándar (RFC 7519) que define un formato compacto y autónomo
+para representar información entre dos partes de manera segura y eficiente.
+El JWT consta de 3 partes codificadas en Base64:
+Header: Contiene el tipo de token y el algoritmo de firma utilizado.
+Payload: Contiene las reclamaciones (claims) que representan la información.
+Puede incluir datos como el emisor, el sujeto, la fecha de emisión y más.
+Signature: Se utiliza para verificar la integridad del token. Se firma con una clave secreta o pública.
+Las partes están separadas por puntos (.) Header (xxxxx), Payload (yyyyy) y Signature (zzzzz).
+Ejemplo: xxxxx.yyyyy.zzzzz
+Uso Común:
+Se utiliza para la autenticación y autorización en aplicaciones web y servicios,
+permitiendo a diferentes partes confiar y compartir información de manera segura.
+
+Estructura:
+Consiste en tres partes separadas por puntos: Header, Payload y Signature.
+Ejemplo: headerBase64.payloadBase64.signatureBase64 (eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c)
+Header (Encabezado):
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+Decodificado: {"alg": "HS256", "typ": "JWT"}
+
+Payload (Carga):
+eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ
+Decodificado: {"sub": "1234567890", "name": "John Doe", "iat": 1516239022}
+
+Signature (Firma):
+SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+La firma se genera usando la información del Header y Payload más una clave secreta.
+
+Partes del JWT:
+Header: Contiene el tipo de token y el algoritmo de firma utilizado.
+Payload: Contiene las reclamaciones (claims) que representan la información. Puede incluir datos como el emisor, el sujeto, la fecha de emisión y más.
+Signature: Se utiliza para verificar la integridad del token. Se firma con una clave secreta o pública.
+
+Uso Común:
+Se utiliza comúnmente como formato para tokens de acceso en sistemas de autenticación y autorización.
+
+En JSON Web Tokens (JWT), el tipo de algoritmo de firma (signature algorithm):
+Se especifica en la sección del Header del JWT.
+Algunos de los algoritmos de firma comunes incluyen
+En general, es recomendable utilizar algoritmos
+con clave secreta (HMAC) o asimétricos (RSA, ECDSA)
+según el caso de uso y los requisitos de seguridad.
+  HMAC con SHA-256 (HS256):
+  Este algoritmo utiliza una clave secreta compartida para firmar y verificar el JWT.
+  Es uno de los algoritmos más comunes y proporciona un buen equilibrio entre seguridad y eficiencia.
+  HMAC con SHA-384 (HS384) y SHA-512 (HS512):
+  Variaciones de HS256 que utilizan longitudes de hash mayores para mayor seguridad,
+  pero también con mayor longitud de firma.
+  RSA:
+  Algoritmo de firma asimétrica. Utiliza un par de claves, una pública y una privada.
+  El emisor firma el JWT con la clave privada,
+  y el receptor verifica la firma utilizando la clave pública.
+  ECDSA:
+  Algoritmo de firma digital de curva elíptica. Similar a RSA,
+  pero más eficiente en términos de tamaño de clave y velocidad de procesamiento.
+  Algoritmos sin firma (None):
+  En algunos casos, puedes encontrar tokens JWT que utilizan "none" como algoritmo de firma.
+  Esto significa que el token no está firmado y puede ser vulnerable a manipulación.
+  Se debe evitar en entornos de producción.
+
+Emisión y Validación:
+Emitido por un servidor de autorización o entidad de confianza.
+La validez se verifica mediante la verificación de la firma y la comprobación de la validez temporal.
+
+Beneficios:
+Compacto y eficiente para transmitir información.
+Fácilmente integrado en aplicaciones web y servicios API.
+Facilita la autenticación y autorización sin necesidad de consultar la base de datos en cada solicitud.
+
+Implementación Segura:
+La información sensible debe evitarse en los reclamos para garantizar la seguridad.
+Se debe utilizar HTTPS para proteger la transmisión de JWT.
+
+Uso Extendido:
+Puede ser utilizado para la propagación segura de identidad y autorización en sistemas distribuidos.
+
+Librerías:
+Existen librerías y herramientas en diversos lenguajes de programación para la creación, emisión y validación de JWT.
+En resumen, JWT es un estándar versátil para la representación segura de información, comúnmente utilizado en la implementación de sistemas de autenticación y autorización en aplicaciones web y servicios.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Aquí hay algunas diferencias clave entre un Access Token y un JSON Web Token (JWT):
+
+_Propósito:
+Access Token: Es un tipo de token utilizado para acceder a recursos protegidos,
+indicando que el usuario tiene la autorización necesaria.
+JSON Web Token (JWT): Es un formato estándar para representar reclamaciones
+entre dos partes de una manera segura y compacta. Aunque se usa comúnmente
+como formato para tokens de acceso, un JWT puede contener cualquier tipo de información estructurada.
+_Formato:
+Access Token: Puede tener varios formatos, no necesariamente limitado a JWT.
+Puede ser una cadena opaca o en formato JSON, dependiendo de la implementación.
+JSON Web Token (JWT): Es un formato específico que utiliza estructuras de datos en formato JSON
+para representar información de manera segura y eficiente.
+
+_Emitido por:
+Access Token: Emitido por un servidor de autorización después de la autenticación exitosa del usuario.
+JSON Web Token (JWT): Puede ser emitido por diferentes entidades
+y no necesariamente después de una autenticación. Aunque es comúnmente utilizado
+como formato para tokens de acceso, un JWT puede tener diversos emisores y usos.
+
+_Contenido:
+Access Token: Contiene información sobre la autorización y los permisos del usuario
+para acceder a recursos específicos.
+JSON Web Token (JWT): Puede contener cualquier tipo de información
+estructurada (reclamaciones) que las partes involucradas acuerden.
+
+_Uso:
+Access Token: Se utiliza para realizar solicitudes a recursos protegidos
+en nombre del usuario autenticado.
+JSON Web Token (JWT): Puede ser utilizado para diversos propósitos,
+incluyendo autenticación, autorización, intercambio de información estructurada, entre otros.
+
+El flujo típico de Access Token con Refresh Token sería:
+Obtención de Tokens (hacemos el login y obtenemos el access token y refresh token):
+El cliente adquiere un access token y un refresh token del servidor de autorización.
+Uso del Access Token (access token sirve para acceder a recursos protegidos):
+El access token se emplea para acceder a recursos protegidos.
+Renovación Automática (no hay necesidad de volver a ingresar credenciales):
+Cuando el access token expira, el cliente utiliza el refresh token para obtener uno nuevo sin requerir credenciales adicionales.
+Validación y Emisión (renovamos el access token con el refresh token):
+El servidor de autorización valida el refresh token almacenado en su base de datos y emite un nuevo access token si es válido.
+
+
+*Microservicios:
+Gateway Pattern:
+Utiliza una Puerta de Enlace de API para manejar las solicitudes de clientes
+y dirigirlas hacia los microservicios apropiados.
+Esto centraliza la autenticación, el equilibrio de carga y la lógica de enrutamiento.
+
+Service Registry Pattern:
+Implement a service registry to automatically locate and register microservices.
+This helps in dynamic discovery and communication between services.
+
+Circuit Breaker Pattern:
+Evita las fallas en cascada utilizando un interruptor de circuito
+que pueda detener temporalmente las solicitudes a un servicio con problemas
+y proporcionar mecanismos de respaldo.
+
+modificadores de variables:
+static: Indica que una variable es compartida por todas las instancias de una clase. No pertenece a una instancia específica.
+final: Utilizado para declarar una variable como constante, cuyo valor no puede cambiar después de la asignación inicial.
+volatile: Indica que una variable puede ser modificada de manera segura por múltiples hilos, evitando problemas de concurrencia.
+transient: Utilizado para indicar que una variable no debe ser serializada cuando se almacena un objeto en formato serializado.
+synchronized: No es un modificador de variable, sino de método o bloque, utilizado para controlar el acceso simultáneo a variables compartidas en entornos multi-hilo.
+Estos modificadores permiten controlar el comportamiento y la visibilidad de las variables en Java, lo que es esencial para diseñar clases y programas que funcionen correctamente y de manera segura.
+
+modificadores de variables:
+private: Significa "privado". Solo la clase donde se declara puede usarlo.
+default (sin modificador): Es accesible solo dentro del mismo paquete.
+protected: Puede ser utilizado por la clase donde se declara, por sus subclases y por otras clases en el mismo paquete.
+public: Es accesible desde cualquier lugar en el código.
+
+- Una clase abstracta es una clase que puede contener métodos abstractos y concretos,
+mientras que una interfaz solo puede contener métodos abstractos.
+- Las clases abstractas permiten herencia única,
+mientras que una clase puede implementar múltiples interfaces.
+- Las clases abstractas pueden tener campos y constructores, pero las interfaces no pueden.
+- Las clases abstractas se utilizan cuando se desea proporcionar una implementación base común
+con métodos opcionales para las subclases, mientras que las interfaces se utilizan
+para definir contratos que deben cumplir las clases que las implementan.
+
+Punto de Venta (Point of Sale / Punto de Venta) en eCommerce:
+Se refiere a un sistema o dispositivo utilizado en establecimientos comerciales
+para realizar transacciones de compra y venta de bienes o servicio.
+
+Funciones de un POS:
+Registro de Ventas: El POS registra y procesa las transacciones de compra, calculando el monto total,
+aplicando impuestos y generando un recibo o comprobante de compra para el cliente.
+Gestión de Inventario: Muchos POS están vinculados a sistemas de gestión de inventario,
+lo que permite llevar un control actualizado de las existencias de productos.
+Procesamiento de Pagos: Los POS suelen estar equipados para aceptar diversos métodos de pago,
+como tarjetas de crédito/débito, efectivo, cheques o pagos móviles.
+Generación de Informes: Los POS pueden generar informes de ventas diarios, semanales o mensuales,
+lo que ayuda a los comerciantes a llevar un registro detallado de sus operaciones.
+Gestión de Clientes: Algunos POS permiten mantener un registro de clientes,
+lo que facilita la gestión de programas de fidelización y promociones.
+Seguridad: Los POS suelen contar con medidas de seguridad,
+como la encriptación de datos de tarjetas y la firma electrónica, para proteger la información sensible del cliente.
+
+Ventajas de un POS:
+Eficiencia en las Transacciones: Los POS agilizan el proceso de compra y
+reducen los errores humanos en el cálculo del precio y el cambio.
+Gestión de Inventario: Ayudan a mantener un control preciso de las existencias,
+evitando la falta de productos o el exceso de inventario.
+Registros Precisos: Generan registros detallados de las transacciones,
+lo que facilita la contabilidad y el cumplimiento de impuestos.
+Aceptación de Diversos Métodos de Pago: Permiten a los negocios ofrecer a los clientes múltiples opciones de pago,
+incluidas tarjetas y pagos móviles.
+Seguridad: Proporcionan medidas de seguridad para proteger los datos financieros y personales de los clientes.
+Análisis de Ventas: Los informes generados por el POS ayudan a los comerciantes a tomar decisiones informadas sobre su negocio.
+Gestión de Clientes: Facilitan la implementación de programas de lealtad y la personalización de la experiencia del cliente.
+
+Desventajas de un POS:
+Costo Inicial: La adquisición de hardware y software de POS puede ser costosa para pequeños negocios.
+Actualizaciones y Mantenimiento: Requieren actualizaciones periódicas y mantenimiento técnico,
+lo que implica gastos adicionales.
+Dependencia de la Conectividad: Algunos sistemas de POS dependen de una conexión a Internet estable,
+lo que puede ser problemático en áreas con conexiones deficientes.
+Capacitación del Personal: El personal necesita ser capacitado para usar eficazmente el POS,
+lo que puede llevar tiempo y recursos.
+Vulnerabilidad a Fallos Técnicos: Los problemas técnicos como la caída del sistema
+pueden afectar negativamente la experiencia del cliente y las ventas
+---
+La arquitectura de una pasarela de pagos:
+Puede variar según las necesidades específicas de la empresa y los requisitos técnicos,
+pero en general, una pasarela de pagos es un componente esencial en el procesamiento de transacciones financieras en línea.
+Aquí te proporciono una descripción general de la arquitectura típica de una pasarela de pagos
+
+1. Frontend:
+Esta es la parte visible para el usuario y generalmente se compone de
+Formulario de Pago: Donde el usuario ingresa la información de la tarjeta de crédito u otros datos de pago.
+Puede implementarse con HTML y JavaScript para la captura de datos del usuario.
+Interfaz de Usuario (UI): La página web o la aplicación que muestra el proceso de pago y
+confirma el éxito o el fracaso de la transacción.
+Frameworks de desarrollo web como React, Angular o Vue.js
+pueden ser utilizados para crear una interfaz de usuario atractiva y receptiva.
+Seguridad: Debe contar con cifrado SSL/TLS para proteger la información confidencial del cliente durante la transmisión.
+Se puede implementar cifrado SSL/TLS utilizando certificados proporcionados por autoridades de certificación como Let's Encrypt.
+
+2. Middleware:
+Esta capa actúa como un intermediario entre el frontend y el backend de la pasarela de pagos. Sus funciones incluyen
+Validación y Encriptación: Verificar que los datos ingresados sean válidos y cifrar la información sensible antes de transmitirla.
+Lenguajes de programación como Python o Node.js pueden ser utilizados para validar y cifrar datos antes de enviarlos al backend.
+Gestión de Sesiones: Mantener el estado de la transacción y garantizar que las transacciones se completen con éxito
+o se gestionen adecuadamente en caso de fallo.
+Bibliotecas de manejo de sesiones como Express.js en Node.js o Flask en Python.
+Seguridad Adicional: Implementar medidas de seguridad adicionales,
+como el cumplimiento de estándares de seguridad de datos como PCI DSS (Payment Card Industry Data Security Standard).
+Se pueden implementar bibliotecas de seguridad, como Helmet.js para Node.js, que ayudan a proteger contra ataques comunes en la web.
+
+3. Backend:
+Esta es la parte central de la pasarela de pagos y generalmente se compone de
+Procesador de Pagos: Este componente interactúa con las redes de tarjetas de crédito y
+otros métodos de pago para autorizar y procesar las transacciones.
+Algunos ejemplos incluyen Stripe, PayPal, Authorize.Net o Braintree para procesar pagos con tarjeta de crédito.
+Base de Datos: Almacenamiento de registros de transacciones, información de clientes y datos de autorización.
+Bases de datos relacionales como MySQL o PostgreSQL para almacenar datos de transacciones y clientes.
+Lógica de Negocio: Implementa la lógica necesaria para manejar devoluciones, cancelaciones,
+y otros aspectos relacionados con las transacciones.
+Puede ser implementada en lenguajes como Python, Ruby o Java, y frameworks como Ruby on Rails, Django o Spring.
+Integración con Terceros: Conexiones con instituciones financieras, pasarelas de pago externas y otros servicios relacionados.
+Para conectar con servicios externos, se pueden utilizar bibliotecas de API específicas y lenguajes de programación compatibles.
+
+4. API (Interfaz de Programación de Aplicaciones): Proporciona una forma estandarizada
+para que los comerciantes se comuniquen con la pasarela de pagos.
+Esto permite a las empresas personalizar la experiencia de pago e integrar la pasarela en sus sistemas existentes.
+API RESTful: Puedes crear una API RESTful utilizando herramientas como Express.js (Node.js), Flask (Python),
+Ruby on Rails, o Spring Boot (Java) para que los comerciantes se comuniquen con la pasarela de pagos.
+Documentación API: Utiliza herramientas como Swagger o Postman para documentar y probar tu API.
+
+5. Seguridad: La seguridad es fundamental en una pasarela de pagos. Debe incluir medidas de seguridad robustas, como el almacenamiento seguro de datos, detección de fraudes, autenticación de dos factores y seguimiento de auditoría.
+Almacenamiento Seguro de Datos: Utiliza técnicas de cifrado y almacena datos sensibles de manera segura en bases de datos.
+Detección de Fraudes: Puedes incorporar soluciones de detección de fraudes como Riskified, Sift Science o Kount.
+Autenticación de Dos Factores: Implementa la autenticación de dos factores para proteger cuentas de usuario y transacciones.
+Seguimiento de Auditoría: Utiliza herramientas de registro y seguimiento como Elasticsearch y Kibana
+para mantener registros de transacciones y actividades.
+
+6. Notificaciones y Registro: La pasarela debe ser capaz de enviar notificaciones a los comerciantes
+y a los clientes sobre el estado de las transacciones y mantener registros de todas las operaciones
+para fines de auditoría y reconciliación.
+Envío de Notificaciones: Utiliza servicios de envío de correo electrónico o mensajería
+como SendGrid o Twilio para notificar a los clientes y comerciantes sobre el estado de las transacciones.
+Registros de Auditoría: Usa bases de datos y sistemas de registro para almacenar
+y consultar registros de transacciones y operaciones.
+
+7. Cumplimiento Normativo: Cumplir con las regulaciones y estándares de seguridad de datos aplicables,
+como PCI DSS, es esencial para garantizar la seguridad de las transacciones y evitar sanciones legales.
+PCI DSS (Payment Card Industry Data Security Standard):
+Asegúrate de cumplir con los estándares de seguridad de datos de la Industria de Tarjetas de Pago (PCI DSS).
+Puedes utilizar soluciones de cumplimiento como Trustwave o Qualys para ayudarte en este proceso.
+
+*La_Arquitectura_Hexagonal:
+También conocida como "Puertos y Adaptadores" o "Clean Architecture",
+es un enfoque de diseño de softwareque se centra en la separación de las preocupaciones y
+la independencia de las capas de una aplicación. Este enfoque busca facilitar el mantenimiento,
+la escalabilidad y la prueba de la aplicación al aislar sus componentes principales y
+desacoplarlos de las tecnologías externas. A continuación, te mostraré un ejemplo básico
+de cómo implementar la arquitectura hexagonal en Java.
+
+La arquitectura hexagonal se compone principalmente de tres capas:
+Capa del Dominio: Contiene la lógica empresarial o de dominio de la aplicación, incluyendo las entidades,
+los objetos de valor y los casos de uso. Esta capa es independiente de cualquier tecnología o marco y
+define las reglas de negocio.
+Capa de Aplicación: También conocida como capa de casos de uso,
+esta capa actúa como un intermediario entre la capa de dominio y las tecnologías externas.
+Contiene la lógica de aplicación que coordina el flujo de datos y ejecuta los casos de uso.
+Los objetos de esta capa interactúan con la capa de dominio y
+exponen interfaces que pueden ser utilizadas por adaptadores externos.
+Adaptadores Externos: Estos adaptadores se encargan de la interacción con tecnologías externas,
+como bases de datos, interfaces de usuario, servicios web, etc.
+Pueden ser adaptadores de entrada (por ejemplo, controladores HTTP) o
+adaptadores de salida (por ejemplo, repositorios de base de datos).
+
+Aquí tienes un ejemplo simple de cómo podrías estructurar una aplicación en Java siguiendo la arquitectura hexagonal:
+myapp/
+\|-- src/
+\|   |-- main/
+\|   |   |-- java/
+\|   |   |   |-- com/
+\|   |   |       |-- myapp/
+\|   |   |           |-- domain/         (Capa de Dominio)
+\|   |   |           |   |-- Entity.java
+\|   |   |           |   |-- Repository.java
+\|   |   |           |-- application/    (Capa de Aplicación)
+\|   |   |           |   |-- UseCase.java
+\|   |   |           |-- adapters/      (Adaptadores Externos)
+\|   |   |               |-- input/
+\|   |   |               |   |-- Controller.java
+\|   |   |               |-- output/
+\|   |   |               |   |-- DatabaseRepository.java
+\|-- pom.xml
+
+Un ejemplo simple podría ser un sistema de gestión de tareas (To-Do list).
+Las clases dentro de domain representarían las entidades y los objetos de valor,
+la clase UseCase en application implementaría la lógica de negocio, y
+los adaptadores en adapters serían controladores HTTP y
+un repositorio de base de datos para interactuar con el mundo exterior.
+
+La arquitectura hexagonal te permite cambiar fácilmente las tecnologías externas sin afectar la lógica de negocio,
+lo que mejora la mantenibilidad y la prueba de tu aplicación. También fomenta la modularidad y
+el acoplamiento mínimo entre componentes.
+----------------------------------------------------------------------------------------------------------------
+
+Spring Framework: Un marco de desarrollo Java que simplifica la construcción de aplicaciones empresariales.
+Spring Boot: Una extensión de Spring que simplifica la creación de aplicaciones Java autónomas.
+Spring Data: Facilita el acceso a bases de datos en aplicaciones Spring, incluyendo diferentes tipos de bases de datos.
+Spring Security: Un marco de seguridad que protege aplicaciones web y servicios RESTful en Spring.
+Spring Core: El núcleo de Spring, que incluye el contenedor de Inversión de Control (IoC) y
+otras características esenciales para la gestión de aplicaciones Java.
+
+●	What is your quality assurance process for writing code and how do you spot a bug in an application?:
+¿Cuál es su proceso de control de calidad para escribir código y cómo detecta un error en una aplicación?:
+Aseguramiento de Calidad: Mi proceso incluye pruebas unitarias, de integración y revisión de código,
+con un enfoque en la detección de errores y retroalimentación de colegas (revisión de pares - pull request).
+Asimismo uso herramientas como sonarqube, spotbugs o sonarlint para asegurarme de la calidad del código.
+
+●	Aside from functionality and design, what do you consider to be the key attributes of an application,:
+and how would you test for them?:
+Aparte de la funcionalidad y el diseño, ¿cuáles considera que son los atributos clave de:
+una aplicación y cómo los probaría?:
+Atributos Clave de una Aplicación:
+  _Funcionalidad: La aplicación debe cumplir sus funciones sin errores ni fallos.
+                  (pruebas de unidad, integración, aceptación)
+                  *JUnit_Postman
+  _Rendimiento: La aplicación debe responder rápidamente y manejar cargas máximas.
+                  (pruebas de carga, rendimiento, escalabilidad)
+  _Seguridad: La aplicación debe ser segura, con autenticación y prevención de vulnerabilidades.
+                  (pruebas de penetración, de autenticación y autorización, de cifrado)
+                  *OWASP-ZAP_Snyk_Dependency-check
+  _Mantenibilidad: El código debe ser legible y permitir cambios sin problemas.
+  *SonarQube_Checkstyle
+  _Usabilidad: La aplicación debe ser fácil de usar y brindar una buena experiencia al usuario.
+  (pruebas de usabilidad (feedback usuarios reales), accesibilidad (accesible para personas con discapacidad))
+
+●	What is the value that systems engineering or software development brings to a business?:
+¿Cuál es el valor que aporta la ingeniería de sistemas o el desarrollo de software a un negocio?:
+Valor para un Negocio: La ingeniería de sistemas/desarrollo de software aporta
+automatización, eficiencia, reducción de costos y ventajas competitivas.
+_Automatización: Reducción de tareas manuales y errores.
+_Eficiencia: Mejora en los flujos de trabajo y procedimientos internos.
+_Reducción de Costos: Menor gasto en recursos y mano de obra.
+_Ventajas Competitivas: Capacidad de respuesta rápida y mejora en la experiencia del cliente.
+_Toma de Decisiones Informada: Datos para decisiones estratégicas.
+_Escalabilidad: Adaptabilidad al crecimiento de la empresa.
+_Innovación: Creación de productos y servicios novedosos.
+
+●	What is your troubleshooting process?:
+¿Cuál es su proceso de solución de problemas?:
+Resolución de Problemas:
+  _Comprender el Problema:
+  Asegúrate de entender claramente el problema antes de comenzar.
+  _Planificación:
+  Diseña una estrategia para resolver el problema antes de escribir código.
+  _Código:
+  Escribe código siguiendo tu plan.
+  _Pruebas:
+  Realiza pruebas para verificar que tu código funcione correctamente.
+  _Depuración:
+  Identifica y corrige errores si los encuentras.
+  _Entrega:
+  Implementa tu solución en el entorno adecuado.
+  _Aprendizaje Continuo (lección aprendida):
+  Se puede documentar el problema y su solución para compartirlo con el equipo para evitar errores pasados
+  y así tomar decisiones más acertivas a futuro.
+
+●	What would you consider to be an indefensible programming mistake?:
+¿Qué consideraría un error de programación indefendible?:
+Error indefendible: Es un fallo en el código o configuración de una aplicación
+que pone en riesgo su seguridad debido a prácticas de desarrollo deficientes o incumplimiento de estándares,
+lo que puede llevar a la vulnerabilidad de la aplicación y la pérdida o divulgación de datos confidenciales.
+
+●	Thinking back on the last website or web application that you worked on, what steps did you take:
+to ensure it was user-friendly and accessible?:
+Pensando en el último sitio web o aplicación web en el que trabajó,:
+¿qué pasos tomó para asegurarse de que fuera fácil de usar y accesible?:
+_Usabilidad: La aplicación debe ser fácil de usar y brindar una buena experiencia al usuario.
+(pruebas de usabilidad (feedback usuarios reales), accesibilidad (accesible para personas con discapacidad))
+_Accesibilidad:
+Es hacer que todo sea usable para todos, incluyendo a las personas con discapacidad, para lograr igualdad e inclusión.
+__Pruebas de contraste de color:
+WebAIM Contrast Checker - En línea y de código abierto - https://webaim.org/resources/contrastchecker/
+
+_La usabilidad: se centra en aspectos como la facilidad de navegación,
+la claridad de la interfaz de usuario, la consistencia en el diseño,
+la velocidad de respuesta y la capacidad de los usuarios para realizar tareas sin dificultades.
+
+_La accesibilidad: implica diseñar y desarrollar la aplicación de manera que sea perceptible,
+operable, comprensible y robusta para todos los usuarios, independientemente de sus capacidades
+físicas o cognitivas.
+
+●	What do you view as the most important engineering issue facing our industry today?:
+¿Cuál considera que es el problema de ingeniería más importante que enfrenta nuestra industria hoy en día?:
+Problema Principal de la Industria 1 (Ciberseguridad): Es un problema crítico
+debido al aumento de las amenazas cibernéticas y la necesidad de proteger datos y sistemas.
+Problema Principal 2 (Sostenibilidad): La industria debe ser más ecológica, ahorrar energía,
+gestionar los residuos electrónicos y usar prácticas responsables en el desarrollo de tecnologías.
+
+Características de Java 8:
+Lambdas y expresiones funcionales.
+Streams para el procesamiento de datos de manera eficiente.
+Nuevo paquete java.time para manejar fechas y horas.
+Interfaz de programación funcional con métodos predeterminados.
+Mejoras en las API de colecciones.
+
+_Función Lambda: Una función sin nombre que se utiliza para definir comportamientos
+de manera concisa y que puede ser pasada como argumento a métodos o asignada a variables funcionales en Java.
+_Streams: Secuencias de elementos que permiten procesar colecciones de datos de manera eficiente en Java,
+aplicando operaciones funcionales como filtrar, mapear y reducir.
+_Expresiones Funcionales: Fragmentos de código que representan funciones o comportamientos
+y que se pueden usar como objetos de primera clase en Java, facilitando la programación funcional
+y la escritura de código más expresivo.
+
+  _EJEMPLO:
+  import java.util.ArrayList;
+  import java.util.List;
+  import java.util.stream.Collectors;
+
+  public class EjemploStreams {
+      public static void main(String[] args) {
+          // Crear una lista de números
+          List<Integer> numeros = new ArrayList<>();
+          for (int i = 1; i <= 10; i++) {
+              numeros.add(i);
+          }
+          // Usar un stream con lambda para filtrar números pares
+          List<Integer> numerosPares = numeros.stream()
+                  .filter(n -> n % 2 == 0)
+                  .collect(Collectors.toList());
+          // Usar un stream con expresión funcional para imprimir números pares
+          // System.out::println es una expresión funcional que representa la acción de imprimir un elemento
+          numerosPares.forEach(System.out::println);
+      }
+  }
+
+Características de Java 11:
+Soporte extendido para el sistema de módulos (Jigsaw).
+HTTP Cliente estándar.
+Eliminación de Applets y Java Web Start.
+Actualizaciones de rendimiento y seguridad.
+Soporte de recolección de basura Epsilon.
+
+Spring Framework:
+Contenedor de inversión de control (IoC).
+Programación orientada a aspectos (AOP).
+Gestión de transacciones declarativas.
+Integración con tecnologías web y de persistencia.
+Soporte para desarrollo basado en interfaces.
+
+Spring Boot:
+Simplificación de la configuración y desarrollo.
+Incorporación de servidores embebidos.
+Producción de aplicaciones listas para producción.
+Gestión automática de dependencias.
+Enfoque en el desarrollo de aplicaciones Spring rápidas y eficientes.
+
+Abstracción, Herencia, Polimorfismo, Encapsulamiento:
+Abstracción: creación de clases abstractas o interfaces para definir comportamientos comunes.
+Creación de una clase abstracta "FiguraGeométrica" con un método abstracto "calcularÁrea()",
+que luego es heredado y implementado por clases como "Círculo" y "Rectángulo".
+Herencia: permite la creación de clases basadas en clases existentes.
+Clase base "Animal" con propiedades y métodos comunes,
+heredada por clases derivadas como "Perro" y "Gato" que agregan características específicas.
+Polimorfismo: posibilidad de que objetos de diferentes clases respondan al mismo método.
+Interfaz "Reproducible" con el método "reproducirse()", implementado de manera diferente
+por clases "Ave" y "Mamífero". Los objetos se pueden tratar de manera uniforme
+mediante el método "reproducirse()" independientemente de su clase específica.
+Encapsulamiento: ocultamiento de los detalles internos de una clase.
+Clase "CuentaBancaria" con propiedades privadas como "saldo" y "titular",
+con métodos públicos "depositar()" y "retirar()" para controlar el acceso a
+los datos internos y prevenir modificaciones no autorizadas.
+
+String, StringBuilder, StringBuffer:
+String: inmutable, adecuado para operaciones de lectura.
+StringBuilder: mutable, eficiente para operaciones de concatenación.
+StringBuffer: mutable y sincronizado, útil en entornos multihilo.
+
+_Principios generales de desarrollo:
+__Principios KISS (Keep it simple, stupid):
+Mantener la simplicidad como objeto clave
+Evitar complejidad innecesaria
+
+__Principios DRY (Don't Repeat Yourself):
+Evitar copiar y pegar si podemos referenciar
+Contener el software que se debe repetir en funciones o métodos
+
+__Principios YAGNI (You ain't gonna need it):
+Resolver los problemas que ya sabes que existen
+Todo lo escrito debe ser probado y revisado
+
+_Principios SOLID:
+  Single responsability (Responsabilidad única): Una clase debe tener una única responsabilidad.
+  Si tiene más, debemos dividirlo.
+  // Clase con una sola responsabilidad: gestionar el almacenamiento de datos en una base de datos.
+  class DatabaseStorage {
+      public void saveData(String data) {
+          // Lógica para guardar datos en la base de datos.
+      }
+  }
+  Open/Closed (Abierto/cerrado): Las entidades de software deben estar abiertas para su extensión,
+  pero cerradas para su modificación.
+  // Clase base
+  abstract class Shape {
+      abstract double area();
+  }
+  // Extensión de la clase base (abierto para extensión)
+  class Circle extends Shape {
+      double radius;
+      @Override
+      double area() {
+          return Math.PI * radius * radius;
+      }
+  }
+  Liskov substitution (Sustitución de Liskov): Los objetos de un programa deben ser reemplazables
+  por instancias de sus subtipos sin alterar el funcionamiento del programa.
+  (extensión de la idea esencial de herencia, significa que si hemos creado un montón de subclases
+  siempre debo ser capaz de utilizar cualquiera de ellas y tratarla como su superclase sin afectar al resto)
+  Interface segregation (Segregación de interfaces): Muchas interfaces de cliente específicas
+  son mejores que una sola interfaz de propósito general.
+  Dependency inversion (Inversión de dependencia): Los módulos deben depender de abstracciones
+  y no de las implementaciones.
+
+_Principios GRASP (Principios de Software de Asignación de Responsabilidad General):
+Conjunto de principios que resuelven algún problema de software común a muchos proyectos de desarrollo.
+  __Principios GRASP I:
+  Experto en información: Dónde delegar responsabilidades
+  Controlador: Clase que representa al sistema
+  Acomplamiento bajo: Evitar las dependencias entre objetos
+  __Principios GRASP II:
+  Alta cohesión: Objetos enfocados, manejables y comprensibles
+  Variaciones protegidas: Protección de los elementos de clases y subsistemas ajenos
+  Fabricación pura: Clase encargada de mantener el bajo acomplamiento y la alta cohesión
+
+
+Cohesión y Acoplamiento de Software:
+Cohesión: grado en que los componentes de un módulo se relacionan entre sí.
+Acoplamiento: grado en que un módulo depende de otros módulos.
+Bajo acoplamiento y alta cohesión son objetivos deseables en el diseño de software.
+
+OAuth2/JWT/Mecanismo de Seguridad:
+OAuth2: protocolo de autorización para permitir el acceso seguro a recursos.
+JWT (JSON Web Tokens): formato de token utilizado en OAuth2.
+Mecanismo de seguridad: conjunto de prácticas y tecnologías para proteger sistemas y datos.
+
+JUnit Test:
+Framework de prueba unitaria para Java.
+Automatiza las pruebas y facilita la ejecución de pruebas repetidas.
+Ayuda en la detección temprana de errores.
+
+Clean Code:
+Enfoque en escribir código legible y mantenible.
+Uso de nombres descriptivos, estructura clara y comentarios útiles.
+Reduce la complejidad y facilita la colaboración en equipos.
+
+TDD (Desarrollo Dirigido por Pruebas):
+Metodología que implica escribir pruebas antes de escribir el código de producción.
+Fomenta el diseño de código más modular y robusto.
+Ayuda a garantizar que el código cumpla con los requisitos.
+
+Hibernate:
+Framework de mapeo objeto-relacional (ORM) para Java.
+Permite el acceso y manipulación de bases de datos relacionales de manera orientada a objetos.
+Abstrae la complejidad del SQL.
+
+Servidores de Aplicación:
+Plataformas que alojan y ejecutan aplicaciones web.
+Ejemplos incluyen Tomcat, JBoss, WebSphere.
+Proporcionan servicios para la gestión de solicitudes y recursos.
+
+Docker:
+Plataforma de contenedores que permite el empaquetado y distribución de aplicaciones.
+Ofrece aislamiento y portabilidad.
+Facilita la implementación y escalabilidad.
+
+Kubernetes:
+Orquestador de contenedores que automatiza la implementación y administración de aplicaciones en clústeres.
+Escala automáticamente los contenedores según la demanda.
+Facilita la gestión de microservicios.
+
+Base de Datos Relacional vs. No Relacional:
+Relacional: utiliza tablas con esquemas predefinidos.
+No relacional: almacena datos de manera más flexible, como documentos o gráficos.
+Elección depende de los requisitos del proyecto.
+
+Redis:
+Base de datos en memoria (almacena datos en RAM).
+Utilizada para caché, colas y almacenamiento rápido de datos clave-valor.
+Altamente eficiente y escalable.
+
+Optimización de Stored Procedures (SP) en una BD:
+Índices adecuados para consultas frecuentes.
+Evitar consultas innecesarias o costosas.
+Uso de parámetros óptimos y optimización de consultas SQL.
+
+Patrones y Antipatrones de Microservicios:
+Patrones: ejemplos incluyen API Gateway, Service Discovery, Circuit Breaker.
+Antipatrones: ejemplos incluyen Data Monolith y Service Churn.
+
+SOA (Service-Oriented Architecture / Arquitectura Orientada a Servicios):
+Enfoque arquitectónico que utiliza servicios independientes.
+Permite la integración de sistemas heterogéneos.
+Promueve la reutilización y escalabilidad.
+
+Patrones de Diseño de Software, Patrones de Arquitectura:
+Patrones de diseño: ejemplos incluyen Singleton, Builder, Observer, Factory Method.
+Patrones de arquitectura: ejemplos incluyen MVC, MVVM, Microservices.
+
+Istio:
+Plataforma de servicio de malla que gestiona el tráfico entre servicios en un clúster de Kubernetes.
+Ofrece funciones de seguridad, monitoreo y equilibrio de carga.
+
+Lombok:
+Biblioteca para Java que reduce la verbosidad del código generando automáticamente métodos como getters y setters.
+Facilita el desarrollo de código limpio y conciso.
+
+Git:
+Sistema de control de versiones distribuido.
+Permite el seguimiento de cambios en el código y la colaboración en equipos.
+Utilizado ampliamente en desarrollo de software.
+
+Jenkins:
+Herramienta de automatización de construcción y despliegue.
+Facilita la integración continua y la entrega continua (CI/CD).
+Extensible a través de complementos.
+
+SonarQube:
+Plataforma de análisis estático de código que evalúa la calidad del código.
+Identifica problemas de código, vulnerabilidades y duplicados.
+Ayuda a mejorar la maintainabilidad del código.
+
+CI (Integración Continua) y CD (Entrega Continua):
+CI: proceso de integración automática de código en un repositorio compartido.
+CD: proceso de entrega automática de software a un entorno de producción o pruebas.
+
+Terraform:
+Herramienta de infraestructura como código (IaC) para provisionar y gestionar recursos en la nube.
+Facilita la automatización y el control de la infraestructura.
+
+Autenticación Mutua:
+Proceso en el que dos partes se autentican mutuamente.
+Comúnmente utilizado en sistemas de seguridad, como TLS/SSL.
+
+Herramientas de Monitoreo:
+Herramientas como Prometheus, Grafana y Nagios para supervisar el rendimiento y la disponibilidad de sistemas.
+Proporcionan métricas y alertas en tiempo real.
+
+Herramientas para Verificación de Seguridad:
+Escáneres de vulnerabilidad, como Nessus.
+Pruebas de penetración y auditorías de seguridad.
+Identifican y corrigen debilidades de seguridad.
+
+Scrum:
+Marco de trabajo ágil para el desarrollo de proyectos.
+Organiza el trabajo en sprints y equipos multifuncionales.
+Enfocado en la colaboración, adaptación y entregas iterativas.
+
+Tips de Metodología ágil que no te deben faltar
+Aquí te dejamos una ayuda para que empieces a hablar más como expert@ TI:
+
+Scrum: Es un marco de gestión de proyectos de metodología ágil que se lleva en un equipo de trabajo, con entregas regulares de producto y constante aplicación de buenas prácticas.
+Sprint: Cada ciclo de trabajo del proyecto, con una duración no mayor a un mes, conformado por las principales ceremonias
+Daily: Reunión diaria donde el equipo sincroniza actividades del sprint, resuelve conflictos y planifica cómo avanzar.
+Backlog: Lista de requerimientos priorizados y organizados por tiempo y dificultad, para desarrollar el proyecto en equipo, en una plataforma (como Jira o Trello, por ejemplo).
+Sprint Planning: Evento en donde se trazan objetivos generales, encuadre del proyecto y plazos.
+Sprint Review: Cierre de Sprint, evento periódico en el que se recibe feedback tras la presentación del producto final (hasta dicho momento).
+Sprint Retrospective: Instancia de revisión y análisis del trabajo realizado en equipo con la finalidad de identificar oportunidades de mejora para el siguiente Sprint.
+Sprint Backlog: es la lista de tareas que el equipo se compromete a hacer durante el sprint para lograr el resultado deseado. Además incluye el objetivo del sprint; y se crea como resultado de la negociación entre el cliente, el product owner y los desarrolladores.
+
+
+.	FORMULARIO FRONTEND
+¿Qué conceptos/componentes/módulos/elementos básicos debe manejar una persona para implementar una aplicación en Angular?
+•	Directivas
+o	Las Directivas extienden la funcionalidad del HTML usando para ello una nueva sintaxis.
+	Directivas de Atributo
+	Directivas de estructurales
+	Componentes
+
+•	Componentes/Módulos
+o	Un componente es simplemente una clase TypeScript, añadimos la palabra reservada export para la clase sea visible desde otros archivos del proyecto.
+o	Un componente en Angular es un elemento que está compuesto por:
+	Un archivo que será nuestro Template (app.component.html), el cual es nuestro HTML, que es el que se va a visualizar en la interfaz de usuario, la vista o en términos más simples lo que vas a ver en la página. 
+	Un archivo de lógica, la cual es la que pondremos en un archivo .ts (como por ejemplo app.component.ts), ese archivo debe incluir una clase y esta es la que va a contener las propiedades que se van a usar en la vista (HTML) y los métodos que será las acciones que se ejecutarán en la vista. En este archivo de lógica también se incluye una metadata, que es definida con un decorador, que identifica a Angular como un componente.
+	Un archivo para el CSS (podemos usar un preprocesador como SASS o LESS), donde incluiremos los estilos, lo que nos ayuda a hacer bonita nuestra aplicación.
+	Modelo de datos: El modelo de datos contiene las clases necesarias para representar los datos recibidos en las llamadas a la API, en este ejemplo concreto sólo contiene un interfaz TypeScript donde almacenamos la frase recibida y el resto de campos, en un futuro si se ampliase la información que puede proveer la API podemos añadir nuevos modelos de datos.
+	
+•	Interpolación: Enlazamiento de las propiedas, atributos, eventos, paso de información, envío de datos, 
+•	Binding
+o	En enlazado de propiedades se utiliza la sintaxis [propiedad]="expresion". La forma más común de usarlo es vincular una propiedad del componente a un atributo de una etiqueta:
+	Enlazado de propiedades / property binding
+	Event binding / enlazado de eventos: como la acción que dispara un botón
+	Two way binding / Comunicación bidireccional: comunicación bidireccional entre las vistas y el modelo
+•	Routing (enrutado en Angular)
+o	En un sitio Web normalmente los enlaces de navegación apuntan a diferentes rutas, cuando pinchamos sobre ellos el servidor Web recibe la petición, carga la nueva página y entrega la página solicitada en la nueva ruta, por ejemplo este artículo pertenece al sitio raíz Enrutamiento o rutas en Angular es la manera en la que navegamos entre las vistas de nuestra aplicación, en una web normal nosotros navegamos entre paginas HTML, pero en Angular navegamos entre vistas que hemos generado a base de módulos y componentes.
+
+¿Explicar el ciclo de vida de los componentes de Angular?
+ 
+ngOnChanges: Este evento se ejecuta cada vez que se cambia un valor de un input control dentro de un componente. Se activa primero cuando se cambia el valor de una propiedad vinculada. Siempre recibe un change data map o mapa de datos de cambio, que contiene el valor actual y anterior de la propiedad vinculada envuelta en un SimpleChange
+ngOnInit: Se ejecuta una vez que Angular ha desplegado los data-bound properties(variables vinculadas a datos) o cuando el componente ha sido inicializado, una vez que ngOnChanges se haya ejecutado. Este evento es utilizado principalmente para inicializar la data en el componente.
+ngDoCheck: Se activa cada vez que se verifican las propiedades de entrada de un componente. Este método nos permite implementar nuestra propia lógica o algoritmo de detección de cambios personalizado para cualquier componente.
+ngAfterContentInit: Se ejecuta cuando Angular realiza cualquier muestra de contenido dentro de las vistas de componentes y justo después de ngDoCheck. Actuando una vez que todas las vinculaciones del componente deban verificarse por primera vez. Está vinculado con las inicializaciones del componente hijo.
+ngAfterContentChecked: Se ejecuta cada vez que el contenido del componente ha sido verificado por el mecanismo de detección de cambios de Angular; se llama después del método ngAfterContentInit. Este también se invoca en cada ejecución posterior de ngDoCheck y está relacionado principalmente con las inicializaciones del componente hijo.
+ngAfterViewInit: Se ejecuta cuando la vista del componente se ha inicializado por completo. Este método se inicializa después de que Angular ha inicializado la vista del componente y las vistas secundarias. Se llama después de ngAfterContentChecked. Solo se aplica a los componentes.
+ngAfterViewChecked: Se ejecuta después del método ngAfterViewInit y cada vez que la vista del componente verifique cambios. También se ejecuta cuando se ha modificado cualquier enlace de las directivas secundarias. Por lo tanto, es muy útil cuando el componente espera algún valor que proviene de sus componentes secundarios.
+ngOnDestroy: Este método se ejecutará justo antes de que Angular destruya los componentes. Es muy útil para darse de baja de los observables y desconectar los event handlers para evitar memory leaks o fugas de memoria.
+
